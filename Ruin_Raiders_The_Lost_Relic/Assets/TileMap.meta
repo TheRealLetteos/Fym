@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Ruin_Raiders_The_Lost_Relic/Assets/TileMap.meta
 guid: 509c95dab9138bc4b9ca934e844d48ad
+========
+guid: 248cde0ec99d44e42b8813bb2119ee01
+>>>>>>>> origin/main:Ruin_Raiders_The_Lost_Relic/Assets/Scripts/Mao/Enemy.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

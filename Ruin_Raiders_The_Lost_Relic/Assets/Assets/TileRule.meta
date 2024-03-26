@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Ruin_Raiders_The_Lost_Relic/Assets/Assets/TileRule.meta
 guid: 0520a36b725b2d8428e388e774f0bd03
+========
+guid: efc2824154be2b6478fef3301ea28deb
+>>>>>>>> origin/main:Ruin_Raiders_The_Lost_Relic/Assets/Scripts/Mao/GameManager.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

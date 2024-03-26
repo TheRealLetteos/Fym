@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Ruin_Raiders_The_Lost_Relic/Assets/Sprite.meta
 guid: b4404cb9a86ea71498aa5c59e235e484
+========
+guid: a9ec0e474a7f509499490ecb4bc07eec
+>>>>>>>> origin/main:Ruin_Raiders_The_Lost_Relic/Assets/Scripts/Mao.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
