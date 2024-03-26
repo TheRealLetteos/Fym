@@ -4,15 +4,11 @@ using UnityEngine;
 
 namespace fym
 {
-
-    public abstract class PlayerState : IState
+    public abstract class GameState : IState
     {
 
-        protected AbstractStateMachine<PlayerState> m_StateMachine;
+        protected AbstractStateMachine<GameState> _fsm;
 
-        protected PlayerState(AbstractStateMachine<PlayerState> stateMachine) {
-            m_StateMachine = stateMachine;
-        }
 
         public bool CanEnter(IState currentState)
         {
@@ -26,6 +22,7 @@ namespace fym
 
         public void OnEnter()
         {
+            throw new System.NotImplementedException();
         }
 
         public void OnExit()
@@ -44,5 +41,4 @@ namespace fym
         {
         }
     }
-
 }
