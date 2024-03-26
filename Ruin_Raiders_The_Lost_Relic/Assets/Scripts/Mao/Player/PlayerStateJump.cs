@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStateJump : MonoBehaviour
+namespace fym
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerStateJump : PlayerState
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public PlayerStateJump(AbstractStateMachine<PlayerState> stateMachine) : base(stateMachine)
+        {
+        }
     }
 }

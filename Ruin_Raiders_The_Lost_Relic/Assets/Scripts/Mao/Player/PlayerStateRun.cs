@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStateRun : MonoBehaviour
+namespace fym
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    /**
+     * 
+     */
+    public class PlayerStateRun : PlayerState
     {
-        
+        public PlayerStateRun(AbstractStateMachine<PlayerState> stateMachine) : base(stateMachine)
+        {
+        }
     }
 }

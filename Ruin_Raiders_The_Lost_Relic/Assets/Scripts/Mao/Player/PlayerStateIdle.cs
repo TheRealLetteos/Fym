@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStateIdle : MonoBehaviour
+namespace fym
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerStateIdle : PlayerState
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public PlayerStateIdle(AbstractStateMachine<PlayerState> stateMachine) : base(stateMachine)
+        {
+        }
     }
 }
