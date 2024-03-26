@@ -1,8 +1,9 @@
+using fym;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStateDoubleJump : MonoBehaviour
+public class PlayerStateDoubleJump : IState
 {
     // Start is called before the first frame update
     void Start()
