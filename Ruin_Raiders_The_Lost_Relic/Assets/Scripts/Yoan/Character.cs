@@ -10,16 +10,15 @@ public class Character : MonoBehaviour
     protected int _speed;
     protected int _life;
 
-    public virtual void movement(int x, int y)
+    public virtual void Movement()
     {
 
     }
 
-    public virtual bool Jump(bool value)
+    public virtual void Jump()
     {
-        return value;
     }
 
-    public virtual bool Attack(bool value) { return value; }
+    public virtual void Attack() {}
 
 }

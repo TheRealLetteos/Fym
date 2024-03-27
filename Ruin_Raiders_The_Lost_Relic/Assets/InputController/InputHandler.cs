@@ -51,19 +51,20 @@ public class InputHandler : MonoBehaviour, MainInputs.IPlayerMovementsActions
 
     public void OnJump(InputAction.CallbackContext context)
     {
-           Debug.Log(context.phase);
-        //jumpEvent?.Invoke();
+           //Debug.Log(context.phase);
+        jumpEvent?.Invoke();
     }
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        Debug.Log(context.phase);
+        //Debug.Log(context.phase);
+        dashEvent?.Invoke();
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        Debug.Log(context.phase);
-        //moveEvent?.Invoke();
+        //Debug.Log(context.phase);
+        moveEvent?.Invoke();
     }
     
 }
