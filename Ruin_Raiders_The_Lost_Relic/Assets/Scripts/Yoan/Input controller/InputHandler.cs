@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour, MainInputs.IPlayerMovementsActions
 {
-    public delegate void MoveEvent();
+    public delegate void MoveEvent(float x);
     public delegate void JumpEvent();
     public delegate void DashEvent();
 
@@ -12,6 +12,7 @@ public class InputHandler : MonoBehaviour, MainInputs.IPlayerMovementsActions
     public event DashEvent dashEvent;
 
     public static InputHandler instance;
+    public static string _JumpContext;
         
     private MainInputs _mInputs;
         
@@ -51,7 +52,8 @@ public class InputHandler : MonoBehaviour, MainInputs.IPlayerMovementsActions
 
     public void OnJump(InputAction.CallbackContext context)
     {
-           //Debug.Log(context.phase);
+        //Debug.Log(context.phase);
+        _JumpContext = context.phase.ToString();
         jumpEvent?.Invoke();
     }
 
@@ -63,8 +65,8 @@ public class InputHandler : MonoBehaviour, MainInputs.IPlayerMovementsActions
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        //Debug.Log(context.phase);
-        moveEvent?.Invoke();
+        
+            moveEvent?.Invoke(context.ReadValue<float>());
     }
     
 }

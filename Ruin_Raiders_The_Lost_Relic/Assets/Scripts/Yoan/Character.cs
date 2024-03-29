@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    private int _xPos;
+    protected float _xPos;
     private int _yPos;
-    private int _jumpStrength;
-    protected int _speed;
+    [SerializeField]
+    protected int _jumpStrength;
+    [SerializeField]
+    protected float _speed;
     protected int _life;
 
-    public virtual void Movement()
+    public virtual void Movement(float x)
     {
 
     }

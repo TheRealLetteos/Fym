@@ -29,7 +29,7 @@ public partial class @MainInputs: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Move"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""c9bb0144-f9a5-46dd-9a1c-df2f2a7c2374"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
