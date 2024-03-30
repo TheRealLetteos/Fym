@@ -26,10 +26,11 @@ namespace fym
         {
             m_possibleStates = new List<GameState>
             {
-                new GameStateMenu(this),
+                new GameStateLoading(this),
+                new GameStateLobby(this),
                 new GameStatePlaying(this),
-                new GameStatePause(this),
-                new GameStateGameOver(this)
+                new GameStatePaused(this),
+                new GameStateEnd(this)
             };
         }
 

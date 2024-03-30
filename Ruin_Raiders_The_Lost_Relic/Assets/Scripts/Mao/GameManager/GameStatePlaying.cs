@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace fym
 {
-    public class GameStatePaused : GameState
+    public class GameStatePlaying : GameState
     {
-        public GameStatePaused(GameManager stateMachine)
+        public GameStatePlaying(GameManager stateMachine)
         {
             _fsm = stateMachine;
         }

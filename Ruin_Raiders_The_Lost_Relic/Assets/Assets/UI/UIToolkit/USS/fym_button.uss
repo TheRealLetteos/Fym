@@ -1,0 +1,25 @@
+.button-title {
+    border-left-color: rgba(202, 94, 188, 0.78);
+    border-right-color: rgba(202, 94, 188, 0.78);
+    border-top-color: rgba(202, 94, 188, 0.78);
+    border-bottom-color: rgba(202, 94, 188, 0.78);
+    -unity-font: url('project://database/Assets/Assets/Font/ChelaOne-Regular.ttf?fileID=12800000&guid=6a45f6ca762b8804bb9d44fbc7a11691&type=3#ChelaOne-Regular');
+    -unity-font-definition: initial;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+
+.button-title:hover {
+    font-size: 18px;
+    background-color: rgba(164, 173, 73, 0.98);
+    -unity-font: url('project://database/Assets/Assets/Font/ChelaOne-Regular.ttf?fileID=12800000&guid=6a45f6ca762b8804bb9d44fbc7a11691&type=3#ChelaOne-Regular');
+    -unity-font-definition: initial;
+}
+
+.button-title:active {
+    background-color: rgb(45, 67, 152);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    font-size: 14px;
+    -unity-font: url('project://database/Assets/Assets/Font/ChelaOne-Regular.ttf?fileID=12800000&guid=6a45f6ca762b8804bb9d44fbc7a11691&type=3#ChelaOne-Regular');
+    -unity-font-definition: initial;
+}

@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Assets/UI/UIToolkit/USS/fym_button.uss?fileID=7433441132597879392&amp;guid=e34e85b653a8b164db833be3dad64e5e&amp;type=3#fym_button" />
+    <Style src="project://database/Assets/Assets/UI/UIToolkit/USS/fym_label.uss?fileID=7433441132597879392&amp;guid=12127b7324453e84ba8146dfff0f4cfb&amp;type=3#fym_label" />
+    <ui:VisualElement name="Screen" style="flex-grow: 1;">
+        <ui:VisualElement name="MenuContainer" style="flex-grow: 1; flex-direction: row; background-image: url(&apos;project://database/Assets/Assets/UI/BG/Lobby.png?fileID=2800000&amp;guid=caf3fbae9eaceb64db42ef3ed4c8acd9&amp;type=3#Lobby&apos;);">
+            <ui:VisualElement name="Level1Column" style="flex-grow: 1; width: 347px; margin-right: 660px;">
+                <ui:Label tabindex="-1" text="Main menu" parse-escape-sequences="true" display-tooltip-when-elided="true" class="fym-label-title label-title" style="height: 77px; font-size: 30px; -unity-font-style: normal; -unity-text-align: middle-center; color: rgb(0, 75, 19); -unity-font: url(&apos;project://database/Assets/Assets/Font/ChelaOne-Regular.ttf?fileID=12800000&amp;guid=6a45f6ca762b8804bb9d44fbc7a11691&amp;type=3#ChelaOne-Regular&apos;); -unity-font-definition: initial;" />
+                <ui:Button text="Continue game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ContinueButton" class="button-title" />
+                <ui:Button text="Start new game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" enable-rich-text="true" class="button-title" />
+                <ui:Button text="Options" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OptionButton" class="button-title" />
+                <ui:Button text="Quit game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitButton" class="button-title" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
