@@ -27,6 +27,6 @@ public class EndGameUI : MonoBehaviour
 
     public void restart()
     {
-        SceneManager.LoadScene(scene.name);
+        SceneManager.LoadScene("LobbyScene");
     }
 }
