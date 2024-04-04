@@ -1,8 +1,8 @@
-.label-title {
+.sublabel-title {
     -unity-font: url('project://database/Assets/Assets/Font/ChelaOne-Regular.ttf?fileID=12800000&guid=6a45f6ca762b8804bb9d44fbc7a11691&type=3#ChelaOne-Regular');
-    font-size: 30px;
-    color: rgb(0, 75, 19);
+    font-size: 26px;
     -unity-text-align: middle-center;
     white-space: nowrap;
+    color: rgb(106, 168, 122);
     -unity-font-definition: initial;
 }

@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Assets/UI/UIToolkit/USS/fym_button.uss?fileID=7433441132597879392&amp;guid=e34e85b653a8b164db833be3dad64e5e&amp;type=3#fym_button" />
+    <Style src="project://database/Assets/Assets/UI/UIToolkit/USS/fym_label.uss?fileID=7433441132597879392&amp;guid=12127b7324453e84ba8146dfff0f4cfb&amp;type=3#fym_label" />
+    <ui:VisualElement name="Screen" style="flex-grow: 1;">
+        <ui:VisualElement name="MenuContainer" style="flex-grow: 1; justify-content: center; align-self: center; width: 30%;">
+            <ui:Label tabindex="-1" text="Quit the game?" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitConfirmLabel" class="label-title" />
+            <ui:Button text="Yes" parse-escape-sequences="true" display-tooltip-when-elided="true" name="YesButton" class="button-title" />
+            <ui:Button text="No" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NoButton" class="button-title" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

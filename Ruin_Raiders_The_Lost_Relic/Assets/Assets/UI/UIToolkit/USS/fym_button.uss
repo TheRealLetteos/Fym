@@ -5,21 +5,32 @@
     border-bottom-color: rgba(202, 94, 188, 0.78);
     -unity-font: url('project://database/Assets/Assets/Font/ChelaOne-Regular.ttf?fileID=12800000&guid=6a45f6ca762b8804bb9d44fbc7a11691&type=3#ChelaOne-Regular');
     -unity-font-definition: initial;
-    font-size: 16px;
-    color: rgb(255, 255, 255);
+    font-size: 30px;
+    color: rgb(50, 50, 150);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    background-color: rgba(160, 170, 70, 0.78);
 }
 
 .button-title:hover {
-    font-size: 18px;
-    background-color: rgba(164, 173, 73, 0.98);
+    font-size: 30px;
+    background-color: rgba(160, 170, 70, 0.78);
     -unity-font: url('project://database/Assets/Assets/Font/ChelaOne-Regular.ttf?fileID=12800000&guid=6a45f6ca762b8804bb9d44fbc7a11691&type=3#ChelaOne-Regular');
     -unity-font-definition: initial;
+    -unity-slice-scale: 1px;
+    transform-origin: center;
+    translate: -1% -5%;
+    scale: 1.01 1.01;
+    color: rgb(50, 50, 150);
 }
 
 .button-title:active {
-    background-color: rgb(45, 67, 152);
+    background-color: rgba(160, 170, 70, 0.78);
     -unity-background-image-tint-color: rgb(255, 255, 255);
-    font-size: 14px;
+    font-size: 30px;
     -unity-font: url('project://database/Assets/Assets/Font/ChelaOne-Regular.ttf?fileID=12800000&guid=6a45f6ca762b8804bb9d44fbc7a11691&type=3#ChelaOne-Regular');
     -unity-font-definition: initial;
+    color: rgb(50, 50, 150);
+    translate: 1px 5px;
+    scale: 0.99 0.99;
 }
