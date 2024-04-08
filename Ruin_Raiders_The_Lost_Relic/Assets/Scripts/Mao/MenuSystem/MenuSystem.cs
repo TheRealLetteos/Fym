@@ -40,9 +40,6 @@ namespace fym
 
         public void LoadMainMenu()
         {
-            /*mainMenu.gameObject.SetActive(true);
-            optionMenu.gameObject.SetActive(false);
-            quitMenu.gameObject.SetActive(false);*/
             DeactivateAllMenu();
             mainMenu.ActivateMenu();
             mainMenu.gameObject.SetActive(true);
@@ -50,9 +47,6 @@ namespace fym
 
         public void LoadOptionMenu()
         {
-            /*mainMenu.gameObject.SetActive(false);
-            optionMenu.gameObject.SetActive(true);
-            quitMenu.gameObject.SetActive(false);*/
             DeactivateAllMenu();
             optionMenu.ActivateMenu();
             optionMenu.gameObject.SetActive(true);
@@ -60,9 +54,6 @@ namespace fym
 
         public void LoadQuitMenu()
         {
-            /*mainMenu.gameObject.SetActive(false);
-            optionMenu.gameObject.SetActive(false);
-            quitMenu.gameObject.SetActive(true);*/
             DeactivateAllMenu();
             quitMenu.ActivateMenu();
             quitMenu.gameObject.SetActive(true);
@@ -73,9 +64,6 @@ namespace fym
             mainMenu.DeactivateMenu();
             optionMenu.DeactivateMenu();
             quitMenu.DeactivateMenu();
-            //mainMenu.gameObject.SetActive(false);
-            //optionMenu.gameObject.SetActive(false);
-            //quitMenu.gameObject.SetActive(false);
 
         }
 
