@@ -84,13 +84,15 @@ public class Player : Character
         if (IsGrounded())
         {
             // Add an up force to simulate Jump
-            _rb.AddForce(Vector2.up * _jumpStrength, ForceMode2D.Impulse);
-            
+            //_rb.AddForce(Vector2.up * _jumpStrength, ForceMode2D.Impulse);
+            _rb.velocity = new Vector2(_rb.velocity.x, _jumpStrength);
+
         }
         else if (!IsGrounded() && _canDoubleJump && InputHandler._JumpContext == "Started")
         {
             
-            _rb.AddForce(Vector2.up * _jumpStrength * 3f, ForceMode2D.Impulse);
+            //_rb.AddForce(Vector2.up * _jumpStrength * 3f, ForceMode2D.Impulse);
+            _rb.velocity = new Vector2(_rb.velocity.x, _jumpStrength);
             _canDoubleJump = false;
         }
     }

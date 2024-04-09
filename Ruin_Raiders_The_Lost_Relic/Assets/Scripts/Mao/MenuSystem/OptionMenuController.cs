@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using UnityEngine.Audio;
 
 
 namespace fym
@@ -22,6 +23,16 @@ namespace fym
         private EnumField resolutionField;
 
         private Button backButton;
+        
+        //Yoan
+        [SerializeField]
+        private AudioMixer mixer;
+
+        private const string mixerMusic = "MusicVolume";
+
+        private const string mixerSFX = "SFXVolume";
+
+        private const string mixerMaster = "MasterVolume";
 
         private void Awake()
         {
@@ -51,22 +62,49 @@ namespace fym
 
         private void OnResolutionChange(Enum newValue)
         {
-            throw new NotImplementedException();
+            //Yoan
+            //Change the resolution of the screen
+            ResolutionType selectedResolution = (ResolutionType)newValue;
+
+            switch (selectedResolution)
+            {
+                case ResolutionType._854x480:
+                    Screen.SetResolution(854, 480, true);
+                    break;
+                case ResolutionType._1280x720:
+                    Screen.SetResolution(1280, 720, true);
+                    break;
+                case ResolutionType._1920x1080:
+                    Screen.SetResolution(1920, 1080, true);
+                    break;
+                case ResolutionType._2560x1440:
+                    Screen.SetResolution(2560, 1440, true);
+                    break;
+                default:
+                    Debug.LogError("Unknown resolution type: " + selectedResolution);
+                    break;
+            }
         }
 
         private void OnSoundFxChange(float newValue)
         {
-            throw new NotImplementedException();
+            //Yoan
+            //Change the SFX Volume with the slider
+            mixer.SetFloat(mixerSFX, newValue);
         }
 
         private void OnMusicChange(float newValue)
         {
-            throw new NotImplementedException();
+            //Yoan
+            //Change the Music Volume with the slider
+            mixer.SetFloat(mixerMusic, newValue);
         }
 
         private void OnVolumeChange(float newValue)
         {
-            throw new NotImplementedException();
+            //Yoan
+            //Change the Master Volume with the slider
+            mixer.SetFloat(mixerMaster, newValue);
         }
 
         private void OnBackClick()
