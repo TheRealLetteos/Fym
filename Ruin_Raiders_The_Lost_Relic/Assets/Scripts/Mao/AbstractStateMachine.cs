@@ -5,7 +5,7 @@ using UnityEngine;
 namespace fym
 {
 
-    public class AbstractStateMachine<T> : MonoBehaviour where T : IState
+    public abstract class AbstractStateMachine<T> : MonoBehaviour where T : IState
     {
         protected T m_currentState;
         protected List<T> m_possibleStates;
