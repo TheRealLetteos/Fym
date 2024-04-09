@@ -1710,9 +1710,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 4
+  m_LinearDrag: 10
   m_AngularDrag: 0.1
-  m_GravityScale: 6
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1733,7 +1733,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 949038455}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 046a2368a6f718a48b368cf2303bb4f2, type: 2}
+  m_Material: {fileID: 6200000, guid: bf839dc5a71829443b1e45e5714a45c8, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1849,9 +1849,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7de95b3afbaab4c90b01876424bf96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpStrength: 10
+  _jumpStrength: 20
   _speed: 8
-  _dashStrength: 20
+  _dashStrength: 25
   groundCheck: {fileID: 1079058811}
   groundLayer:
     serializedVersion: 2
@@ -12150,7 +12150,7 @@ CompositeCollider2D:
   m_GameObject: {fileID: 1995269531}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 046a2368a6f718a48b368cf2303bb4f2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
