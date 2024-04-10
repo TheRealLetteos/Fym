@@ -6,9 +6,16 @@ namespace fym
 {
     public class GameStatePaused : GameState
     {
-        public GameStatePaused(GameManager stateMachine)
+        public GameStatePaused(GameManager stateMachine) : base(stateMachine)
         {
-            _fsm = stateMachine;
+        }
+
+        public override void OnNotify(GameEvent e)
+        {
+            if(e == GameEvent.Pausing)
+            {
+                canEnter = true;
+            }
         }
     }
 }

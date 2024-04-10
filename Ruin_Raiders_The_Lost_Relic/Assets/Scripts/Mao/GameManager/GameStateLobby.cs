@@ -6,9 +6,16 @@ namespace fym
 {
     public class GameStateLobby : GameState
     {
-        public GameStateLobby(GameManager stateMachine)
+        public GameStateLobby(GameManager stateMachine) : base(stateMachine)
         {
-            _fsm = stateMachine;
+        }
+
+        public override void OnNotify(GameEvent e)
+        {
+            if(e == GameEvent.Lobby)
+            {
+                canEnter = true;
+            }
         }
     }
 }

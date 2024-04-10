@@ -34,7 +34,6 @@ namespace fym
 
         private void Start()
         {
-            DeactivateAllMenu();
             LoadMainMenu();
         }
 

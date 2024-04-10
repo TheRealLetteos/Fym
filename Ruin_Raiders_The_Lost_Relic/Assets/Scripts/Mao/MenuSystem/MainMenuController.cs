@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 namespace fym
 {
-    public class MainMenuController : MonoBehaviour
+    public class MainMenuController : AbstractObservedObject
     {
         private UIDocument mainMenuDocument;
 
@@ -26,6 +26,10 @@ namespace fym
             optionButton.clicked += () => OnOptionClick();
             quitButton = mainMenuDocument.rootVisualElement.Q<Button>("QuitButton");
             quitButton.clicked += () => OnQuitGameClick();
+            foreach (IObserver observer in GameManager.Instance.GetAllStates())
+            {
+                RegisterObserver(observer);
+            }
         }
 
         public void DeactivateMenu()
@@ -36,6 +40,8 @@ namespace fym
         public void ActivateMenu()
         {
             mainMenuDocument.rootVisualElement.style.display = DisplayStyle.Flex;
+
+            Notify(GameEvent.Lobby);
         }
 
         private void OnQuitGameClick()
@@ -49,6 +55,8 @@ namespace fym
             Debug.Log("Start Game Clicked");
             SceneManager.UnloadSceneAsync("LobbyScene");
             SceneManager.LoadScene("SampleScene");
+            //leave this op to the game play module
+            //Notify(GameEvent.Playing);
         }
 
         private void OnOptionClick()

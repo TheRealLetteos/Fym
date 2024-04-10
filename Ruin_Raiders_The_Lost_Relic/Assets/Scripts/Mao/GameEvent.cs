@@ -4,12 +4,10 @@ using UnityEngine;
 
 namespace fym
 {
-
-    public interface IObserver
+    public enum GameEvent
     {
 
-        public void OnNotify(GameEvent e);
+        Lobby, Loading, Playing, Pausing, Ending, Restarting, Quitting
 
     }
-
 }

@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 namespace fym
 {
-    public class OptionMenuController : MonoBehaviour
+    public class OptionMenuController : AbstractObservedObject
     {
 
         private UIDocument optionMenuDocument;
@@ -37,6 +37,10 @@ namespace fym
             resolutionField = optionMenuDocument.rootVisualElement.Q<EnumField>("ResolutionEnumField");
             resolutionField.Init(ResolutionType._1920x1080);
             resolutionField.RegisterValueChangedCallback((evt) => OnResolutionChange(evt.newValue));
+            foreach (IObserver observer in GameManager.Instance.GetAllStates())
+            {
+                RegisterObserver(observer);
+            }
         }
 
         public void DeactivateMenu()

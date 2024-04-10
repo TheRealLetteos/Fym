@@ -7,7 +7,7 @@ namespace fym
     public interface IObservedObject
     {
 
-        public void Notify(IEvent e);
+        public void Notify(GameEvent e);
         public void RegisterObserver(IObserver observer);
 
     }

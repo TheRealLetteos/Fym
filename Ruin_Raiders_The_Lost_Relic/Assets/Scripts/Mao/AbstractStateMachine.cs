@@ -72,6 +72,11 @@ namespace fym
                 }
             }
         }
+
+        public List<T> GetAllStates()
+        {
+            return m_possibleStates;
+        }
     }
 
 

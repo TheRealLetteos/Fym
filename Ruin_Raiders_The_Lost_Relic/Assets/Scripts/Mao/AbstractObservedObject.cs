@@ -8,9 +8,9 @@ namespace fym
     public class AbstractObservedObject : MonoBehaviour, IObservedObject
     {
 
-        public List<IObserver> observers = new List<IObserver>();
+        protected List<IObserver> observers = new List<IObserver>();
 
-        public void Notify(IEvent e)
+        public void Notify(GameEvent e)
         {
             foreach (IObserver observer in observers)
             {

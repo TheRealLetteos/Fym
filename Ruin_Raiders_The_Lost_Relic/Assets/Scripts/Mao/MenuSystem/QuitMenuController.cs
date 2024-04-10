@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 namespace fym
 {
-    public class QuitMenuController : MonoBehaviour
+    public class QuitMenuController : AbstractObservedObject
     {
 
 
@@ -23,6 +23,10 @@ namespace fym
             yesButton.clicked += () => OnYesClick();
             noButton = quitMenuDocument.rootVisualElement.Q<Button>("NoButton");
             noButton.clicked += () => OnNoClick();
+            foreach (IObserver observer in GameManager.Instance.GetAllStates())
+            {
+                RegisterObserver(observer);
+            }
         }
 
         public void DeactivateMenu()
@@ -38,7 +42,10 @@ namespace fym
         private void OnYesClick()
         {
             Debug.Log("Confirm quit game");
-            Application.Quit();
+            //leave the quit action to the GameManager because the
+            //menu system should not have the privilege to quit the game
+            //Application.Quit();
+            Notify(GameEvent.Quitting);
         }
 
         private void OnNoClick()

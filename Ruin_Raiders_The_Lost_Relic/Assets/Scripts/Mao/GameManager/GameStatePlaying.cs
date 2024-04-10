@@ -6,9 +6,17 @@ namespace fym
 {
     public class GameStatePlaying : GameState
     {
-        public GameStatePlaying(GameManager stateMachine)
+        public GameStatePlaying(GameManager stateMachine) : base(stateMachine)
         {
-            _fsm = stateMachine;
         }
+
+        public override void OnNotify(GameEvent e)
+        {
+            if(e == GameEvent.Playing)
+            {
+                canEnter = true;
+            }
+        }
+
     }
 }

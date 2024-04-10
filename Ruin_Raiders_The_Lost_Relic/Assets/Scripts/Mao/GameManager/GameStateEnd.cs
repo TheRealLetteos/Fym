@@ -6,9 +6,16 @@ namespace fym
 {
     public class GameStateEnd : GameState
     {
-        public GameStateEnd(GameManager stateMachine)
+        public GameStateEnd(GameManager stateMachine) : base(stateMachine)
         {
-            _fsm = stateMachine;
+        }
+
+        public override void OnNotify(GameEvent e)
+        {
+            if(e == GameEvent.Ending)
+            {
+                canEnter = true;
+            }
         }
     }
 }
