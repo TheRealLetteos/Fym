@@ -1619,6 +1619,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1756,6 +1757,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595250e447300464e8dc7a4eb1a78b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7afa72df17c697447a07360a46af609f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 5817613705093719494}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2393,7 +2407,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1336123752}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 046a2368a6f718a48b368cf2303bb4f2, type: 2}
+  m_Material: {fileID: 6200000, guid: 8081b5a2c05043a448f0dcac4ae344c1, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -12859,7 +12873,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1506329015}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 046a2368a6f718a48b368cf2303bb4f2, type: 2}
+  m_Material: {fileID: 6200000, guid: 8081b5a2c05043a448f0dcac4ae344c1, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -16462,7 +16476,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2802398794600693389, guid: 451aa7fbc91cb2542b473887a98acdeb, type: 3}
-      insertIndex: -1
+      insertIndex: 3
       addedObject: {fileID: 949038463}
     - targetCorrespondingSourceObject: {fileID: 2802398794600693389, guid: 451aa7fbc91cb2542b473887a98acdeb, type: 3}
       insertIndex: -1
@@ -16474,6 +16488,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 949038466}
   m_SourcePrefab: {fileID: 100100000, guid: 451aa7fbc91cb2542b473887a98acdeb, type: 3}
+--- !u!4 &5817613705093719494 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3251862088448821051, guid: 451aa7fbc91cb2542b473887a98acdeb, type: 3}
+  m_PrefabInstance: {fileID: 5817613705093719493}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -16482,9 +16501,9 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1599752643}
   - {fileID: 1165505620}
-  - {fileID: 5817613705093719493}
   - {fileID: 339994717}
   - {fileID: 175226617}
   - {fileID: 129106145}
   - {fileID: 1743792604}
   - {fileID: 20289751}
+  - {fileID: 5817613705093719493}
