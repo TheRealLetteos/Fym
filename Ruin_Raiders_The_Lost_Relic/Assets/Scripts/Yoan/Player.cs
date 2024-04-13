@@ -25,6 +25,12 @@ namespace fym
         private bool _isAttacking;
         private bool _isGrounded;
 
+        [SerializeField] private AudioSource _audioWalkingSource;
+        [SerializeField] private AudioSource _audioShortSource;
+        [SerializeField] private AudioClip _attackClip;
+        [SerializeField] private AudioClip _dashClip;
+        [SerializeField] private AudioClip _jumpClip;
+
 
         [SerializeField] private Transform groundCheck;
         [SerializeField] private LayerMask groundLayer;
@@ -85,10 +91,15 @@ namespace fym
             if (_moveDirection != 0 && !_isJumping)
             {
                 _isMoving = true;
+                if (!_audioWalkingSource.isPlaying)
+                {
+                    _audioWalkingSource.Play();
+                }
             }
             else
             {
                 _isMoving = false;
+                _audioWalkingSource.Stop();
             }
         }
 
@@ -121,8 +132,10 @@ namespace fym
                 // Add an up force to simulate Jump
                 //_rb.AddForce(Vector2.up * _jumpStrength, ForceMode2D.Impulse);
                 _rb.velocity = new Vector2(_rb.velocity.x, _jumpStrength);
-                
-                    _isJumping = true;
+                _isJumping = true;
+                _audioWalkingSource.Stop();
+                _audioShortSource.clip = _jumpClip;
+                _audioShortSource.Play();
 
             }
             else if (!_isGrounded && _canDoubleJump && InputHandler._JumpContext == "Started")
@@ -133,6 +146,8 @@ namespace fym
                 _canDoubleJump = false;
                 
                 _isJumping = true;
+                _audioShortSource.clip = _jumpClip;
+                _audioShortSource.Play();
             }
         }
 
@@ -141,6 +156,8 @@ namespace fym
         public override void Attack()
         {
             _isAttacking = true;
+            _audioShortSource.clip = _attackClip;
+            _audioShortSource.Play();
             StartCoroutine(waitAttackTime());
         }
 
@@ -155,6 +172,8 @@ namespace fym
                 _rb.velocity = new Vector2(transform.localScale.x * _dashStrength, 0f);
                 _isDashing = true;
                 _tr.emitting = true;
+                _audioShortSource.clip = _dashClip;
+                _audioShortSource.Play();
                 StartCoroutine(waitDashTime());
             }
             else if (!_isGrounded && _canDash)
@@ -165,6 +184,8 @@ namespace fym
                 _canDash = false;
                 _isDashing = true;
                 _tr.emitting = true;
+                _audioShortSource.clip = _dashClip;
+                _audioShortSource.Play();
                 StartCoroutine(waitDashTime());
                 _rb.gravityScale = _originalGravity;
             }
