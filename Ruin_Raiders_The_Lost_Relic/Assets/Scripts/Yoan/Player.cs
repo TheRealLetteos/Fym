@@ -11,11 +11,11 @@ namespace fym
     {
 
         private Rigidbody2D _rb;
-        private CapsuleCollider2D _capsuleCollider;
         private bool _canDoubleJump = false;
         private bool _canDash = true;
         private bool _isFacingRight = true;
 
+        [SerializeField] private TrailRenderer _tr;
         [SerializeField] protected int _dashStrength;
         private float _moveDirection;
 
@@ -52,6 +52,7 @@ namespace fym
         {
             yield return new WaitForSeconds(0.2f);
             _isDashing = false;
+            _tr.emitting = false;
         }
 
         IEnumerator waitAttackTime()
@@ -150,16 +151,22 @@ namespace fym
             // Verify if the player is grounded and than change the velocity to dash to the new direction
             if (_isGrounded)
             {
+                
                 _rb.velocity = new Vector2(transform.localScale.x * _dashStrength, 0f);
                 _isDashing = true;
+                _tr.emitting = true;
                 StartCoroutine(waitDashTime());
             }
             else if (!_isGrounded && _canDash)
             {
+                float _originalGravity = _rb.gravityScale;
+                _rb.gravityScale = 0f;
                 _rb.velocity = new Vector2(transform.localScale.x * _dashStrength, 0f);
                 _canDash = false;
                 _isDashing = true;
+                _tr.emitting = true;
                 StartCoroutine(waitDashTime());
+                _rb.gravityScale = _originalGravity;
             }
             //Debug.Log("Dash");
         }
