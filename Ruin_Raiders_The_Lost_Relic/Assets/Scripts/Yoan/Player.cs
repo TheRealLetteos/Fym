@@ -18,13 +18,15 @@ namespace fym
         [SerializeField] private TrailRenderer _tr;
         [SerializeField] protected int _dashStrength;
         private float _moveDirection;
-
+        
+        //Character State variable
         private bool _isJumping;
         private bool _isDashing;
         private bool _isMoving;
         private bool _isAttacking;
         private bool _isGrounded;
-
+        
+        //Sound
         [SerializeField] private AudioSource _audioWalkingSource;
         [SerializeField] private AudioSource _audioShortSource;
         [SerializeField] private AudioClip _attackClip;
@@ -48,12 +50,12 @@ namespace fym
             InputHandler.instance.attackEvent += Attack;
             enabled = true;
 
-            //le Rigidbody2D est attaché au GameObject du joueur
+            //Get player rigidbody
             _rb = GetComponent<Rigidbody2D>();
         }
 
 
-
+        
         IEnumerator waitDashTime()
         {
             yield return new WaitForSeconds(0.2f);
@@ -79,16 +81,20 @@ namespace fym
         {
             // Tells which direction the player moves
             _moveDirection = x;
+            
+            
+        }
 
-            /*if (x == 0)
+        private void ApplyMove()
+        {
+            if (!_isDashing)
             {
-                enabled = false;
-                return;
+                //movement of the player
+                _rb.velocity = new Vector2(_moveDirection * _speed, _rb.velocity.y);
             }
-
-            enabled = true;*/
-
-            if (_moveDirection != 0 && !_isJumping)
+            
+            //walking sound
+            if (_moveDirection != 0 && _isGrounded)
             {
                 _isMoving = true;
                 if (!_audioWalkingSource.isPlaying)
@@ -103,17 +109,9 @@ namespace fym
             }
         }
 
-        private void ApplyMove()
-        {
-            if (!_isDashing)
-            {
-                //movement of the player
-                _rb.velocity = new Vector2(_moveDirection * _speed, _rb.velocity.y);
-            }
-        }
-
         private void FacingDirection()
         {
+            
             if (_isFacingRight && _moveDirection < 0f || !_isFacingRight && _moveDirection > 0f)
             {
                 _isFacingRight = !_isFacingRight;
@@ -129,8 +127,7 @@ namespace fym
             GroundCheck();
             if (_isGrounded)
             {
-                // Add an up force to simulate Jump
-                //_rb.AddForce(Vector2.up * _jumpStrength, ForceMode2D.Impulse);
+                //Changing the velocity to go higher
                 _rb.velocity = new Vector2(_rb.velocity.x, _jumpStrength);
                 _isJumping = true;
                 _audioWalkingSource.Stop();
@@ -141,7 +138,7 @@ namespace fym
             else if (!_isGrounded && _canDoubleJump && InputHandler._JumpContext == "Started")
             {
 
-                //_rb.AddForce(Vector2.up * _jumpStrength * 3f, ForceMode2D.Impulse);
+                //Making a new velocity so it doesn't add up(better feeling)
                 _rb.velocity = new Vector2(_rb.velocity.x, _jumpStrength);
                 _canDoubleJump = false;
                 
@@ -155,6 +152,7 @@ namespace fym
 
         public override void Attack()
         {
+            //To do: implementing a when the player hit the enemy and the effect of it
             _isAttacking = true;
             _audioShortSource.clip = _attackClip;
             _audioShortSource.Play();
@@ -206,7 +204,8 @@ namespace fym
                 _isGrounded = false;
             }
         }
-
+        
+        //Get Set of the state
         public bool IsGrounded
         {
 

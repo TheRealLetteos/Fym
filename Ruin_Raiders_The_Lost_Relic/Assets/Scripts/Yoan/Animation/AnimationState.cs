@@ -9,7 +9,7 @@ public class AnimationState : MonoBehaviour
     private Player _player;
 
     private Animator _animator;
-    // Start is called before the first frame update
+    
     private void Awake()
     {
         _player = GetComponent<Player>();
