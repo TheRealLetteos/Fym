@@ -4,11 +4,28 @@ using UnityEngine;
 
 namespace fym
 {
+    //means quitting the game
     public class GameStateEnd : GameState
     {
-        public GameStateEnd(GameManager stateMachine)
+        public GameStateEnd(GameManager stateMachine) : base(stateMachine)
         {
-            _fsm = stateMachine;
+        }
+
+        public override void OnNotify(GameEvent e)
+        {
+            if(e == GameEvent.Ending)
+            {
+                canEnter = true;
+            }
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            //dispose of all resources
+            //destroy all objects
+            //unload all scenes
+            Application.Quit();
         }
     }
 }

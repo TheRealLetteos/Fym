@@ -6,11 +6,8 @@ using UnityEngine.UIElements;
 
 namespace fym
 {
-    public class QuitMenuController : MonoBehaviour
+    public class QuitMenuController : AbstractMenuController
     {
-
-
-        private UIDocument quitMenuDocument;
 
         private Button yesButton;
 
@@ -18,27 +15,20 @@ namespace fym
 
         private void Awake()
         {
-            quitMenuDocument = GetComponent<UIDocument>();
-            yesButton = quitMenuDocument.rootVisualElement.Q<Button>("YesButton");
+            Initialize();
+            yesButton = rootMenuDocument.rootVisualElement.Q<Button>("YesButton");
             yesButton.clicked += () => OnYesClick();
-            noButton = quitMenuDocument.rootVisualElement.Q<Button>("NoButton");
+            noButton = rootMenuDocument.rootVisualElement.Q<Button>("NoButton");
             noButton.clicked += () => OnNoClick();
-        }
-
-        public void DeactivateMenu()
-        {
-            quitMenuDocument.rootVisualElement.style.display = DisplayStyle.None;
-        }
-
-        public void ActivateMenu()
-        {
-            quitMenuDocument.rootVisualElement.style.display = DisplayStyle.Flex;
         }
 
         private void OnYesClick()
         {
             Debug.Log("Confirm quit game");
-            Application.Quit();
+            //leave the quit action to the GameManager because the
+            //menu system should not have the privilege to quit the game
+            //Application.Quit();
+            Notify(GameEvent.Quitting);
         }
 
         private void OnNoClick()

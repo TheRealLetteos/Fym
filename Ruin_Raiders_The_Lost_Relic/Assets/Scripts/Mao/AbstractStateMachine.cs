@@ -5,7 +5,7 @@ using UnityEngine;
 namespace fym
 {
 
-    public class AbstractStateMachine<T> : MonoBehaviour where T : IState
+    public abstract class AbstractStateMachine<T> : MonoBehaviour where T : IState
     {
         protected T m_currentState;
         protected List<T> m_possibleStates;
@@ -27,14 +27,14 @@ namespace fym
 
         protected virtual void Update()
         {
-            //Debug.Log("Current state:" +  m_currentState.GetType());
+            Debug.Log(GetType() + "Current state:" +  m_currentState.GetType());
             m_currentState.OnUpdate();
             TryStateTransition();
         }
 
         protected virtual void FixedUpdate()
         {
-            //Debug.Log("Current state:" + m_currentState.GetType());
+            Debug.Log(GetType() + "Current state:" + m_currentState.GetType());
             m_currentState.OnFixedUpdate();
         }
 
@@ -51,7 +51,6 @@ namespace fym
                 return;
             }
 
-            //Je PEUX quitter le state actuel
             foreach (var state in m_possibleStates)
             //for(int i=0;i<m_possibleStates.Count;i++)
             {
@@ -63,14 +62,19 @@ namespace fym
 
                 if (state.CanEnter(m_currentState))
                 {
-                    //Quitter le state actuel
+                    //quit current state
                     m_currentState.OnExit();
                     m_currentState = state;
-                    //Rentrer dans le state state
+                    //enter new state
                     m_currentState.OnEnter();
                     return;
                 }
             }
+        }
+
+        public List<T> GetAllStates()
+        {
+            return m_possibleStates;
         }
     }
 

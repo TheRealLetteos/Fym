@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DontDestroyMe : MonoBehaviour
+/**
+ * drag this script to any gameobject you want to keep alive in all scenes
+ */
+namespace fym
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public class DontDestroyMe : MonoBehaviour
     {
-        
+
+        void Awake()
+        {
+            DontDestroyOnLoad(this);
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

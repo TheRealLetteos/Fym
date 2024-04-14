@@ -4,41 +4,54 @@ using UnityEngine;
 
 namespace fym
 {
-    public abstract class GameState : IState
+    public abstract class GameState : IState, IObserver
     {
 
-        protected AbstractStateMachine<GameState> _fsm;
+        protected GameManager m_gameManager;
 
+        protected bool canEnter = false;
 
-        public bool CanEnter(IState currentState)
+        public GameState(GameManager stateMachine)
         {
-            throw new System.NotImplementedException();
+            m_gameManager = stateMachine;
         }
 
-        public bool CanExit()
+        public virtual bool CanEnter(IState currentState)
         {
-            throw new System.NotImplementedException();
+            return canEnter;
         }
 
-        public void OnEnter()
+        public virtual bool CanExit()
         {
-            throw new System.NotImplementedException();
+            return true;
         }
 
-        public void OnExit()
+        public virtual void OnEnter()
+        {
+            Debug.Log("Entering " + this.GetType().Name);
+        }
+
+        public virtual void OnExit()
+        {
+            Debug.Log("Exiting " + this.GetType().Name);
+            canEnter = false;
+        }
+
+        public virtual void OnFixedUpdate()
         {
         }
 
-        public void OnFixedUpdate()
+        public virtual void OnStart()
         {
         }
 
-        public void OnStart()
+        public virtual void OnUpdate()
         {
         }
 
-        public void OnUpdate()
+        public virtual void OnNotify(GameEvent e)
         {
         }
+
     }
 }

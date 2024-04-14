@@ -1,14 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace fym
 {
     public class GameStateLobby : GameState
     {
-        public GameStateLobby(GameManager stateMachine)
+        public GameStateLobby(GameManager stateMachine) : base(stateMachine)
         {
-            _fsm = stateMachine;
+        }
+
+        public override void OnNotify(GameEvent e)
+        {
+            if(e == GameEvent.Lobby && !canEnter)
+            {
+                canEnter = true;
+            }
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            MenuSystem.Instance.LoadMainMenu();
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            //SceneManager.UnloadSceneAsync(GameManager.LOBBY_SCENE);
         }
     }
 }

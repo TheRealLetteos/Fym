@@ -7,13 +7,16 @@ public class InputHandler : MonoBehaviour, MainInputs.IPlayerMovementsActions
     public delegate void JumpEvent();
     public delegate void DashEvent();
 
+    public delegate void AttackEvent();
+
     public event MoveEvent moveEvent;
     public event JumpEvent jumpEvent;
     public event DashEvent dashEvent;
 
+    public event AttackEvent attackEvent;
+
     public static InputHandler instance;
-    public static string _JumpContext;
-        
+    public static string _JumpContext;  
     private MainInputs _mInputs;
         
         
@@ -67,6 +70,11 @@ public class InputHandler : MonoBehaviour, MainInputs.IPlayerMovementsActions
     {
         
             moveEvent?.Invoke(context.ReadValue<float>());
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        attackEvent?.Invoke();
     }
     
 }

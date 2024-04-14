@@ -12,10 +12,16 @@ namespace fym
         public static MenuSystem Instance;
 
         [SerializeField]
+        private LoadingUIController loadingUI;
+
+        [SerializeField]
         private MainMenuController mainMenu;
 
         [SerializeField]
         private OptionMenuController optionMenu;
+
+        [SerializeField]
+        private PauseMenuController pauseMenu;
 
         [SerializeField]
         private QuitMenuController quitMenu;
@@ -34,15 +40,19 @@ namespace fym
 
         private void Start()
         {
+            //LoadMainMenu();
+            //LoadLoadingUI();
+        }
+
+        public void LoadLoadingUI()
+        {
             DeactivateAllMenu();
-            LoadMainMenu();
+            loadingUI.ActivateMenu();
+            loadingUI.gameObject.SetActive(true);
         }
 
         public void LoadMainMenu()
         {
-            /*mainMenu.gameObject.SetActive(true);
-            optionMenu.gameObject.SetActive(false);
-            quitMenu.gameObject.SetActive(false);*/
             DeactivateAllMenu();
             mainMenu.ActivateMenu();
             mainMenu.gameObject.SetActive(true);
@@ -50,19 +60,20 @@ namespace fym
 
         public void LoadOptionMenu()
         {
-            /*mainMenu.gameObject.SetActive(false);
-            optionMenu.gameObject.SetActive(true);
-            quitMenu.gameObject.SetActive(false);*/
             DeactivateAllMenu();
             optionMenu.ActivateMenu();
             optionMenu.gameObject.SetActive(true);
         }
 
+        public void LoadPauseMenu()
+        {
+            DeactivateAllMenu();
+            pauseMenu.ActivateMenu();
+            pauseMenu.gameObject.SetActive(true);
+        }
+
         public void LoadQuitMenu()
         {
-            /*mainMenu.gameObject.SetActive(false);
-            optionMenu.gameObject.SetActive(false);
-            quitMenu.gameObject.SetActive(true);*/
             DeactivateAllMenu();
             quitMenu.ActivateMenu();
             quitMenu.gameObject.SetActive(true);
@@ -70,12 +81,11 @@ namespace fym
 
         public void DeactivateAllMenu()
         {
+            loadingUI.DeactivateMenu();
             mainMenu.DeactivateMenu();
             optionMenu.DeactivateMenu();
+            pauseMenu.DeactivateMenu();
             quitMenu.DeactivateMenu();
-            //mainMenu.gameObject.SetActive(false);
-            //optionMenu.gameObject.SetActive(false);
-            //quitMenu.gameObject.SetActive(false);
 
         }
 
