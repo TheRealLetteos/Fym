@@ -406,6 +406,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158844941}
   m_CullTransparentMesh: 1
+--- !u!1 &506537957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 506537958}
+  m_Layer: 0
+  m_Name: EnemySlim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &506537958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506537957}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1279630349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,6 +724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1185010329}
+  - component: {fileID: 1185010330}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -717,6 +749,18 @@ Transform:
   - {fileID: 109691960}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1185010330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185010328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf32310bda41664a8ba01d530f60327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1226369647
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,6 +895,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226369647}
   m_CullTransparentMesh: 1
+--- !u!4 &1279630349 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7587663453415853145, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
+  m_PrefabInstance: {fileID: 3262179863117106304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1743792600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,6 +1277,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 749701269826681717, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
+      propertyPath: m_Name
+      value: PoolManager
+      objectReference: {fileID: 0}
     - target: {fileID: 4749534631604314400, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -1274,7 +1327,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7587663453415853145, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 506537958}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
 --- !u!1660057539 &9223372036854775807

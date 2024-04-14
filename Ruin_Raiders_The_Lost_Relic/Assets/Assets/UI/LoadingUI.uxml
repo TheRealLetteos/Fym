@@ -6,7 +6,7 @@
                 <ui:Label tabindex="-1" text="The last relic" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GameTitle" class="label-title" style="align-items: center; justify-content: center; align-self: center; top: -13%; font-size: 50px; width: 100%;" />
                 <ui:Label tabindex="-1" text="Here&apos;s the info panel" parse-escape-sequences="true" display-tooltip-when-elided="true" name="InfoPanel" class="label-title" style="top: -14%; width: 100%;" />
                 <ui:Label tabindex="-1" text="press any key" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PressAnykey" class="label-title" style="top: 7%; width: 100%;" />
-                <ui:ProgressBar value="100" title="loading..." style="-unity-font: url(&apos;project://database/Assets/Assets/Font/ChelaOne-Regular.ttf?fileID=12800000&amp;guid=6a45f6ca762b8804bb9d44fbc7a11691&amp;type=3#ChelaOne-Regular&apos;); -unity-font-definition: initial; font-size: 20px; color: rgb(0, 75, 19); -unity-background-image-tint-color: rgb(255, 255, 255); width: 100%; background-color: rgba(0, 0, 0, 0); top: 49px; -unity-text-outline-color: rgba(0, 0, 0, 0);" />
+                <ui:ProgressBar value="100" title="loading..." name="ProgressBar" style="-unity-font: url(&apos;project://database/Assets/Assets/Font/ChelaOne-Regular.ttf?fileID=12800000&amp;guid=6a45f6ca762b8804bb9d44fbc7a11691&amp;type=3#ChelaOne-Regular&apos;); -unity-font-definition: initial; font-size: 20px; color: rgb(0, 75, 19); -unity-background-image-tint-color: rgb(255, 255, 255); width: 100%; background-color: rgba(0, 0, 0, 0); top: 49px; -unity-text-outline-color: rgba(0, 0, 0, 0); opacity: 0.6;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

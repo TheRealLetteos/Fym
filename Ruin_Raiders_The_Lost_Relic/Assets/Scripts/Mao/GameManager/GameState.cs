@@ -7,46 +7,51 @@ namespace fym
     public abstract class GameState : IState, IObserver
     {
 
-        protected GameManager _fsm;
+        protected GameManager m_gameManager;
 
         protected bool canEnter = false;
 
         public GameState(GameManager stateMachine)
         {
-            _fsm = stateMachine;
+            m_gameManager = stateMachine;
         }
 
-        public bool CanEnter(IState currentState)
+        public virtual bool CanEnter(IState currentState)
         {
             return canEnter;
         }
 
-        public bool CanExit()
+        public virtual bool CanExit()
         {
             return true;
         }
 
-        public void OnEnter()
+        public virtual void OnEnter()
+        {
+            Debug.Log("Entering " + this.GetType().Name);
+        }
+
+        public virtual void OnExit()
+        {
+            Debug.Log("Exiting " + this.GetType().Name);
+            canEnter = false;
+        }
+
+        public virtual void OnFixedUpdate()
         {
         }
 
-        public void OnExit()
+        public virtual void OnStart()
         {
         }
 
-        public void OnFixedUpdate()
+        public virtual void OnUpdate()
         {
         }
 
-        public void OnStart()
+        public virtual void OnNotify(GameEvent e)
         {
         }
-
-        public void OnUpdate()
-        {
-        }
-
-        public abstract void OnNotify(GameEvent e);
 
     }
 }

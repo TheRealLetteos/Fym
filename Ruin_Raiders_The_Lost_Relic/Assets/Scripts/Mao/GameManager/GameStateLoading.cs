@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace fym
 {
@@ -16,6 +17,17 @@ namespace fym
             {
                 canEnter = true;
             }
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            MenuSystem.Instance.LoadLoadingUI();
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
         }
     }
 }

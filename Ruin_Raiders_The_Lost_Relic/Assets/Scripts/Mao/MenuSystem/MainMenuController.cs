@@ -7,10 +7,8 @@ using UnityEngine.UIElements;
 
 namespace fym
 {
-    public class MainMenuController : AbstractObservedObject
+    public class MainMenuController : AbstractMenuController
     {
-        private UIDocument mainMenuDocument;
-
         private Button startButton;
 
         private Button optionButton;
@@ -19,27 +17,23 @@ namespace fym
 
         private void Awake()
         {
-            mainMenuDocument = GetComponent<UIDocument>();
-            startButton = mainMenuDocument.rootVisualElement.Q<Button>("StartButton");
+            Initialize();
+            startButton = rootMenuDocument.rootVisualElement.Q<Button>("StartButton");
             startButton.clicked += () => OnStartGameClick();
-            optionButton = mainMenuDocument.rootVisualElement.Q<Button>("OptionButton");
+            optionButton = rootMenuDocument.rootVisualElement.Q<Button>("OptionButton");
             optionButton.clicked += () => OnOptionClick();
-            quitButton = mainMenuDocument.rootVisualElement.Q<Button>("QuitButton");
+            quitButton = rootMenuDocument.rootVisualElement.Q<Button>("QuitButton");
             quitButton.clicked += () => OnQuitGameClick();
-            foreach (IObserver observer in GameManager.Instance.GetAllStates())
-            {
-                RegisterObserver(observer);
-            }
         }
 
-        public void DeactivateMenu()
+        public override void DeactivateMenu()
         {
-            mainMenuDocument.rootVisualElement.style.display = DisplayStyle.None;
+            rootMenuDocument.rootVisualElement.style.display = DisplayStyle.None;
         }
 
-        public void ActivateMenu()
+        public override void ActivateMenu()
         {
-            mainMenuDocument.rootVisualElement.style.display = DisplayStyle.Flex;
+            rootMenuDocument.rootVisualElement.style.display = DisplayStyle.Flex;
 
             Notify(GameEvent.Lobby);
         }
@@ -53,10 +47,12 @@ namespace fym
         private void OnStartGameClick()
         {
             Debug.Log("Start Game Clicked");
-            SceneManager.UnloadSceneAsync("LobbyScene");
-            SceneManager.LoadScene("SampleScene");
+            //just notify the game manager to change the state
+            //it's the game manager's job to load the scene
+            //SceneManager.UnloadSceneAsync("LobbyScene");
+            //SceneManager.LoadScene("SampleScene");
             //leave this op to the game play module
-            //Notify(GameEvent.Playing);
+            Notify(GameEvent.Playing);
         }
 
         private void OnOptionClick()

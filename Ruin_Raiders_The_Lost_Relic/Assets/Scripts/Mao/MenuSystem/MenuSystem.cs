@@ -12,10 +12,16 @@ namespace fym
         public static MenuSystem Instance;
 
         [SerializeField]
+        private LoadingUIController loadingUI;
+
+        [SerializeField]
         private MainMenuController mainMenu;
 
         [SerializeField]
         private OptionMenuController optionMenu;
+
+        [SerializeField]
+        private PauseMenuController pauseMenu;
 
         [SerializeField]
         private QuitMenuController quitMenu;
@@ -34,7 +40,15 @@ namespace fym
 
         private void Start()
         {
-            LoadMainMenu();
+            //LoadMainMenu();
+            //LoadLoadingUI();
+        }
+
+        public void LoadLoadingUI()
+        {
+            DeactivateAllMenu();
+            loadingUI.ActivateMenu();
+            loadingUI.gameObject.SetActive(true);
         }
 
         public void LoadMainMenu()
@@ -51,6 +65,13 @@ namespace fym
             optionMenu.gameObject.SetActive(true);
         }
 
+        public void LoadPauseMenu()
+        {
+            DeactivateAllMenu();
+            pauseMenu.ActivateMenu();
+            pauseMenu.gameObject.SetActive(true);
+        }
+
         public void LoadQuitMenu()
         {
             DeactivateAllMenu();
@@ -60,8 +81,10 @@ namespace fym
 
         public void DeactivateAllMenu()
         {
+            loadingUI.DeactivateMenu();
             mainMenu.DeactivateMenu();
             optionMenu.DeactivateMenu();
+            pauseMenu.DeactivateMenu();
             quitMenu.DeactivateMenu();
 
         }

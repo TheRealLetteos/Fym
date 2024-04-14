@@ -9,10 +9,8 @@ using UnityEngine.Audio;
 
 namespace fym
 {
-    public class OptionMenuController : AbstractObservedObject
+    public class OptionMenuController : AbstractMenuController
     {
-
-        private UIDocument optionMenuDocument;
 
         private Slider volumeSlider;
 
@@ -36,32 +34,18 @@ namespace fym
 
         private void Awake()
         {
-            optionMenuDocument = GetComponent<UIDocument>();
-            volumeSlider = optionMenuDocument.rootVisualElement.Q<Slider>("VolumeSlider");
+            Initialize();
+            volumeSlider = rootMenuDocument.rootVisualElement.Q<Slider>("VolumeSlider");
             volumeSlider.RegisterValueChangedCallback((evt) => OnVolumeChange(evt.newValue));
-            musicSlider = optionMenuDocument.rootVisualElement.Q<Slider>("MusicSlider");
+            musicSlider = rootMenuDocument.rootVisualElement.Q<Slider>("MusicSlider");
             musicSlider.RegisterValueChangedCallback((evt) => OnMusicChange(evt.newValue));
-            sfxSlider = optionMenuDocument.rootVisualElement.Q<Slider>("SoundFxSlider");
+            sfxSlider = rootMenuDocument.rootVisualElement.Q<Slider>("SoundFxSlider");
             sfxSlider.RegisterValueChangedCallback((evt) => OnSoundFxChange(evt.newValue));
-            backButton = optionMenuDocument.rootVisualElement.Q<Button>("BackButton");
+            backButton = rootMenuDocument.rootVisualElement.Q<Button>("BackButton");
             backButton.clicked += () => OnBackClick();
-            resolutionField = optionMenuDocument.rootVisualElement.Q<EnumField>("ResolutionEnumField");
+            resolutionField = rootMenuDocument.rootVisualElement.Q<EnumField>("ResolutionEnumField");
             resolutionField.Init(ResolutionType._1920x1080);
             resolutionField.RegisterValueChangedCallback((evt) => OnResolutionChange(evt.newValue));
-            foreach (IObserver observer in GameManager.Instance.GetAllStates())
-            {
-                RegisterObserver(observer);
-            }
-        }
-
-        public void DeactivateMenu()
-        {
-            optionMenuDocument.rootVisualElement.style.display = DisplayStyle.None;
-        }
-
-        public void ActivateMenu()
-        {
-            optionMenuDocument.rootVisualElement.style.display = DisplayStyle.Flex;
         }
 
         private void OnResolutionChange(Enum newValue)

@@ -17,5 +17,16 @@ namespace fym
                 canEnter = true;
             }
         }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            MenuSystem.Instance.LoadPauseMenu();
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+        }
     }
 }

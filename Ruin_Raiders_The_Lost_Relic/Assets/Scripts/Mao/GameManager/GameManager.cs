@@ -8,12 +8,21 @@ namespace fym
     public class GameManager : AbstractStateMachine<GameState>
     {
 
+        public static string CURRENT_SCENE { get; private set; } = "CurrentScene";
+
+        public static string LOBBY_SCENE { get; private set; } = "LobbyScene";
+
+        public static string SAMPLE_SCENE { get; private set; } = "SampleScene";
+
+        public static string Loading_UI { get; internal set; } = "LoadingUI";
+
         public static GameManager Instance { get; private set; }
 
         protected override void Awake()
         {
             if (Instance == null)
             {
+                base.Awake();
                 Instance = this;
             }
             else
@@ -33,6 +42,7 @@ namespace fym
                 new GameStateEnd(this)
             };
         }
+
 
     }
 

@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Assets/UI/UIToolkit/USS/fym_button.uss?fileID=7433441132597879392&amp;guid=e34e85b653a8b164db833be3dad64e5e&amp;type=3#fym_button" />
+    <Style src="project://database/Assets/Assets/UI/UIToolkit/USS/fym_label.uss?fileID=7433441132597879392&amp;guid=12127b7324453e84ba8146dfff0f4cfb&amp;type=3#fym_label" />
+    <Style src="project://database/Assets/Assets/UI/UIToolkit/USS/fym_sublabel.uss?fileID=7433441132597879392&amp;guid=ca0f681df21918842afc6ba23d29402a&amp;type=3#fym_sublabel" />
+    <ui:VisualElement name="Screen" style="flex-grow: 1; align-items: center; justify-content: flex-start;">
+        <ui:VisualElement name="PausingMenuContainer" style="flex-grow: 1; width: 40%; height: 100%; max-width: 30%; max-height: 100%; min-width: 30%; min-height: 100%; margin-top: 0; justify-content: center; align-self: center;">
+            <ui:Label tabindex="-1" text="Game Paused" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LabelGamePaused" enable-rich-text="false" class="label-title" style="-unity-font: url(&apos;project://database/Assets/Assets/Font/ChelaOne-Regular.ttf?fileID=12800000&amp;guid=6a45f6ca762b8804bb9d44fbc7a11691&amp;type=3#ChelaOne-Regular&apos;); font-size: 60px; -unity-font-definition: initial; align-items: auto; color: rgb(0, 75, 19); -unity-text-align: upper-center;" />
+            <ui:Button text="Resume" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ResumeButton" enable-rich-text="false" class="button-title" />
+            <ui:Button text="Option" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OptionButton" class="button-title" />
+            <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitButton" class="button-title" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
