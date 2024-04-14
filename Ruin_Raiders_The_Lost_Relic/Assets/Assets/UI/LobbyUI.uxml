@@ -9,6 +9,7 @@
                 <ui:Button text="Continue game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ContinueButton" class="button-title" />
                 <ui:Button text="Start new game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" enable-rich-text="true" class="button-title" />
                 <ui:Button text="Options" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OptionButton" class="button-title" />
+                <ui:Button text="Scene Editor" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SceneEditorButton" class="button-title" />
                 <ui:Button text="Quit game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitButton" class="button-title" />
             </ui:VisualElement>
         </ui:VisualElement>

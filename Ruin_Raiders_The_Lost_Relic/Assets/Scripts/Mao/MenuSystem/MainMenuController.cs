@@ -13,6 +13,8 @@ namespace fym
 
         private Button optionButton;
 
+        private Button sceneEditorButton;
+
         private Button quitButton;
 
         private void Awake()
@@ -22,6 +24,8 @@ namespace fym
             startButton.clicked += () => OnStartGameClick();
             optionButton = rootMenuDocument.rootVisualElement.Q<Button>("OptionButton");
             optionButton.clicked += () => OnOptionClick();
+            sceneEditorButton = rootMenuDocument.rootVisualElement.Q<Button>("SceneEditorButton");
+            sceneEditorButton.clicked += () => OnSceneEditorClick();
             quitButton = rootMenuDocument.rootVisualElement.Q<Button>("QuitButton");
             quitButton.clicked += () => OnQuitGameClick();
         }
@@ -53,6 +57,11 @@ namespace fym
             //SceneManager.LoadScene("SampleScene");
             //leave this op to the game play module
             Notify(GameEvent.Playing);
+        }
+
+        private void OnSceneEditorClick()
+        {
+            Notify(GameEvent.EditingScene);
         }
 
         private void OnOptionClick()

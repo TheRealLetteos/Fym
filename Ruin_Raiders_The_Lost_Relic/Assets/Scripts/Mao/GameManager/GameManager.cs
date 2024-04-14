@@ -16,6 +16,8 @@ namespace fym
 
         public static string Loading_UI { get; internal set; } = "LoadingUI";
 
+        public static string LEVELEDITOR_SCENE { get; private set; } = "NewLevelEditor";
+
         public static GameManager Instance { get; private set; }
 
         protected override void Awake()
@@ -39,6 +41,7 @@ namespace fym
                 new GameStateLobby(this),
                 new GameStatePlaying(this),
                 new GameStatePaused(this),
+                new GameStateSceneEditor(this),
                 new GameStateEnd(this)
             };
         }
