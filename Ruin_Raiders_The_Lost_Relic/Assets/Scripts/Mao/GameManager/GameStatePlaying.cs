@@ -7,6 +7,10 @@ namespace fym
 {
     public class GameStatePlaying : GameState
     {
+        //Yoan-----------------------------
+        private AudioSource mainMenuAudio;
+        private GameObject audioManager;
+        //---------------------------------
         public GameStatePlaying(GameManager stateMachine) : base(stateMachine)
         {
         }
@@ -16,6 +20,11 @@ namespace fym
             base.OnEnter();
             //SceneManager.LoadSceneAsync(GameManager.CURRENT_SCENE);
             //SceneManager.UnloadSceneAsync(GameManager.LOBBY_SCENE);
+            //Yoan---------------------------------------------------
+            audioManager = GameObject.Find("/AudioManager/Music");
+            mainMenuAudio = audioManager.GetComponent<AudioSource>();
+            mainMenuAudio.Stop();
+            //--------------------------------------------------------
             SceneManager.LoadScene(GameManager.SAMPLE_SCENE);
         }
 

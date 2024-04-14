@@ -7,6 +7,11 @@ namespace fym
 {
     public class GameStateSceneEditor : GameState
     {
+        
+        //Yoan-----------------------------
+        private AudioSource mainMenuAudio;
+        private GameObject audioManager;
+        //---------------------------------
         public GameStateSceneEditor(GameManager stateMachine) : base(stateMachine)
         {
         }
@@ -22,6 +27,11 @@ namespace fym
         public override void OnEnter()
         {
             base.OnEnter();
+            //Yoan---------------------------------------------------
+            audioManager = GameObject.Find("/AudioManager/Music");
+            mainMenuAudio = audioManager.GetComponent<AudioSource>();
+            mainMenuAudio.Stop();
+            //--------------------------------------------------------
             SceneManager.LoadScene("NewLevelEditor");
         }
 
