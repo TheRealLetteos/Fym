@@ -13,7 +13,7 @@ namespace fym
 
         public override void OnNotify(GameEvent e)
         {
-            if(e == GameEvent.Ending)
+            if(e == GameEvent.Quitting)
             {
                 canEnter = true;
             }

@@ -19,6 +19,11 @@ namespace fym
             }
         }
 
+        public override bool CanEnter(IState currentState)
+        {
+            return base.CanEnter(currentState) && currentState.GetType() != GetType();
+        }
+
         public override void OnEnter()
         {
             base.OnEnter();
