@@ -16338,6 +16338,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5885128019765870204, guid: ef4213f0f0d28db44a147baa8a0703e7, type: 3}
+      propertyPath: _jumpClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0408a71cd6692f44fbcc57da62b1a616, type: 3}
+    - target: {fileID: 5885128019765870204, guid: ef4213f0f0d28db44a147baa8a0703e7, type: 3}
       propertyPath: _jumpStrength
       value: 42
       objectReference: {fileID: 0}
