@@ -10,9 +10,9 @@ namespace MBT
     [AddComponentMenu("")]
     public class LeafRandomTargetPosition : Leaf
     {
-        public FloatReference movementRange = new FloatReference(VarRefMode.DisableConstant);
-        public Vector2Reference targetPosition = new Vector2Reference(VarRefMode.DisableConstant);
-        public TransformReference agentTransform = new TransformReference();
+        public FloatReference movementRange;// = new FloatReference(VarRefMode.DisableConstant);
+        public Vector2Reference targetPosition;// = new Vector2Reference(VarRefMode.DisableConstant);
+        public TransformReference agentTransform;// = new TransformReference();
 
         public override void OnEnter()
         {
