@@ -38,11 +38,11 @@ namespace fym
         [SerializeField] private LayerMask groundLayer;
 
 
+        
 
         // Start is called before the first frame update
         void Start()
         {
-
             Time.timeScale = 1;
             InputHandler.instance.moveEvent += Movement;
             InputHandler.instance.jumpEvent += Jump;
@@ -81,7 +81,7 @@ namespace fym
         {
             // Tells which direction the player moves
             _moveDirection = x;
-            
+            Debug.Log(x);
             
         }
 
@@ -128,7 +128,8 @@ namespace fym
             if (_isGrounded)
             {
                 //Changing the velocity to go higher
-                _rb.velocity = new Vector2(_rb.velocity.x, _jumpStrength);
+                _rb.velocity = new Vector2(_rb.velocity.x, 0);
+                _rb.AddForce(Vector2.up * _jumpStrength, ForceMode2D.Impulse);
                 _isJumping = true;
                 _audioWalkingSource.Stop();
                 _audioShortSource.clip = _jumpClip;
@@ -139,9 +140,9 @@ namespace fym
             {
 
                 //Making a new velocity so it doesn't add up(better feeling)
-                _rb.velocity = new Vector2(_rb.velocity.x, _jumpStrength);
+                _rb.velocity = new Vector2(_rb.velocity.x, 0);
+                _rb.AddForce(Vector2.up * _jumpStrength, ForceMode2D.Impulse);
                 _canDoubleJump = false;
-                
                 _isJumping = true;
                 _audioShortSource.clip = _jumpClip;
                 _audioShortSource.Play();

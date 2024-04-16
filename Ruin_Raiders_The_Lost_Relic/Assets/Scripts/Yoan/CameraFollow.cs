@@ -11,7 +11,7 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField] private Transform _target;
 
-    private void Update()
+    private void LateUpdate()
     {
         Vector3 _targetPosition = _target.position + _offset;
         transform.position = Vector3.SmoothDamp(transform.position, _targetPosition, ref _velocity, _smoothTime);
