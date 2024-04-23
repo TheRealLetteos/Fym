@@ -31,6 +31,8 @@ namespace fym
         private const string mixerSFX = "SFXVolume";
 
         private const string mixerMaster = "MasterVolume";
+        
+        private MixerSettingsManager settingsManager;
 
         private void Awake()
         {
@@ -46,6 +48,8 @@ namespace fym
             resolutionField = rootMenuDocument.rootVisualElement.Q<EnumField>("ResolutionEnumField");
             resolutionField.Init(ResolutionType._1920x1080);
             resolutionField.RegisterValueChangedCallback((evt) => OnResolutionChange(evt.newValue));
+            
+            settingsManager = GetComponent<MixerSettingsManager>();
         }
 
         private void OnResolutionChange(Enum newValue)
@@ -79,6 +83,7 @@ namespace fym
             //Yoan
             //Change the SFX Volume with the slider
             mixer.SetFloat(mixerSFX, newValue);
+            settingsManager.SaveSettings(mixerSFX, newValue);
         }
 
         private void OnMusicChange(float newValue)
@@ -86,6 +91,7 @@ namespace fym
             //Yoan
             //Change the Music Volume with the slider
             mixer.SetFloat(mixerMusic, newValue);
+            settingsManager.SaveSettings(mixerMusic, newValue);
         }
 
         private void OnVolumeChange(float newValue)
@@ -93,6 +99,7 @@ namespace fym
             //Yoan
             //Change the Master Volume with the slider
             mixer.SetFloat(mixerMaster, newValue);
+            settingsManager.SaveSettings(mixerMaster, newValue);
         }
 
         private void OnBackClick()

@@ -28,6 +28,7 @@ public class InputHandler : MonoBehaviour, MainInputs.IPlayerMovementsActions
             return;
         }
 
+        
         instance ??= this;
         _mInputs = new MainInputs();
     }

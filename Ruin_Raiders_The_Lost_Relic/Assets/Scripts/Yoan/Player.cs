@@ -38,11 +38,11 @@ namespace fym
         [SerializeField] private LayerMask groundLayer;
 
 
+        
 
         // Start is called before the first frame update
         void Start()
         {
-
             Time.timeScale = 1;
             InputHandler.instance.moveEvent += Movement;
             InputHandler.instance.jumpEvent += Jump;
@@ -56,14 +56,14 @@ namespace fym
 
 
         
-        IEnumerator waitDashTime()
+        IEnumerator WaitDashTime()
         {
             yield return new WaitForSeconds(0.2f);
             _isDashing = false;
             _tr.emitting = false;
         }
 
-        IEnumerator waitAttackTime()
+        IEnumerator WaitAttackTime()
         {
             yield return new WaitForSeconds(0.01f);
             _isAttacking = false;
@@ -72,20 +72,20 @@ namespace fym
 
         void FixedUpdate()
         {
-            GroundCheck();
-            ApplyMove();
-            FacingDirection();
+            FUGroundCheck();
+            FUApplyMove();
+            FUChangingMovingDirection();
         }
 
         public override void Movement(float x)
         {
             // Tells which direction the player moves
             _moveDirection = x;
-            
+            Debug.Log(x);
             
         }
 
-        private void ApplyMove()
+        private void FUApplyMove()
         {
             if (!_isDashing)
             {
@@ -105,11 +105,12 @@ namespace fym
             else
             {
                 _isMoving = false;
-                _audioWalkingSource.Stop();
+               _audioWalkingSource.Stop();
             }
         }
 
-        private void FacingDirection()
+        
+        private void FUChangingMovingDirection()
         {
             
             if (_isFacingRight && _moveDirection < 0f || !_isFacingRight && _moveDirection > 0f)
@@ -124,24 +125,24 @@ namespace fym
         public override void Jump()
         {
             
-            GroundCheck();
+            FUGroundCheck();
             if (_isGrounded)
             {
                 //Changing the velocity to go higher
-                _rb.velocity = new Vector2(_rb.velocity.x, _jumpStrength);
+                _rb.velocity = new Vector2(_rb.velocity.x, 0);
+                _rb.AddForce(Vector2.up * _jumpStrength, ForceMode2D.Impulse);
                 _isJumping = true;
                 _audioWalkingSource.Stop();
                 _audioShortSource.clip = _jumpClip;
                 _audioShortSource.Play();
-
             }
             else if (!_isGrounded && _canDoubleJump && InputHandler._JumpContext == "Started")
             {
 
                 //Making a new velocity so it doesn't add up(better feeling)
-                _rb.velocity = new Vector2(_rb.velocity.x, _jumpStrength);
+                _rb.velocity = new Vector2(_rb.velocity.x, 0);
+                _rb.AddForce(Vector2.up * _jumpStrength, ForceMode2D.Impulse);
                 _canDoubleJump = false;
-                
                 _isJumping = true;
                 _audioShortSource.clip = _jumpClip;
                 _audioShortSource.Play();
@@ -154,15 +155,13 @@ namespace fym
         {
             //To do: implementing a when the player hit the enemy and the effect of it
             _isAttacking = true;
-            _audioShortSource.clip = _attackClip;
-            _audioShortSource.Play();
-            StartCoroutine(waitAttackTime());
+            StartCoroutine(WaitAttackTime());
         }
 
         private void Dash()
         {
             //GroundCheck to enable dash if grounded
-            GroundCheck();
+            FUGroundCheck();
             // Verify if the player is grounded and than change the velocity to dash to the new direction
             if (_isGrounded)
             {
@@ -172,7 +171,7 @@ namespace fym
                 _tr.emitting = true;
                 _audioShortSource.clip = _dashClip;
                 _audioShortSource.Play();
-                StartCoroutine(waitDashTime());
+                StartCoroutine(WaitDashTime());
             }
             else if (!_isGrounded && _canDash)
             {
@@ -184,13 +183,13 @@ namespace fym
                 _tr.emitting = true;
                 _audioShortSource.clip = _dashClip;
                 _audioShortSource.Play();
-                StartCoroutine(waitDashTime());
+                StartCoroutine(WaitDashTime());
                 _rb.gravityScale = _originalGravity;
             }
             //Debug.Log("Dash");
         }
 
-        private void GroundCheck()
+        private void FUGroundCheck()
         {
             if (Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer))
             {
@@ -205,6 +204,12 @@ namespace fym
             }
         }
         
+        private void PlayAttackSound()
+        {
+            _audioShortSource.clip = _attackClip;
+            _audioShortSource.Play();
+        }
+
         //Get Set of the state
         public bool IsGrounded
         {

@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace fym
 {
 
     public class GameManager : AbstractStateMachine<GameState>
     {
-
         public static string CURRENT_SCENE { get; private set; } = "CurrentScene";
 
         public static string LOBBY_SCENE { get; private set; } = "LobbyScene";
@@ -31,6 +31,7 @@ namespace fym
             {
                 Destroy(this);
             }
+
         }
 
         protected override void CreatePossibleStates()
