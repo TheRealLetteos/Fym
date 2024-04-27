@@ -29,5 +29,7 @@ public class AnimationState : MonoBehaviour
         _animator.SetBool("IsGrounded", _player.IsGrounded);
         _animator.SetBool("IsDashing", _player.IsDashing);
         _animator.SetBool("IsAttacking", _player.IsAttacking);
+        _animator.SetBool("IsDead", _player.IsDead);
+        _animator.SetBool("IsHurt", _player.IsHurt);
     }
 }
