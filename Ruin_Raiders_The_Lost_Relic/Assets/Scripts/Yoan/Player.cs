@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.UI;
 
 namespace fym
 {
@@ -18,6 +19,8 @@ namespace fym
         [SerializeField] private TrailRenderer _tr;
         [SerializeField] protected int _dashStrength;
         [SerializeField] private float _repulsionForce;
+        [SerializeField] private float _attackRange;
+        [SerializeField] private int _enemyLayer;
         private float _moveDirection;
         
         //Character State variable
@@ -40,9 +43,9 @@ namespace fym
 
         [SerializeField] private Transform groundCheck;
         [SerializeField] private LayerMask groundLayer;
+        [SerializeField] private Image[] hearts;
+        [SerializeField] private GameObject _restartUI;
 
-
-        
 
         // Start is called before the first frame update
         void Start()
@@ -56,10 +59,10 @@ namespace fym
 
             //Get player rigidbody
             _rb = GetComponent<Rigidbody2D>();
+            
             _life = 3;
+            UpdateHealth();
         }
-
-
         
         IEnumerator WaitDashTime()
         {
@@ -165,6 +168,19 @@ namespace fym
             if (!_isDead)
             {
                 _isAttacking = true;
+
+                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, _attackRange, _enemyLayer);
+
+                foreach (Collider2D enemy in hitEnemies)
+                {
+                    if (enemy.CompareTag("Enemy"))
+                    {
+                        //MAO
+                        //Script to acces the Enemy
+                        //Ex: Enemy _enemyScript = enemy.GetComponentInChildren
+                        //enemyScript.TakeDamage(attackDamage);
+                    }
+                }
                 StartCoroutine(WaitAttackTime());
             }
         }
@@ -214,16 +230,36 @@ namespace fym
                 _isGrounded = false;
             }
         }
+        
+        public void UpdateHealth()
+        {
+            for (int i = 0; i < hearts.Length; i++)
+            {
+                if (i < _life)
+                {
+                    hearts[i].color = Color.white;
+                }
+                else
+                {
+                    hearts[i].color = Color.black;
+                }
+            }
+            
+        }
 
         private void Hurt(int damage)
         {
-            _life -= damage;
-            if (_life <= 0)
-            {
-                Die();
-            }
-            _isHurt = true;
-            StartCoroutine(WaitHurtTime());
+            
+                _life -= damage;
+                UpdateHealth();
+                if (_life <= 0)
+                {
+                    Die();
+                }
+
+                _isHurt = true;
+                StartCoroutine(WaitHurtTime());
+            
         }
         
         void OnCollisionEnter2D(Collision2D collision)
@@ -252,7 +288,7 @@ namespace fym
             _audioWalkingSource.Stop();
             // Ici tu peux déclencher l'animation de mort ou d'autres actions
             Debug.Log("Player is dead.");
-            
+            _restartUI.SetActive(true);
             enabled = false;
         }
         
