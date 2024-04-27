@@ -16345,6 +16345,10 @@ PrefabInstance:
       propertyPath: _jumpStrength
       value: 42
       objectReference: {fileID: 0}
+    - target: {fileID: 5885128019765870204, guid: ef4213f0f0d28db44a147baa8a0703e7, type: 3}
+      propertyPath: _repulsionForce
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5907452794176775945, guid: ef4213f0f0d28db44a147baa8a0703e7, type: 3}
       propertyPath: m_Name
       value: Player

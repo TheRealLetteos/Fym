@@ -17,6 +17,7 @@ namespace fym
 
         [SerializeField] private TrailRenderer _tr;
         [SerializeField] protected int _dashStrength;
+        [SerializeField] private float _repulsionForce;
         private float _moveDirection;
         
         //Character State variable
@@ -25,6 +26,9 @@ namespace fym
         private bool _isMoving;
         private bool _isAttacking;
         private bool _isGrounded;
+        private bool _isDead;
+        private bool _isHurt;
+        private bool _movementEnabled = true;
         
         //Sound
         [SerializeField] private AudioSource _audioWalkingSource;
@@ -52,6 +56,7 @@ namespace fym
 
             //Get player rigidbody
             _rb = GetComponent<Rigidbody2D>();
+            _life = 3;
         }
 
 
@@ -69,6 +74,11 @@ namespace fym
             _isAttacking = false;
         }
 
+        IEnumerator WaitHurtTime()
+        {
+            yield return new WaitForSeconds(0.5f);
+            _isHurt = false;
+        }
 
         void FixedUpdate()
         {
@@ -87,7 +97,7 @@ namespace fym
 
         private void FUApplyMove()
         {
-            if (!_isDashing)
+            if (!_isDashing &&   _movementEnabled)
             {
                 //movement of the player
                 _rb.velocity = new Vector2(_moveDirection * _speed, _rb.velocity.y);
@@ -126,7 +136,7 @@ namespace fym
         {
             
             FUGroundCheck();
-            if (_isGrounded)
+            if (_isGrounded && !_isDead)
             {
                 //Changing the velocity to go higher
                 _rb.velocity = new Vector2(_rb.velocity.x, 0);
@@ -136,7 +146,7 @@ namespace fym
                 _audioShortSource.clip = _jumpClip;
                 _audioShortSource.Play();
             }
-            else if (!_isGrounded && _canDoubleJump && InputHandler._JumpContext == "Started")
+            else if (!_isGrounded && _canDoubleJump && InputHandler._JumpContext == "Started" && !_isDead)
             {
 
                 //Making a new velocity so it doesn't add up(better feeling)
@@ -149,13 +159,14 @@ namespace fym
             }
         }
 
-
-
         public override void Attack()
         {
             //To do: implementing a when the player hit the enemy and the effect of it
-            _isAttacking = true;
-            StartCoroutine(WaitAttackTime());
+            if (!_isDead)
+            {
+                _isAttacking = true;
+                StartCoroutine(WaitAttackTime());
+            }
         }
 
         private void Dash()
@@ -163,7 +174,7 @@ namespace fym
             //GroundCheck to enable dash if grounded
             FUGroundCheck();
             // Verify if the player is grounded and than change the velocity to dash to the new direction
-            if (_isGrounded)
+            if (_isGrounded && !_isDead)
             {
                 
                 _rb.velocity = new Vector2(transform.localScale.x * _dashStrength, 0f);
@@ -173,7 +184,7 @@ namespace fym
                 _audioShortSource.Play();
                 StartCoroutine(WaitDashTime());
             }
-            else if (!_isGrounded && _canDash)
+            else if (!_isGrounded && _canDash && !_isDead)
             {
                 float _originalGravity = _rb.gravityScale;
                 _rb.gravityScale = 0f;
@@ -202,6 +213,47 @@ namespace fym
             {
                 _isGrounded = false;
             }
+        }
+
+        private void Hurt(int damage)
+        {
+            _life -= damage;
+            if (_life <= 0)
+            {
+                Die();
+            }
+            _isHurt = true;
+            StartCoroutine(WaitHurtTime());
+        }
+        
+        void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                // Réduit la santé du joueur lorsque collision avec un ennemi
+                Hurt(1);
+
+                _movementEnabled = false;
+                
+                Vector2 recoilDirection = (transform.position - collision.transform.position).normalized;
+                _rb.AddForce(recoilDirection * _repulsionForce, ForceMode2D.Impulse);
+                
+                Invoke("EnableControls", 0.5f);
+            }
+        }
+
+        private void EnableControls()
+        {
+            _movementEnabled = true;
+        }
+        void Die()
+        {
+            _isDead = true;
+            _audioWalkingSource.Stop();
+            // Ici tu peux déclencher l'animation de mort ou d'autres actions
+            Debug.Log("Player is dead.");
+            
+            enabled = false;
         }
         
         private void PlayAttackSound()
@@ -240,6 +292,16 @@ namespace fym
         {
             set { _isDashing = value;}
             get { return _isDashing; }
+        }
+
+        public bool IsHurt
+        {
+            get { return _isHurt;}
+        }
+
+        public bool IsDead
+        {
+            get { return _isDead; }
         }
     }
  }   
