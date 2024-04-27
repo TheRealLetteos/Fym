@@ -1,4 +1,4 @@
-using MBT;
+﻿using MBT;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +8,10 @@ namespace MBT
 
     [MBTNode("AI/Move NPC")]
     [AddComponentMenu("")]
-    public class LeafMoveNPC : Leaf
+    public class LeafMoveNPC : BaseEnemyLeafNode
     {
 
         public Vector2Reference targetPosition;
-        public TransformReference agentTransform;
         public FloatReference movementRange;
         public FloatReference speed;
         public float minDistance = 0f;

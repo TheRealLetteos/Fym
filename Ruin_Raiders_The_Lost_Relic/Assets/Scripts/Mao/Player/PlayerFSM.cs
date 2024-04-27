@@ -1,3 +1,4 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,14 @@ namespace fym
             };
         }
 
+
+        /**
+         * the player's health
+         **/
+        public void TakeDamage(float damage)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

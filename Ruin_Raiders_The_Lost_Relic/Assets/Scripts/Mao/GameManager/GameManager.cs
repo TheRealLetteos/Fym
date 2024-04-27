@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -17,6 +17,26 @@ namespace fym
         public static string Loading_UI { get; internal set; } = "LoadingUI";
 
         public static string LEVELEDITOR_SCENE { get; private set; } = "NewLevelEditor";
+
+        public static string TAG_PLAYER { get; private set; } = "Player";
+
+        public static string TAG_ENEMY { get; private set; } = "Enemy";
+
+        public static string TAG_PROJECTILE { get; private set; } = "Projectile";
+
+        public static string TAG_SOLIDTILE { get; private set; } = "SolidTile";
+        
+        public static string TAG_BREAKABLETILE { get; private set; } = "BreakableTile";
+
+        public static string TAG_PICKUP { get; private set; } = "Pickup";
+
+        public static string TAG_BOUNDARY { get; private set; } = "Boundary";
+
+        public static string TAG_WATER { get; private set; } = "Water";
+
+        public static string TAG_LETHALTRAP { get; private set; } = "LethalTrap";
+
+
 
         public static GameManager Instance { get; private set; }
 
