@@ -63,5 +63,3 @@ D) Reduce HP by 1
 Self-explanatory
 
 Removed because : more testing to be done.
-
-E) 
