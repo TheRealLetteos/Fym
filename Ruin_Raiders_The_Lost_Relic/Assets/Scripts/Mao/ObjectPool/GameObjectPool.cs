@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +16,7 @@ namespace fym
 
         private Queue<GameObject> pool = new Queue<GameObject>();
 
-        void Start()
+        void Awake()
         {
             for (int i = 0; i < poolSize; i++)
             {

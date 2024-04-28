@@ -1,4 +1,4 @@
-using MBT;
+﻿using MBT;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +8,10 @@ namespace MBT
 
     [MBTNode("AI/Randomly Choose Target Position in Range And Move")]
     [AddComponentMenu("")]
-    public class LeafRandomTargetPosition : Leaf
+    public class LeafRandomTargetPosition : BaseEnemyLeafNode
     {
-        public FloatReference movementRange = new FloatReference(VarRefMode.DisableConstant);
-        public Vector2Reference targetPosition = new Vector2Reference(VarRefMode.DisableConstant);
-        public TransformReference agentTransform = new TransformReference();
+        public FloatReference movementRange;// = new FloatReference(VarRefMode.DisableConstant);
+        public Vector2Reference targetPosition;// = new Vector2Reference(VarRefMode.DisableConstant);
 
         public override void OnEnter()
         {
