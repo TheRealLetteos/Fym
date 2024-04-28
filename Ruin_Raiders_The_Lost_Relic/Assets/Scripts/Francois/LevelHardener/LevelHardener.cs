@@ -6,6 +6,8 @@ public class LevelHardener : MonoBehaviour
     public Slider difficultySlider;
     public LevelManager levelManager; 
 
+   
+
     void Start()
     {
         difficultySlider.onValueChanged.AddListener(delegate { AdjustLevelDifficulty(); });

@@ -43,12 +43,32 @@ public class LevelEditor : MonoBehaviour
             commandManager.ExecuteCommand(placeTileCommand);
         }
 
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (EventSystem.current.IsPointerOverGameObject())  // Checks if the mouse is over a UI element
+            {
+                return;  // If true, does nothing!
+            }
+            Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            Vector3Int cellPosition = tilemap.WorldToCell(mouseWorldPos);
+            cellPosition.z = 0;
+
+            if (tilemap.HasTile(cellPosition))  // Check if there is a tile at the position
+            {
+                ICommand clearTileCommand = new ClearTileCommand(tilemap, cellPosition);
+                commandManager.ExecuteCommand(clearTileCommand);
+            }
+        }
+
+
+        // Undo Code
         if (Input.GetKeyDown(KeyCode.A) )
         {
             commandManager.Undo();
             Debug.Log("UNDO!");
         }
 
+        // Redo code
         if (Input.GetKeyDown(KeyCode.S) )
         {
             commandManager.Redo();
