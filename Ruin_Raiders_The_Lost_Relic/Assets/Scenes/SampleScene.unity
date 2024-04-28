@@ -16658,7 +16658,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-<<<<<<< HEAD
 --- !u!114 &2119861478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16671,7 +16670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf32310bda41664a8ba01d530f60327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-=======
 --- !u!1001 &3429224402774383888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16895,7 +16893,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 298dea40708aae1499f7e06ac1303df0, type: 3}
->>>>>>> 127d109 ([FYM-216] Faire le UI visuel de l'inventaire, [FYM-217] Rejoindre les ressource qui sont pickable dans l'inventaire, [FYYM-213] Faire script parent inventaire, [FYM-214] Faire les scripts des objets et [FYM-215] Créer les assets des objets)
 --- !u!1 &8527651709544438600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5907452794176775945, guid: ef4213f0f0d28db44a147baa8a0703e7, type: 3}
