@@ -1,0 +1,65 @@
+The higher the difficulty, the more the loop to increase level difficulty is ran
+
+Difficulty tops out at 100, but realistically, after 60-70, the level will most likely be impossible
+
+Possible obstacles added:
+
+1) Extra ennemi - 20% chance
+
+An extra ennemi is spawned on the top of a topmost ground floor tile
+
+2) Spikes - 20%
+
+A spike is added on the top of a topmost ground floor tile
+
+3) Lava added - 10%
+
+Lava is added in lieu of a topmost ground floor tile. Kills the player instantly.
+
+4) Enemies made faster - 10%
+
+Ennemis move 10% faster faster
+
+5) Enemies have 1 extra HP - 10%
+
+Self-explanatory
+
+6) Damage player after 120/110/100/90/80/... seconds 10%
+
+Significantly reduces time for the player win the level. At some point, the player is damaged every 0 seconds.
+
+7) Player damage reduced by 1 -10%
+
+Eventually, player does not do any damage
+
+8) Extra tile randomly added to map - 10%
+
+This can eventually make the level unnaviguable.
+
+
+
+REMOVED DIFFICULTIES
+
+A) Time Reduction
+
+The time to complete the level is reduced by 10%.
+
+Removed because : it could lead to very low time to complete the level, wasn't fun in testing. Time removed in final version.
+
+B) Remove coin powerup
+
+A coin is randomly removed from the map
+
+Removed because: to discuss later
+
+C) Jump less high.
+
+Jump height is reduced by 10%
+
+Removed because: wasn't fun intesting.
+
+D) Reduce HP by 1
+
+Self-explanatory
+
+Removed because : more testing to be done.
