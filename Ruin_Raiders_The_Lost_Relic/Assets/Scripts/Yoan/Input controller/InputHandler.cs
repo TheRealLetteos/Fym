@@ -1,4 +1,3 @@
-using fym;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,15 +9,11 @@ public class InputHandler : MonoBehaviour, MainInputs.IPlayerMovementsActions
 
     public delegate void AttackEvent();
 
-    public delegate void InventoryEvent();
-
     public event MoveEvent moveEvent;
     public event JumpEvent jumpEvent;
     public event DashEvent dashEvent;
 
     public event AttackEvent attackEvent;
-
-    public event InventoryEvent inventoryEvent;
 
     public static InputHandler instance;
     public static string _JumpContext;  
@@ -81,11 +76,6 @@ public class InputHandler : MonoBehaviour, MainInputs.IPlayerMovementsActions
     public void OnAttack(InputAction.CallbackContext context)
     {
         attackEvent?.Invoke();
-    }
-
-    public void OnInventory(InputAction.CallbackContext context)
-    {
-        inventoryEvent?.Invoke();
     }
     
 }

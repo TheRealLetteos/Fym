@@ -7,7 +7,6 @@ TagManager:
   - Ground
   - Key
   - Enemy
-  - Item
   layers:
   - Default
   - TransparentFX
@@ -15,7 +14,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - Item
+  - Key
   - puzzle
   - Enemy
   - 
