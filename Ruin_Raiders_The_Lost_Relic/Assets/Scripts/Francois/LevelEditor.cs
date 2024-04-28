@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.Tilemaps;
 using System;
 using UnityEngine.EventSystems;
-
+using System.Windows.Forms;
 public class LevelEditor : MonoBehaviour
 {
     public Tilemap tilemap;
@@ -62,120 +62,85 @@ public class LevelEditor : MonoBehaviour
 
     public void SaveLevel()
     {
-        string filename = filePathInput.text;
-        if (string.IsNullOrEmpty(filename))
-        {
-            Debug.LogError("No filename specified!");
-            return;
-        }
+        SaveFileDialog saveFileDialog = new SaveFileDialog();
+        saveFileDialog.Filter = "Data Files (*.dat)|*.dat";
+        saveFileDialog.DefaultExt = "dat";
+        saveFileDialog.AddExtension = true;
+        saveFileDialog.InitialDirectory = BaseSavePath;
+        saveFileDialog.Title = "Save Level As";
 
-        if (!filename.EndsWith(".dat"))
+        if (saveFileDialog.ShowDialog() == DialogResult.OK)
         {
-            filename += ".dat";
-        }
+            string path = saveFileDialog.FileName;
+            LevelData levelData = new LevelData();
 
-        string path = Path.Combine(BaseSavePath, filename);
-        LevelData levelData = new LevelData(); // Ini. the tile list
-
-        tilemap.CompressBounds();
-        foreach (var position in tilemap.cellBounds.allPositionsWithin)
-        {
-            TileBase tile = tilemap.GetTile(position);
-            if (tile != null)
+            tilemap.CompressBounds();
+            foreach (var position in tilemap.cellBounds.allPositionsWithin)
             {
-                // Added null check; this is a complicated bug that happens sometimes. To investigate more or move to json
-                if (levelData == null || levelData.tiles == null)
-                {
-                    Debug.LogError("levelData or levelData.tiles is null");
-                    return;
-                }
-                try
+                TileBase tile = tilemap.GetTile(position);
+                if (tile != null)
                 {
                     levelData.tiles.Add(new TileInfo(position.x, position.y, position.z, tile.name));
                 }
-                catch (Exception ex)
-                {
-                    Debug.LogError("Failed to add tile info: " + ex);
-                    return;
-                }
             }
-        }
 
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(path, FileMode.Create);
-        try
-        {
-            formatter.Serialize(stream, levelData);
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Create);
+            try
+            {
+                formatter.Serialize(stream, levelData);
+            }
+            finally
+            {
+                stream.Close();
+            }
+            Debug.Log("Level saved: " + path);
         }
-        finally
-        {
-            stream.Close();
-        } // Thank you, C# player's guide (the class' book)
     }
 
     public void LoadLevel()
     {
-        string filename = filePathInput.text;
-        if (string.IsNullOrEmpty(filename))
-        {
-            Debug.LogError("No filename specified!");
-            return;
-        }
+        OpenFileDialog openFileDialog = new OpenFileDialog();
+        openFileDialog.Filter = "Data Files (*.dat)|*.dat";
+        openFileDialog.DefaultExt = "dat";
+        openFileDialog.InitialDirectory = BaseSavePath;
+        openFileDialog.Title = "Open Level File";
 
-        if (!filename.EndsWith(".dat")) // if player forgot the extension, add it. A level can thus be called "Level1" and will become Level1.dat. Case-sensitive!
+        if (openFileDialog.ShowDialog() == DialogResult.OK)
         {
-            filename += ".dat";
-        }
+            string path = openFileDialog.FileName;
 
-        string path = Path.Combine(BaseSavePath, filename);
-
-        if (File.Exists(path))
-        {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
-
-            // Source: https://docs.unity3d.com/Packages/com.unity.serialization@2.0/manual/index.html
-            // Also: https://learn.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.binary.binaryformatter.serialize?view=net-8.0
-
             LevelData levelData = null;
             try
             {
                 levelData = (LevelData)formatter.Deserialize(stream);
             }
-            catch (Exception e)
-            {
-                Debug.LogError("Failed to deserialize: " + e.Message); 
-                return;
-            }
             finally
             {
-                stream.Close(); // make sure its always shut down no matter what
+                stream.Close();
             }
 
-            tilemap.ClearAllTiles(); // Clear existing tiles
-
-            if (levelData == null || levelData.tiles.Count == 0)
+            if (levelData != null)
             {
-                Debug.LogError("No tiles data found to load.");
-                return;
-            }
+                tilemap.ClearAllTiles(); // Clear existing tiles
 
-            foreach (TileInfo info in levelData.tiles)  
-            {
-                Vector3Int position = new Vector3Int(info.posX, info.posY, info.posZ);
-                TileBase tile = Resources.Load<TileBase>("Tiles/" + info.tileType);
-                if (tile == null)
+                foreach (TileInfo info in levelData.tiles)
                 {
-                    Debug.LogError("Failed to load tile: " + info.tileType);
-                    continue;
+                    Vector3Int position = new Vector3Int(info.posX, info.posY, info.posZ);
+                    TileBase tile = Resources.Load<TileBase>("Tiles/" + info.tileType);
+                    if (tile != null)
+                    {
+                        tilemap.SetTile(position, tile);
+                    }
                 }
-                tilemap.SetTile(position, tile);
+                Debug.Log("Level loaded: " + path);
             }
-            Debug.Log("Level loaded successfully.");
+            else
+            {
+                Debug.LogError("Failed to load level data.");
+            }
         }
-        else
-        {
-            Debug.LogError("File not found: " + path);
-        }
-    } // Sometimes in my sleep, I still see this file.........
+    }
 }
