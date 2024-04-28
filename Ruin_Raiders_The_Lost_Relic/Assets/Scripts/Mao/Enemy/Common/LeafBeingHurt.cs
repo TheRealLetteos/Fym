@@ -7,7 +7,7 @@ namespace MBT
 
     [MBTNode("AI/Being Hurt")]
     [AddComponentMenu("")]
-    public class LeafBeingHurt : BaseEnemyLeafNode
+    public class LeafBeingHurt : BaseNPCLeafNode
     {
         public FloatReference hurtDuration;
 

@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using fym;
 
 namespace MBT
 {
 
     [MBTNode("AI/Attack")]
     [AddComponentMenu("")]
-    public class LeafAttack : BaseEnemyLeafNode
+    public class LeafAttack : BaseNPCLeafNode
     {
         public FloatReference attackRange;
         public FloatReference attackDamage;
@@ -18,14 +19,16 @@ namespace MBT
 
         public override NodeResult Execute()
         {
+            Vector2 direction = agentTransform.Value.GetComponent<BaseEnemyController>().GetDirection();
             if(isRemoteAttack.Value)
             {
-                agentTransform.Value.GetComponent<Enemy>().RemoteAttack(attackRange.Value, attackDamage.Value, attackCooldown.Value, attackDuration.Value, attackSpeed.Value);
+                agentTransform.Value.GetComponent<BaseEnemyController>().Shoot(direction);
             }
             else
             {
-                agentTransform.Value.GetComponent<Enemy>().Attack(attackRange.Value, attackDamage.Value, attackCooldown.Value, attackDuration.Value, attackSpeed.Value);
+                agentTransform.Value.GetComponent<BaseEnemyController>().Attack(direction);
             }
+            return NodeResult.success;
         }
     }
 

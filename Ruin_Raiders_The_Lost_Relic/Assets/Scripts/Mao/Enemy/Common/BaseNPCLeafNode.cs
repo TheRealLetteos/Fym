@@ -10,7 +10,7 @@ namespace MBT
      * set to false when the node is exited.
      * 
      */
-    public abstract class BaseEnemyLeafNode : Leaf
+    public abstract class BaseNPCLeafNode : Leaf
     {
         
         // The animator of the enemy
