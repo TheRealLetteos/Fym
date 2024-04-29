@@ -7,7 +7,7 @@ namespace MBT
 
     [MBTNode("AI/Turn Around and Move")]
     [AddComponentMenu("")]
-    public class LeafTurnAround : BaseEnemyLeafNode
+    public class LeafTurnAround : BaseNPCLeafNode
     {
 
         public override void OnEnter()

@@ -8,7 +8,7 @@ namespace MBT
 
     [MBTNode("AI/Randomly Choose Target Position in Range And Move")]
     [AddComponentMenu("")]
-    public class LeafRandomTargetPosition : BaseEnemyLeafNode
+    public class LeafRandomTargetPosition : BaseNPCLeafNode
     {
         public FloatReference movementRange;// = new FloatReference(VarRefMode.DisableConstant);
         public Vector2Reference targetPosition;// = new Vector2Reference(VarRefMode.DisableConstant);

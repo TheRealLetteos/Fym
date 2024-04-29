@@ -7,7 +7,7 @@ namespace MBT
 {
     [MBTNode("AI/Dead")]
     [AddComponentMenu("")]
-    public class LeafDead : BaseEnemyLeafNode
+    public class LeafDead : BaseNPCLeafNode
     {
         public FloatReference deadDuration;
 

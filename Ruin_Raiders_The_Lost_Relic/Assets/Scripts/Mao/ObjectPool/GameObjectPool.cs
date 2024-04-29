@@ -14,35 +14,46 @@ namespace fym
         [SerializeField]
         private int poolSize = 10;
 
-        private Queue<GameObject> pool = new Queue<GameObject>();
+        private GameObject[] pool;
+
+        private int availableIndex = 0;
 
         void Awake()
         {
+            pool = new GameObject[poolSize];
             for (int i = 0; i < poolSize; i++)
             {
-                GameObject obj = Instantiate(prefab, transform);
-                obj.SetActive(false);
-                pool.Enqueue(obj);
+                pool[i] = Instantiate(prefab, transform);
+                pool[i].SetActive(false);
             }
         }
 
         public GameObject GetObject()
         {
-            if (pool.Count == 0)
+            if (availableIndex >= poolSize)
             {
-                GameObject obj = Instantiate(prefab, transform);
-                pool.Enqueue(obj);
+                Debug.LogWarning("No available object in pool");
+                return null;
             }
 
-            GameObject objFromPool = pool.Dequeue();
+            GameObject objFromPool = pool[availableIndex++];
             objFromPool.SetActive(true);
             return objFromPool;
         }
 
-        public virtual void ReturnObject(GameObject obj)
+        private void FixedUpdate()
         {
-            obj.SetActive(false);
-            pool.Enqueue(obj);
+            int last = availableIndex;
+            for (int i = 0; i < last; i++)
+            {
+                if (!pool[i].activeSelf)
+                {
+                    GameObject temp = pool[availableIndex-1];
+                    pool[availableIndex-1] = pool[i];
+                    pool[i] = temp;
+                    availableIndex--;
+                }
+            }
         }
     }
 }

@@ -34,16 +34,16 @@ namespace fym
             if (colliderTag == GameManager.TAG_PLAYER && ownerTag != GameManager.TAG_PLAYER)
             {
                 collision.gameObject.GetComponent<PlayerFSM>().TakeDamage(damage);
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
             else if (colliderTag == GameManager.TAG_ENEMY && ownerTag != GameManager.TAG_ENEMY)
             {
                 collision.gameObject.GetComponent<BaseEnemyController>().TakeDamage(damage);
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
             else if (colliderTag == GameManager.TAG_SOLIDTILE || colliderTag == GameManager.TAG_BOUNDARY)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
 
@@ -53,7 +53,7 @@ namespace fym
             lifeTime -= Time.fixedDeltaTime;
             if (lifeTime <= 0)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
 

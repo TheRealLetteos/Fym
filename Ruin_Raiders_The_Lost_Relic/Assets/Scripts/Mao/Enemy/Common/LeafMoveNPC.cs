@@ -8,7 +8,7 @@ namespace MBT
 
     [MBTNode("AI/Move NPC")]
     [AddComponentMenu("")]
-    public class LeafMoveNPC : BaseEnemyLeafNode
+    public class LeafMoveNPC : BaseNPCLeafNode
     {
 
         public Vector2Reference targetPosition;
