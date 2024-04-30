@@ -562,8 +562,8 @@ MonoBehaviour:
   title: Turn Around and Move
   rect:
     serializedVersion: 2
-    x: 706
-    y: 489
+    x: 485
+    y: 396
     width: 160
     height: 44
   parent: {fileID: 5768671867670597887}
