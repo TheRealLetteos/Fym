@@ -10,10 +10,6 @@ namespace MBT
     [AddComponentMenu("")]
     public class LeafAttack : BaseNPCLeafNode
     {
-        public FloatReference attackRange;
-        public FloatReference attackDamage;
-        public FloatReference attackCooldown;
-        public FloatReference attackDuration;
         public FloatReference attackSpeed;
         public BoolReference isRemoteAttack;
 

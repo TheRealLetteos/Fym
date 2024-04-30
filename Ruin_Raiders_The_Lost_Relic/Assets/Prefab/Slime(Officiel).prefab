@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 0}
+  selectedEditorNode: {fileID: 7882095585750349613}
   repeatOnFinish: 0
   maxExecutionsPerTick: 60
   parent: {fileID: 0}
@@ -261,7 +261,7 @@ MonoBehaviour:
     x: 220
     y: 60
     width: 160
-    height: 45
+    height: 44
   parent: {fileID: 0}
   children:
   - {fileID: 3279819886985691979}
@@ -403,7 +403,7 @@ MonoBehaviour:
     x: 219
     y: 141
     width: 160
-    height: 45
+    height: 44
   parent: {fileID: 7001729976682701888}
   children:
   - {fileID: 5768671867670597887}
@@ -428,7 +428,7 @@ MonoBehaviour:
     x: 220
     y: 220
     width: 160
-    height: 45
+    height: 44
   parent: {fileID: 3279819886985691979}
   children:
   - {fileID: 2364528353336628244}
@@ -462,6 +462,14 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
+  animator: {fileID: 7864415329004638154}
+  agentTransform:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 6344375402218339195}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+  nodeAnimationKey: IsWalk
   movementRange:
     useConstant: 0
     mode: 1
@@ -474,12 +482,6 @@ MonoBehaviour:
     blackboard: {fileID: 6344375402218339195}
     key: TargetPosition
     constantValue: {x: 0, y: 0}
-  agentTransform:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 6344375402218339195}
-    key: AgentTransform
-    constantValue: {fileID: 0}
 --- !u!114 &26075238795561886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,27 +497,29 @@ MonoBehaviour:
   title: Move NPC
   rect:
     serializedVersion: 2
-    x: 222
-    y: 305
+    x: 220
+    y: 300
     width: 160
-    height: 45
+    height: 44
   parent: {fileID: 5768671867670597887}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  targetPosition:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 6344375402218339195}
-    key: TargetPosition
-    constantValue: {x: 0, y: 0}
+  animator: {fileID: 7864415329004638154}
   agentTransform:
     useConstant: 0
     mode: 0
     blackboard: {fileID: 6344375402218339195}
     key: AgentTransform
     constantValue: {fileID: 0}
+  nodeAnimationKey: IsWalk
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 6344375402218339195}
+    key: TargetPosition
+    constantValue: {x: 0, y: 0}
   movementRange:
     useConstant: 0
     mode: 0
@@ -544,18 +548,20 @@ MonoBehaviour:
   title: Turn Around and Move
   rect:
     serializedVersion: 2
-    x: 420
-    y: 300
+    x: 388
+    y: 354
     width: 160
-    height: 45
+    height: 44
   parent: {fileID: 5768671867670597887}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
+  animator: {fileID: 7864415329004638154}
   agentTransform:
     useConstant: 0
     mode: 0
     blackboard: {fileID: 6344375402218339195}
     key: AgentTransform
     constantValue: {fileID: 0}
+  nodeAnimationKey: IsWalk
