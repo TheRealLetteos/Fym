@@ -31,6 +31,7 @@ namespace fym
         private bool _isGrounded;
         private bool _isDead;
         private bool _isHurt;
+        private bool _isInventory;
         private bool _movementEnabled = true;
         
         //Sound
@@ -45,6 +46,7 @@ namespace fym
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private Image[] hearts;
         [SerializeField] private GameObject _restartUI;
+        [SerializeField] private GameObject _inventoryUI;
 
 
         // Start is called before the first frame update
@@ -55,6 +57,7 @@ namespace fym
             InputHandler.instance.jumpEvent += Jump;
             InputHandler.instance.dashEvent += Dash;
             InputHandler.instance.attackEvent += Attack;
+            InputHandler.instance.inventoryEvent += Inventory;
             enabled = true;
 
             //Get player rigidbody
@@ -63,7 +66,21 @@ namespace fym
             _life = 3;
             UpdateHealth();
         }
-        
+
+        private void Inventory()
+        {
+            if (!_isInventory)
+            {
+                _inventoryUI.SetActive(true);
+                _isInventory = true;
+            }
+            else if (_isInventory)
+            {
+                _inventoryUI.SetActive(false);
+                _isInventory = false;
+            }
+        }
+
         IEnumerator WaitDashTime()
         {
             yield return new WaitForSeconds(0.2f);
@@ -276,6 +293,16 @@ namespace fym
                 _rb.AddForce(recoilDirection * _repulsionForce, ForceMode2D.Impulse);
                 
                 Invoke("EnableControls", 0.5f);
+            }
+            if (collision.gameObject.CompareTag("Item"))
+            {
+                // Détruire l'objet en collision
+                IPickable pickableItem = collision.gameObject.GetComponent<IPickable>();
+                if (pickableItem != null)
+                {
+                    pickableItem.AddPickable();
+                }
+                Destroy(collision.gameObject);
             }
         }
 

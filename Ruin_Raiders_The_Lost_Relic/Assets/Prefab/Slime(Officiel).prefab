@@ -276,7 +276,7 @@ MonoBehaviour:
     x: 220
     y: 60
     width: 160
-    height: 45
+    height: 44
   parent: {fileID: 0}
   children:
   - {fileID: 3279819886985691979}
@@ -418,7 +418,7 @@ MonoBehaviour:
     x: 220
     y: 140
     width: 160
-    height: 45
+    height: 44
   parent: {fileID: 7001729976682701888}
   children:
   - {fileID: 5768671867670597887}
@@ -443,7 +443,7 @@ MonoBehaviour:
     x: 220
     y: 220
     width: 160
-    height: 45
+    height: 44
   parent: {fileID: 3279819886985691979}
   children:
   - {fileID: 2364528353336628244}
@@ -512,10 +512,10 @@ MonoBehaviour:
   title: Move NPC
   rect:
     serializedVersion: 2
-    x: 222
-    y: 305
+    x: 220
+    y: 300
     width: 160
-    height: 45
+    height: 44
   parent: {fileID: 5768671867670597887}
   children: []
   behaviourTree: {fileID: 0}
@@ -566,7 +566,7 @@ MonoBehaviour:
     x: 412
     y: 310
     width: 160
-    height: 45
+    height: 44
   parent: {fileID: 5768671867670597887}
   children: []
   behaviourTree: {fileID: 0}

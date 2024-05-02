@@ -10,7 +10,7 @@ public class Character : MonoBehaviour
     protected int _jumpStrength;
     [SerializeField]
     protected float _speed;
-    public int _life { get; protected set; }
+    public int _life { get; set; }
 
     public virtual void Movement(float x)
     {
