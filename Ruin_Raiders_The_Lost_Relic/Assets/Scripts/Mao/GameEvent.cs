@@ -7,7 +7,7 @@ namespace fym
     public enum GameEvent
     {
 
-        Loading, Lobby, Playing, Pausing, Ending, Restarting, Resuming, EditingScene, Quitting
+        Loading, Lobby, Playing, Pausing, Ending, Restarting, Resuming, EditingScene, LevelHarndenerScene, Quitting
 
     }
 }

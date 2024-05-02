@@ -15,6 +15,8 @@ namespace fym
 
         private Button sceneEditorButton;
 
+        private Button levelHardenerButton;
+
         private Button quitButton;
 
         private void Awake()
@@ -26,6 +28,8 @@ namespace fym
             optionButton.clicked += () => OnOptionClick();
             sceneEditorButton = rootMenuDocument.rootVisualElement.Q<Button>("SceneEditorButton");
             sceneEditorButton.clicked += () => OnSceneEditorClick();
+            levelHardenerButton = rootMenuDocument.rootVisualElement.Q<Button>("LevelHardenerButton");
+            levelHardenerButton.clicked += () => OnLevelHardenerClick();
             quitButton = rootMenuDocument.rootVisualElement.Q<Button>("QuitButton");
             quitButton.clicked += () => OnQuitGameClick();
         }
@@ -62,6 +66,11 @@ namespace fym
         private void OnSceneEditorClick()
         {
             Notify(GameEvent.EditingScene);
+        }
+
+        private void OnLevelHardenerClick()
+        {
+            Notify(GameEvent.LevelHarndenerScene);
         }
 
         private void OnOptionClick()
