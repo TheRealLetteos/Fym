@@ -115,14 +115,5 @@ namespace fym
             }
         }
 
-        public Vector2 GetDirection()
-        {
-            return direction;
-        }
-
-        public void SetDirection(Vector2 direction)
-        {
-              this.direction = direction;
-        }
     }
 }
