@@ -17,6 +17,8 @@ namespace fym
         public static string Loading_UI { get; internal set; } = "LoadingUI";
 
         public static string LEVELEDITOR_SCENE { get; private set; } = "NewLevelEditor";
+        
+        public static string LEVELHARDENER_SCENE { get; private set; } = "LevelHardener";
 
         public static string TAG_PLAYER { get; private set; } = "Player";
 
@@ -63,6 +65,7 @@ namespace fym
                 new GameStatePlaying(this),
                 new GameStatePaused(this),
                 new GameStateSceneEditor(this),
+                new GameStateSceneLevelHardener(this),
                 new GameStateEnd(this)
             };
         }
