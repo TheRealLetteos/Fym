@@ -9,11 +9,9 @@ namespace MBT
     [AddComponentMenu("")]
     public class LeafBeingHurt : BaseNPCLeafNode
     {
-        public FloatReference hurtDuration;
-
         public override NodeResult Execute()
         {
-            throw new System.NotImplementedException();
+            return  NodeResult.success;
         }
     }
 }

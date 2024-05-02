@@ -47,10 +47,9 @@ namespace fym
             }
         }
 
-        void FixedUpdate()
+        void Update()
         {
-            rb.velocity = direction * speed;
-            lifeTime -= Time.fixedDeltaTime;
+            lifeTime -= Time.deltaTime;
             if (lifeTime <= 0)
             {
                 gameObject.SetActive(false);

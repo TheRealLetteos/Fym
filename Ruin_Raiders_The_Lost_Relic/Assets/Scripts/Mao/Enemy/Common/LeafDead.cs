@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using fym;
 
 namespace MBT
 {
@@ -9,11 +9,10 @@ namespace MBT
     [AddComponentMenu("")]
     public class LeafDead : BaseNPCLeafNode
     {
-        public FloatReference deadDuration;
-
         public override NodeResult Execute()
         {
-            throw new System.NotImplementedException();
+            agentTransform.Value.GetComponent<BaseEnemyController>().gameObject.SetActive(false);
+            return NodeResult.success;
         }
     }
 }

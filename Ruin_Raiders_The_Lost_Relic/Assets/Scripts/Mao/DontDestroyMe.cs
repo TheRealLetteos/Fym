@@ -13,7 +13,7 @@ namespace fym
 
         void Awake()
         {
-            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(gameObject);
         }
 
     }

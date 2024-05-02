@@ -179,6 +179,7 @@ namespace fym
                         //Script to acces the Enemy
                         //Ex: Enemy _enemyScript = enemy.GetComponentInChildren
                         //enemyScript.TakeDamage(attackDamage);
+                        enemy.GetComponent<BaseEnemyController>().TakeDamage(1);
                     }
                 }
                 StartCoroutine(WaitAttackTime());

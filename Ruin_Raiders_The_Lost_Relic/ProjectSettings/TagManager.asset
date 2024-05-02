@@ -7,6 +7,13 @@ TagManager:
   - Ground
   - Key
   - Enemy
+  - Projectile
+  - SolidTile
+  - BreakableTile
+  - Pickup
+  - Boundary
+  - Water
+  - LethalTrap
   layers:
   - Default
   - TransparentFX
@@ -17,10 +24,10 @@ TagManager:
   - Key
   - puzzle
   - Enemy
-  - 
-  - 
-  - 
-  - 
+  - VisionRange
+  - Player
+  - Projectile
+  - Decoration
   - 
   - 
   - 

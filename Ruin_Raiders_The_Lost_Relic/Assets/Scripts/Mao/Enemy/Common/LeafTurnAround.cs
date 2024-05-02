@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using fym;
 
 namespace MBT
 {
@@ -12,14 +13,18 @@ namespace MBT
 
         public override void OnEnter()
         {
-            Vector2 velocity = agentTransform.Value.GetComponent<Rigidbody2D>().velocity;
-            Vector2 newVelocity = new Vector2(-velocity.x, velocity.y);
-            agentTransform.Value.GetComponent<Rigidbody2D>().velocity = newVelocity;
             
         }
 
         public override NodeResult Execute()
         {
+            Debug.Log("Executing LeafTurnAround");
+            /*Vector2 velocity = agentTransform.Value.GetComponent<Rigidbody2D>().velocity;
+            Vector2 direction = agentTransform.Value.GetComponent<BaseEnemyController>().GetDirection();
+            Vector2 newVelocity = new Vector2(-velocity.x, velocity.y);
+            Vector2 newDirection = new Vector2(-direction.x, direction.y);
+            agentTransform.Value.GetComponent<Rigidbody2D>().velocity = newVelocity;
+            agentTransform.Value.GetComponent<BaseEnemyController>().SetDirection(newDirection);*/
             return NodeResult.success;
         }
     }

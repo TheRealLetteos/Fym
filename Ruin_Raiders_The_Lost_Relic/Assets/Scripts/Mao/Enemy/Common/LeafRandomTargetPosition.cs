@@ -13,17 +13,13 @@ namespace MBT
         public FloatReference movementRange;// = new FloatReference(VarRefMode.DisableConstant);
         public Vector2Reference targetPosition;// = new Vector2Reference(VarRefMode.DisableConstant);
 
-        public override void OnEnter()
+        public override NodeResult Execute()
         {
+            Debug.Log("Executing LeafRandomTargetPosition");
             var pos = Random.insideUnitCircle * movementRange.Value;
             float x = pos.x + agentTransform.Value.position.x;
             float y = agentTransform.Value.position.y;
             targetPosition.Value = new Vector2(x, y);
-        }
-
-        public override NodeResult Execute()
-        {
-            //Debug.Log("On GeneratedPointAroundSelf execute");
             return NodeResult.success;
         }
     }

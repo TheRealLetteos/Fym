@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 6645098355360486787}
   - component: {fileID: 3251913719789098879}
   - component: {fileID: 543267633098786427}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063034045b1d4684e91618b3d7e990a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 5
   projectilePool: {fileID: 0}
 --- !u!95 &543267633098786427
 Animator:
@@ -219,7 +220,7 @@ GameObject:
   - component: {fileID: 5285357233428675483}
   - component: {fileID: 3073363792256364869}
   - component: {fileID: 394578556882094889}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brain
   m_TagString: Untagged
   m_Icon: {fileID: 0}

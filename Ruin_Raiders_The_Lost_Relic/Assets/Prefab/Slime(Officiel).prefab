@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 8764662845413750361}
   - component: {fileID: 6645098355360486787}
   - component: {fileID: 7864415329004638154}
-  m_Layer: 0
+  - component: {fileID: 3709289255188880482}
+  m_Layer: 8
   m_Name: Slime(Officiel)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,6 +182,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3709289255188880482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8297831790140703156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063034045b1d4684e91618b3d7e990a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  projectilePool: {fileID: 0}
 --- !u!1 &9133285587838559967
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,8 +219,8 @@ GameObject:
   - component: {fileID: 5768671867670597887}
   - component: {fileID: 2364528353336628244}
   - component: {fileID: 26075238795561886}
-  - component: {fileID: 7882095585750349613}
-  m_Layer: 0
+  - component: {fileID: 8318844224018281015}
+  m_Layer: 8
   m_Name: Brain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 0}
+  selectedEditorNode: {fileID: 8318844224018281015}
   repeatOnFinish: 0
   maxExecutionsPerTick: 60
   parent: {fileID: 0}
@@ -400,8 +415,8 @@ MonoBehaviour:
   title: Repeat Until Fail
   rect:
     serializedVersion: 2
-    x: 219
-    y: 141
+    x: 220
+    y: 140
     width: 160
     height: 45
   parent: {fileID: 7001729976682701888}
@@ -433,7 +448,7 @@ MonoBehaviour:
   children:
   - {fileID: 2364528353336628244}
   - {fileID: 26075238795561886}
-  - {fileID: 7882095585750349613}
+  - {fileID: 8318844224018281015}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -462,6 +477,14 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
+  animator: {fileID: 0}
+  agentTransform:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 6344375402218339195}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+  nodeAnimationKey: 
   movementRange:
     useConstant: 0
     mode: 1
@@ -474,12 +497,6 @@ MonoBehaviour:
     blackboard: {fileID: 6344375402218339195}
     key: TargetPosition
     constantValue: {x: 0, y: 0}
-  agentTransform:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 6344375402218339195}
-    key: AgentTransform
-    constantValue: {fileID: 0}
 --- !u!114 &26075238795561886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,18 +521,20 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  targetPosition:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 6344375402218339195}
-    key: TargetPosition
-    constantValue: {x: 0, y: 0}
+  animator: {fileID: 0}
   agentTransform:
     useConstant: 0
     mode: 0
     blackboard: {fileID: 6344375402218339195}
     key: AgentTransform
     constantValue: {fileID: 0}
+  nodeAnimationKey: 
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 6344375402218339195}
+    key: TargetPosition
+    constantValue: {x: 0, y: 0}
   movementRange:
     useConstant: 0
     mode: 0
@@ -529,7 +548,7 @@ MonoBehaviour:
     key: Speed
     constantValue: 0
   minDistance: 0
---- !u!114 &7882095585750349613
+--- !u!114 &8318844224018281015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -538,14 +557,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 9133285587838559967}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3aae06aed8d5c34d84e84ea4c64b764, type: 3}
+  m_Script: {fileID: 11500000, guid: 58fe7bc6a9b18e148b82820c7c1c0a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Turn Around and Move
+  title: Wait
   rect:
     serializedVersion: 2
-    x: 420
-    y: 300
+    x: 412
+    y: 310
     width: 160
     height: 45
   parent: {fileID: 5768671867670597887}
@@ -553,9 +572,11 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  agentTransform:
-    useConstant: 0
+  time:
+    useConstant: 1
     mode: 0
-    blackboard: {fileID: 6344375402218339195}
-    key: AgentTransform
-    constantValue: {fileID: 0}
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 3
+  randomDeviation: 0
+  continueOnRestart: 0

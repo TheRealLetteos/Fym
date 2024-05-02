@@ -4,20 +4,19 @@ using UnityEngine;
 
 namespace MBT
 {
-    [MBTNode("AI/Selector At Border")]
+    [MBTNode("AI/Is NPC At Border")]
     [AddComponentMenu("")]
-    public class SelectorAtBorder : Selector
+    public class ConditionAtBorder : BaseNPCConditionNode
     {
-        public TransformReference agentTransform;
         public float border = 10f;
 
-        public override NodeResult Execute()
+        public override bool Check()
         {
             if (agentTransform.Value.position.x < border || agentTransform.Value.position.x > Screen.width - border)
             {
-                return NodeResult.success;
+                return true;
             }
-            return NodeResult.failure;
+            return false;
         }
     }
 }

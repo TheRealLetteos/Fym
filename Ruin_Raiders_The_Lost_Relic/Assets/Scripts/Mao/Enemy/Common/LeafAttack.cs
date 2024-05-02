@@ -10,23 +10,21 @@ namespace MBT
     [AddComponentMenu("")]
     public class LeafAttack : BaseNPCLeafNode
     {
-        public FloatReference attackRange;
-        public FloatReference attackDamage;
-        public FloatReference attackCooldown;
-        public FloatReference attackDuration;
-        public FloatReference attackSpeed;
-        public BoolReference isRemoteAttack;
+        public bool isRemoteAttack;
 
         public override NodeResult Execute()
         {
-            Vector2 direction = agentTransform.Value.GetComponent<BaseEnemyController>().GetDirection();
-            if(isRemoteAttack.Value)
+            Debug.Log("Executing LeafAttack");
+            Vector2 direction = targetTransform.Value.position - agentTransform.Value.position;
+            if(isRemoteAttack)
             {
+                Debug.Log("Remote attack");
                 agentTransform.Value.GetComponent<BaseEnemyController>().Shoot(direction);
             }
             else
             {
-                agentTransform.Value.GetComponent<BaseEnemyController>().Attack(direction);
+                Debug.Log("Melee attack");
+                agentTransform.Value.GetComponent<BaseEnemyController>().Attack(targetTransform.Value.GetComponent<Player>());
             }
             return NodeResult.success;
         }

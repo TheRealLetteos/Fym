@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6174892505564545739}
   - component: {fileID: 7307453780117675949}
   - component: {fileID: 4618139217474182197}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -109,6 +109,9 @@ MonoBehaviour:
   _speed: 8
   _tr: {fileID: 6174892505564545739}
   _dashStrength: 50
+  _repulsionForce: 0
+  _attackRange: 0
+  _enemyLayer: 0
   _audioWalkingSource: {fileID: 7307453780117675949}
   _audioShortSource: {fileID: 4618139217474182197}
   _attackClip: {fileID: 8300000, guid: 6f5758cf3472b4d448730e7a73496891, type: 3}
@@ -118,6 +121,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  hearts: []
+  _restartUI: {fileID: 0}
 --- !u!114 &1239638719513651640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,7 +532,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4764896705800737995}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ground Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
