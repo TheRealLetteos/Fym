@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering.Universal;
 using static UnityEngine.Rendering.DebugUI;
 using UnityEngine.UI;
 
@@ -19,8 +21,10 @@ namespace fym
         [SerializeField] private TrailRenderer _tr;
         [SerializeField] protected int _dashStrength;
         [SerializeField] private float _repulsionForce;
-        [SerializeField] private float _attackRange;
-        [SerializeField] private int _enemyLayer;
+        [SerializeField] private float _attackRange = 1.5f;
+        [SerializeField] private LayerMask _enemyLayer;
+        private RaycastHit2D[] _hits;
+        [SerializeField] private Transform _attackTransform;
         private float _moveDirection;
         
         //Character State variable
@@ -186,21 +190,29 @@ namespace fym
             {
                 _isAttacking = true;
 
-                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, _attackRange, _enemyLayer);
-
-                foreach (Collider2D enemy in hitEnemies)
+                _hits = Physics2D.CircleCastAll(_attackTransform.position, _attackRange,transform.right, 0f, _enemyLayer);
+                
+                for (int i = 0; i < _hits.Length; i++)
                 {
-                    if (enemy.CompareTag("Enemy"))
-                    {
-                        //MAO
-                        //Script to acces the Enemy
-                        //Ex: Enemy _enemyScript = enemy.GetComponentInChildren
-                        //enemyScript.TakeDamage(attackDamage);
-                        enemy.GetComponent<BaseEnemyController>().TakeDamage(1);
-                    }
+                   Debug.Log("Enemy hit");
+                   //MAO
+                   //Script to acces the Enemy
+                   //Ex: Enemy _enemyScript = enemy.GetComponentInChildren
+                   //enemyScript.TakeDamage(attackDamage);
+                   Collider2D enemyCollider = _hits[i].collider;
+                   BaseEnemyController _enemy = enemyCollider.GetComponent<BaseEnemyController>();
+                   if (_enemy != null)
+                   {
+                       _enemy.GetComponent<BaseEnemyController>().TakeDamage(1);
+                   }
                 }
                 StartCoroutine(WaitAttackTime());
             }
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.DrawWireSphere(_attackTransform.position, _attackRange);
         }
 
         private void Dash()
