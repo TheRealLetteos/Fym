@@ -194,7 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063034045b1d4684e91618b3d7e990a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  maxHealth: 1
+  physicalDamage: 1
   projectilePool: {fileID: 0}
 --- !u!1 &9133285587838559967
 GameObject:
@@ -254,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 8318844224018281015}
+  selectedEditorNode: {fileID: 26075238795561886}
   repeatOnFinish: 0
   maxExecutionsPerTick: 60
   parent: {fileID: 0}
@@ -477,14 +478,20 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  animator: {fileID: 0}
+  animator: {fileID: 7864415329004638154}
   agentTransform:
     useConstant: 0
     mode: 0
     blackboard: {fileID: 6344375402218339195}
     key: AgentTransform
     constantValue: {fileID: 0}
-  nodeAnimationKey: 
+  targetTransform:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 6344375402218339195}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+  nodeAnimationKey: IsWalk
   movementRange:
     useConstant: 0
     mode: 1
@@ -512,8 +519,8 @@ MonoBehaviour:
   title: Move NPC
   rect:
     serializedVersion: 2
-    x: 220
-    y: 300
+    x: 390
+    y: 417
     width: 160
     height: 44
   parent: {fileID: 5768671867670597887}
@@ -521,14 +528,20 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  animator: {fileID: 0}
+  animator: {fileID: 7864415329004638154}
   agentTransform:
     useConstant: 0
     mode: 0
     blackboard: {fileID: 6344375402218339195}
     key: AgentTransform
     constantValue: {fileID: 0}
-  nodeAnimationKey: 
+  targetTransform:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 6344375402218339195}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+  nodeAnimationKey: IsWalk
   targetPosition:
     useConstant: 0
     mode: 0
