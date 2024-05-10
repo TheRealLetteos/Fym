@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e752e183632e74793e71db95c25a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoResize: 1
+  npcLevel: 1
+  poolName: MagicBoltPool
+  autoResize: 0
   prefab: {fileID: 6235948197392946594, guid: d8c9b11a0c95dbc4a8f9462c1d6ce945, type: 3}
-  poolSize: 10
+  poolSize: 30

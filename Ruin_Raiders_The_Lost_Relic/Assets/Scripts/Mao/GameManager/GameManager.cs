@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 namespace fym
 {
@@ -42,6 +43,19 @@ namespace fym
 
         public static GameManager Instance { get; private set; }
 
+        public static string FAIRY_POOL_NAME { get; private set; } = "FairyPool";
+
+        public static string SLIME_POOL_NAME { get; private set; } = "SlimePool";
+
+        public static string MAGICBOLT_POOL_NAME { get; private set; } = "MagicBoltPool";
+
+
+        [SerializeField]
+        public List<GameObjectPool> npcPools = new List<GameObjectPool>();
+
+        [SerializeField]
+        public List<GameObjectPool> projectilePools = new List<GameObjectPool>();
+
         protected override void Awake()
         {
             if (Instance == null)
@@ -70,6 +84,23 @@ namespace fym
             };
         }
 
+        public GameObjectPool GetNPCPool(string key)
+        {
+            for(int i = 0; i < npcPools.Count; i++)
+            {
+                if (npcPools[i].poolName == key)
+                {
+                    return npcPools[i];
+                }
+            }
+            return null;
+        }
+
+        public void LoadScene(string sceneName)
+        {
+            SceneManager.LoadSceneAsync(sceneName);
+            BaseNPCSpawner.SpawnNPCs(LevelConfig.GetNextLevelConfig());
+        }
 
     }
 

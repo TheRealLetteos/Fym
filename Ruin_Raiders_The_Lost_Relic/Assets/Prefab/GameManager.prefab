@@ -439,6 +439,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c03ece25a9d2704587ac6ac9e03a7ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectPools:
+  - {fileID: 0}
 --- !u!114 &9130835061435187707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,7 +501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoResize: 0
   prefab: {fileID: 8297831790140703156, guid: 05e802880af23ac42805b52ee6615d04, type: 3}
-  poolSize: 5
+  poolSize: 10
 --- !u!1 &6802249434018334454
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoResize: 0
   prefab: {fileID: 8297831790140703156, guid: e2897db958ac7d842baa8a2d425e03cc, type: 3}
-  poolSize: 5
+  poolSize: 10
 --- !u!1001 &8171486459745758853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -716,7 +718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5249776893099645159, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
       propertyPath: poolSize
-      value: 5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5249776893099645159, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
       propertyPath: autoResize

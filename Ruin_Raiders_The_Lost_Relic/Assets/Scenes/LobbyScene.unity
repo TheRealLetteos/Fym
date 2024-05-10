@@ -1325,9 +1325,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1408661858376676504, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
+      propertyPath: poolName
+      value: SlimePool
+      objectReference: {fileID: 0}
+    - target: {fileID: 4026972083165793904, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
+      propertyPath: poolName
+      value: FairyPool
+      objectReference: {fileID: 0}
     - target: {fileID: 4026972083165793904, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
       propertyPath: autoResize
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160208818855048802, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
+      propertyPath: poolName
+      value: MagicBoltPool
       objectReference: {fileID: 0}
     - target: {fileID: 4749534631604314400, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
       propertyPath: m_Name
@@ -1373,11 +1385,81 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8036169588494335540, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
+      propertyPath: gameObjectPools.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036169588494335540, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
+      propertyPath: gameObjectPools.Array.data[0]
+      value: 
+      objectReference: {fileID: 3262179863117106307}
+    - target: {fileID: 8036169588494335540, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
+      propertyPath: gameObjectPools.Array.data[1]
+      value: 
+      objectReference: {fileID: 3262179863117106306}
+    - target: {fileID: 8036169588494335540, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
+      propertyPath: gameObjectPools.Array.data[2]
+      value: 
+      objectReference: {fileID: 3262179863117106305}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 749701269826681717, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3262179863117106309}
   m_SourcePrefab: {fileID: 100100000, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
+--- !u!114 &3262179863117106305 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4160208818855048802, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
+  m_PrefabInstance: {fileID: 3262179863117106304}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e752e183632e74793e71db95c25a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3262179863117106306 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1408661858376676504, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
+  m_PrefabInstance: {fileID: 3262179863117106304}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e752e183632e74793e71db95c25a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3262179863117106307 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4026972083165793904, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
+  m_PrefabInstance: {fileID: 3262179863117106304}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e752e183632e74793e71db95c25a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &3262179863117106308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 749701269826681717, guid: af0969d13d7e3ec41bbff280b789d134, type: 3}
+  m_PrefabInstance: {fileID: 3262179863117106304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3262179863117106309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3262179863117106308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aed99bffc8d597147bad393203323641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allNPCPools: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

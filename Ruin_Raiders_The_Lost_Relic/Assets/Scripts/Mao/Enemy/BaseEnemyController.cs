@@ -16,9 +16,11 @@ namespace fym
 
         public float physicalDamage = 1.0f;
 
-        public GameObjectPool projectilePool;
+        public GameObjectPool projectilePool = null;
 
         private bool isBeingAttacked = false;
+
+        private bool isAttacking = false;
 
         void Awake()
         {
@@ -30,12 +32,18 @@ namespace fym
             // player takes damage
 
             // if player class detects collision with enemy, player takes damage itself, no need to call this function
+            isAttacking = true;
         }
 
         public void Shoot(Vector2 direction)
         {
             Debug.Log("NPC is shooting at player.");
-
+            isAttacking = true;
+            if(projectilePool == null)
+            {
+                Debug.Log("Projectile pool is not set.");
+                return;
+            }
             GameObject projectile = projectilePool.GetObject();
             if (projectile == null)
             {
@@ -47,23 +55,17 @@ namespace fym
             BaseProjectileController projectileController = projectile.GetComponent<BaseProjectileController>();
             projectileController.direction = direction;
             projectile.SetActive(true);
+            Debug.Log("NPC has shot a projectile.");
         }
 
         public void TakeDamage(float damage)
         {
+            isBeingAttacked = true;
             if(health > 0)
             {
                 health -= damage;
                 // damage is taken, set to false so that player can attack again
                 // and to avoid multiple damage
-                isBeingAttacked = false;
-            }
-            if(health <= 0)
-            {
-                projectilePool.Reinitialize();
-                health = maxHealth;
-                isBeingAttacked = false;
-                gameObject.SetActive(false);
             }
         }
 
@@ -72,9 +74,25 @@ namespace fym
             return health <= 0;
         }
 
+        public void Die()
+        {
+            if (projectilePool != null)
+            {
+                projectilePool.Reinitialize();
+            }
+            health = maxHealth;
+            isBeingAttacked = false;
+            gameObject.SetActive(false);
+        }
+
         public bool IsBeingAttacked()
         {
             return isBeingAttacked;
+        }
+
+        public bool IsAttacking()
+        {
+            return isAttacking;
         }
 
         //if enemy is being attacked by player, enemy takes damage, if enemy dies, enemy is reset and deactivated

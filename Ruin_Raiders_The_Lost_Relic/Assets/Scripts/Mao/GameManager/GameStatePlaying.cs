@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,6 +26,8 @@ namespace fym
             mainMenuAudio.Stop();
             //--------------------------------------------------------
             SceneManager.LoadScene(GameManager.SAMPLE_SCENE);
+            BaseNPCSpawner.SpawnNPCs(LevelConfig.GetNextLevelConfig());
+
         }
 
         public override void OnExit()

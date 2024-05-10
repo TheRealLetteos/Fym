@@ -14,17 +14,24 @@ namespace MBT
 
         public override NodeResult Execute()
         {
+            if(targetTransform.Value == null)
+            {
+                Debug.Log("Target is null");
+                return NodeResult.failure;
+            }
             Debug.Log("Executing LeafAttack");
             Vector2 direction = targetTransform.Value.position - agentTransform.Value.position;
-            if(isRemoteAttack)
+            direction.Normalize();
+            BaseEnemyController baseEnemyController = agentTransform.Value.GetComponent<BaseEnemyController>();
+            if (isRemoteAttack)
             {
                 Debug.Log("Remote attack");
-                agentTransform.Value.GetComponent<BaseEnemyController>().Shoot(direction);
+                baseEnemyController.Shoot(direction);
             }
             else
             {
                 Debug.Log("Melee attack");
-                agentTransform.Value.GetComponent<BaseEnemyController>().Attack(targetTransform.Value.GetComponent<Player>());
+                baseEnemyController.Attack(targetTransform.Value.GetComponent<Player>());
             }
             return NodeResult.success;
         }

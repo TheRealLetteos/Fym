@@ -195,6 +195,10 @@ PrefabInstance:
       propertyPath: hearts.Array.data[2]
       value: 
       objectReference: {fileID: 790751777}
+    - target: {fileID: 1470604054041327254, guid: c028a6a7db89e07438acc8cc1a271eac, type: 3}
+      propertyPath: m_PreviewTimeScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -824,6 +828,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 2032609063
       objectReference: {fileID: 0}
+    - target: {fileID: 9081005195487021047, guid: 05e802880af23ac42805b52ee6615d04, type: 3}
+      propertyPath: projectilePool
+      value: 
+      objectReference: {fileID: 1901416290}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1897,6 +1905,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 2032609063
       objectReference: {fileID: 0}
+    - target: {fileID: 9081005195487021047, guid: 05e802880af23ac42805b52ee6615d04, type: 3}
+      propertyPath: projectilePool
+      value: 
+      objectReference: {fileID: 1901416290}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2215,7 +2227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7afa72df17c697447a07360a46af609f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
+  _target: {fileID: 1246708497}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2551,6 +2563,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226369647}
   m_CullTransparentMesh: 1
+--- !u!4 &1246708497 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 953555697615918517, guid: c028a6a7db89e07438acc8cc1a271eac, type: 3}
+  m_PrefabInstance: {fileID: 49353050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1336123752
 GameObject:
   m_ObjectHideFlags: 0
@@ -13513,6 +13530,10 @@ PrefabInstance:
       propertyPath: health
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9081005195487021047, guid: 05e802880af23ac42805b52ee6615d04, type: 3}
+      propertyPath: projectilePool
+      value: 
+      objectReference: {fileID: 1901416290}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13653,6 +13674,7 @@ Transform:
   m_Children:
   - {fileID: 1356715247}
   - {fileID: 298319218}
+  - {fileID: 1901416289}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1865388761
@@ -13922,6 +13944,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885457891}
   m_CullTransparentMesh: 1
+--- !u!1001 &1901416288
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1851467283}
+    m_Modifications:
+    - target: {fileID: 4562339835254298789, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+      propertyPath: m_Name
+      value: MagicBoltPool
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233825265197946107, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233825265197946107, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233825265197946107, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233825265197946107, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233825265197946107, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233825265197946107, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233825265197946107, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233825265197946107, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233825265197946107, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233825265197946107, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249776893099645159, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 6235948197392946594, guid: d8c9b11a0c95dbc4a8f9462c1d6ce945, type: 3}
+    - target: {fileID: 5249776893099645159, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+      propertyPath: poolSize
+      value: 30
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+--- !u!4 &1901416289 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5233825265197946107, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+  m_PrefabInstance: {fileID: 1901416288}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1901416290 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5249776893099645159, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+  m_PrefabInstance: {fileID: 1901416288}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e752e183632e74793e71db95c25a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1995269531
 GameObject:
   m_ObjectHideFlags: 0

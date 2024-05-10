@@ -8,7 +8,7 @@ namespace fym
     public class BaseProjectileController : MonoBehaviour
     {
 
-        public float speed = 10;
+        public float speed = 1;
 
         public float lifeTime = 2;
 
@@ -33,12 +33,12 @@ namespace fym
 
             if (colliderTag == GameManager.TAG_PLAYER && ownerTag != GameManager.TAG_PLAYER)
             {
-                collision.gameObject.GetComponent<PlayerFSM>().TakeDamage(damage);
+                //collision.gameObject.GetComponent<PlayerFSM>().TakeDamage(damage);
                 gameObject.SetActive(false);
             }
             else if (colliderTag == GameManager.TAG_ENEMY && ownerTag != GameManager.TAG_ENEMY)
             {
-                collision.gameObject.GetComponent<BaseEnemyController>().TakeDamage(damage);
+                //collision.gameObject.GetComponent<BaseEnemyController>().TakeDamage(damage);
                 gameObject.SetActive(false);
             }
             else if (colliderTag == GameManager.TAG_SOLIDTILE || colliderTag == GameManager.TAG_BOUNDARY)
@@ -49,6 +49,8 @@ namespace fym
 
         void Update()
         {
+            //gameObject.transform.position += (Vector3)direction * speed * Time.deltaTime;
+            gameObject.transform.Translate(direction * speed * Time.deltaTime);
             lifeTime -= Time.deltaTime;
             if (lifeTime <= 0)
             {

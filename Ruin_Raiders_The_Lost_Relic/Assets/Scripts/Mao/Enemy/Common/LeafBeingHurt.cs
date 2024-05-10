@@ -9,8 +9,11 @@ namespace MBT
     [AddComponentMenu("")]
     public class LeafBeingHurt : BaseNPCLeafNode
     {
+
         public override NodeResult Execute()
         {
+
+            Debug.Log("Executing LeafBeingHurt");
             return  NodeResult.success;
         }
     }

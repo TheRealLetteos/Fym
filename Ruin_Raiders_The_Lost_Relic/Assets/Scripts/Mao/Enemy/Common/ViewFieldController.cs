@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using fym;
@@ -12,6 +12,8 @@ namespace MBT
 
         public bool targetInRange { get; private set; } = false;
 
+        public Transform targetTransform { get; private set; }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag("Player"))
@@ -19,15 +21,16 @@ namespace MBT
                 Debug.Log("Player entering vision");
 
                 //commented for testing
-                /*if (!Physics2D.Raycast(
+                if (!Physics2D.Raycast(
                     transform.position,
                     collision.transform.position - transform.position,
                     Vector2.Distance(transform.position, collision.transform.position),
                     LayerMask.GetMask("Ground", "Water", "Enemy", "VisionRange", "Projectile", "Default")))
                 {
                     Debug.Log("Player layer detected");
-                }*/
+                }
                 targetInRange = true;
+                targetTransform = collision.transform;
             }
         }
 
@@ -37,6 +40,7 @@ namespace MBT
             {
                 Debug.Log("Player exiting vision");
                 targetInRange = false;
+                targetTransform = null;
             }
 
         }
@@ -54,7 +58,7 @@ namespace MBT
                 {
                     Debug.Log("Player layer detected");
                 }*/
-                targetInRange = true;
+                //targetInRange = true;
             }
 
         }

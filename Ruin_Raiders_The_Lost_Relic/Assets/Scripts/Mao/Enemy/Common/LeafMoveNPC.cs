@@ -15,6 +15,7 @@ namespace MBT
         public FloatReference movementRange;
         public FloatReference speed;
         public float minDistance = 0f;
+        public float maxTime = 5f;
 
         public override NodeResult Execute()
         {
@@ -25,8 +26,9 @@ namespace MBT
             float speed = this.speed.Value;
             // Move as long as distance is greater than min. distance
             float dist = Vector2.Distance(target, obj.position);
-            if (dist > minDistance)
+            if (maxTime > 0 && dist > minDistance)
             {
+                maxTime -= Time.deltaTime;
                 // Move towards target
                 obj.position = Vector2.MoveTowards(
                     obj.position,
@@ -37,6 +39,7 @@ namespace MBT
             }
             else
             {
+                maxTime = 5f;
                 return NodeResult.success;
             }
         }

@@ -8,31 +8,40 @@ namespace fym
     public class GameObjectPool : MonoBehaviour, IPool<GameObject>
     {
 
+        public int npcLevel = 1;
+
+        public string poolName;
+
+        public int MaxPoolSize { get; set; } = 40;
+
         [SerializeField] private bool autoResize = false;
 
         [SerializeField]
         private GameObject prefab;
 
         [SerializeField]
-        private int poolSize = 10;
+        public int poolSize = 10;
 
         [SerializeField]
-        public GameObject[] pool { get; private set; }
+        public List<GameObject> pool { get; private set; }
 
         private int availableIndex = 0;
 
-        void Awake()
+        void Start()
         {
+            availableIndex = 0;
             if (poolSize <= 0)
             {
                 Debug.LogWarning("Pool size must be greater than 0");
                 return;
             }
-            pool = new GameObject[poolSize];
+            pool = new List<GameObject>();
             for (int i = 0; i < poolSize; i++)
             {
-                pool[i] = Instantiate(prefab, transform);
-                pool[i].SetActive(false);
+                GameObject go = Instantiate(prefab, transform);
+                go.SetActive(false);
+                pool.Add(go);
+                Debug.Log("Object :" + pool[i].name + " created");
             };
         }
 
@@ -53,23 +62,21 @@ namespace fym
                 Debug.LogWarning("No available object in pool");
                 if(autoResize)
                 {
-                    GameObject[] newPool = new GameObject[poolSize * 2];
-                    for (int i = 0; i < poolSize; i++)
+                    for (int i = poolSize; i < Mathf.Min(MaxPoolSize, poolSize * 2); i++)
                     {
-                        newPool[i] = pool[i];
+                        GameObject go = Instantiate(prefab, transform);
+                        go.SetActive(false);
+                        pool.Add(go);
                     }
-                    for (int i = poolSize; i < poolSize * 2; i++)
-                    {
-                        newPool[i] = Instantiate(prefab, transform);
-                        newPool[i].SetActive(false);
-                    }
-                    pool = newPool;
-                    poolSize *= 2;
+                    poolSize = Mathf.Min(MaxPoolSize, poolSize * 2);
                 }
                 else
+                {
+                    Debug.Log("Get no object in pool");
                     return null;
+                }
             }
-
+            Debug.Log("Get object from pool");
             GameObject objFromPool = pool[availableIndex++];
             objFromPool.SetActive(true);
             return objFromPool;
