@@ -13,7 +13,7 @@ namespace MBT
         public override NodeResult Execute()
         {
 
-            Debug.Log("Executing LeafBeingHurt");
+            //Debug.Log("Executing LeafBeingHurt");
             return  NodeResult.success;
         }
     }

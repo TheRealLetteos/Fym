@@ -1,7 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Panda;
 
 namespace fym.ai.panda
 {
@@ -9,7 +8,6 @@ namespace fym.ai.panda
     {
         public bool isRemoteAttack;
 
-        [Task]
         public void Attack()
         {
             Debug.Log("Executing LeafAttack");
@@ -26,7 +24,7 @@ namespace fym.ai.panda
                 npcTransform.variableRef.GetComponent<BaseEnemyController>().Attack(
                     targetTransform.variableRef.GetComponent<Player>());
             }
-            ThisTask.Succeed();
+            //ThisTask.Succeed();
         }
     }
 }

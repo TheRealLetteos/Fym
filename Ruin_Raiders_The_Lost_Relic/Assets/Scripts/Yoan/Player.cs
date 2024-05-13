@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -115,7 +115,7 @@ namespace fym
         {
             // Tells which direction the player moves
             _moveDirection = x;
-            Debug.Log(x);
+            //Debug.Log(x);
             
         }
 

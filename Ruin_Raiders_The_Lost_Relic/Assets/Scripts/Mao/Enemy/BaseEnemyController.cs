@@ -16,8 +16,6 @@ namespace fym
 
         public float physicalDamage = 1.0f;
 
-        public GameObjectPool projectilePool = null;
-
         private bool isBeingAttacked = false;
 
         private bool isAttacking = false;
@@ -39,22 +37,17 @@ namespace fym
         {
             Debug.Log("NPC is shooting at player.");
             isAttacking = true;
-            if(projectilePool == null)
+            GameObject magicbolt = ProjectilePoolManager.Instance.GetProjectileByPoolName(GameManager.MAGICBOLT_POOL_NAME);
+            if (magicbolt == null)
             {
-                Debug.Log("Projectile pool is not set.");
+                Debug.Log("Magic bolt is null.");
                 return;
             }
-            GameObject projectile = projectilePool.GetObject();
-            if (projectile == null)
-            {
-                Debug.Log("Projectile pool is empty.");
-                return;
-            }
-            projectile.transform.position = transform.position;
-            projectile.GetComponent<Rigidbody2D>().AddForce(direction * 10, ForceMode2D.Impulse);
-            BaseProjectileController projectileController = projectile.GetComponent<BaseProjectileController>();
+            magicbolt.transform.position = transform.position;
+            //magicbolt.GetComponent<Rigidbody2D>().AddForce(direction * 10, ForceMode2D.Impulse);
+            BaseProjectileController projectileController = magicbolt.GetComponent<BaseProjectileController>();
             projectileController.direction = direction;
-            projectile.SetActive(true);
+            magicbolt.SetActive(true);
             Debug.Log("NPC has shot a projectile.");
         }
 
@@ -76,10 +69,6 @@ namespace fym
 
         public void Die()
         {
-            if (projectilePool != null)
-            {
-                projectilePool.Reinitialize();
-            }
             health = maxHealth;
             isBeingAttacked = false;
             gameObject.SetActive(false);

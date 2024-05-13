@@ -18,7 +18,7 @@ namespace MBT
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                Debug.Log("Player entering vision");
+                //Debug.Log("Player entering vision");
 
                 //commented for testing
                 if (!Physics2D.Raycast(
@@ -27,7 +27,7 @@ namespace MBT
                     Vector2.Distance(transform.position, collision.transform.position),
                     LayerMask.GetMask("Ground", "Water", "Enemy", "VisionRange", "Projectile", "Default")))
                 {
-                    Debug.Log("Player layer detected");
+                    //Debug.Log("Player layer detected");
                 }
                 targetInRange = true;
                 targetTransform = collision.transform;
@@ -38,7 +38,7 @@ namespace MBT
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                Debug.Log("Player exiting vision");
+                //Debug.Log("Player exiting vision");
                 targetInRange = false;
                 targetTransform = null;
             }
@@ -49,7 +49,7 @@ namespace MBT
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                Debug.Log("Player tag detected");
+                //Debug.Log("Player tag detected");
                 /*if (!Physics2D.Raycast(
                     transform.position,
                     collision.transform.position - transform.position,

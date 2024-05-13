@@ -49,13 +49,6 @@ namespace fym
 
         public static string MAGICBOLT_POOL_NAME { get; private set; } = "MagicBoltPool";
 
-
-        [SerializeField]
-        public List<GameObjectPool> npcPools = new List<GameObjectPool>();
-
-        [SerializeField]
-        public List<GameObjectPool> projectilePools = new List<GameObjectPool>();
-
         protected override void Awake()
         {
             if (Instance == null)
@@ -84,21 +77,9 @@ namespace fym
             };
         }
 
-        public GameObjectPool GetNPCPool(string key)
-        {
-            for(int i = 0; i < npcPools.Count; i++)
-            {
-                if (npcPools[i].poolName == key)
-                {
-                    return npcPools[i];
-                }
-            }
-            return null;
-        }
-
         public void LoadScene(string sceneName)
         {
-            SceneManager.LoadSceneAsync(sceneName);
+            SceneManager.LoadScene(sceneName);
             BaseNPCSpawner.SpawnNPCs(LevelConfig.GetNextLevelConfig());
         }
 

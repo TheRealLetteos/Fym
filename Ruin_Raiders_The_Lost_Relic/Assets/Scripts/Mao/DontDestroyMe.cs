@@ -11,15 +11,15 @@ namespace fym
     public class DontDestroyMe : MonoBehaviour
     {
 
-        public List<GameObject> DeactivateOnLoadList = new List<GameObject>();
+        //public List<GameObject> DeactivateOnLoadList = new List<GameObject>();
 
         void Awake()
         {
             DontDestroyOnLoad(gameObject);
-            foreach (GameObject go in DeactivateOnLoadList)
+            /*foreach (GameObject go in DeactivateOnLoadList)
             {
                 go.SetActive(false);
-            }
+            }*/
         }
 
     }

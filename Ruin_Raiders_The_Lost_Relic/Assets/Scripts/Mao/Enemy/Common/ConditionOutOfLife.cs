@@ -12,10 +12,10 @@ namespace MBT
     {
         public override bool Check()
         {
-            Debug.Log("Checking if target is in range");
+            //Debug.Log("Checking if target is in range");
             bool ret = agentTransform.Value.gameObject.activeSelf &&
                         agentTransform.Value.GetComponent<BaseEnemyController>().IsDead();
-            Debug.Log("Enemy is dead? " + ret);
+            //Debug.Log("Enemy is dead? " + ret);
             return ret;
         }
         

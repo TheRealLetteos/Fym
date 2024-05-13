@@ -12,17 +12,40 @@ namespace fym
         private Dictionary<int, List<GameObjectPool>> levelingNPCPools =
             new Dictionary<int, List<GameObjectPool>>();
 
+
+
         public List<GameObjectPool> allNPCPools = new List<GameObjectPool>();
+
+        public static NPCPoolManager Instance { get; private set; }
+
+        public static int MAX_NPC_LEVEL = 0;
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
+        }
 
         private void Start()
         {
             foreach (GameObjectPool pool in allNPCPools)
             {
+                pool.initialize();
                 if (!levelingNPCPools.ContainsKey(pool.npcLevel))
                 {
                     levelingNPCPools[pool.npcLevel] = new List<GameObjectPool>();
                 }
                 levelingNPCPools[pool.npcLevel].Add(pool);
+                if (pool.npcLevel > MAX_NPC_LEVEL)
+                {
+                    MAX_NPC_LEVEL = pool.npcLevel;
+                }
             }
         }
 

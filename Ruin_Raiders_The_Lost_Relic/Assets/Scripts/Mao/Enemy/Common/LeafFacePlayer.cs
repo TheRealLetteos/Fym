@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using fym;
@@ -11,7 +11,7 @@ namespace MBT
     {
         public override NodeResult Execute()
         {
-            Debug.Log("Executing LeafFacePlayer");
+            //Debug.Log("Executing LeafFacePlayer");
             BaseEnemyController  enemy = agentTransform.Value.GetComponent<BaseEnemyController>();
             return NodeResult.success;
         }

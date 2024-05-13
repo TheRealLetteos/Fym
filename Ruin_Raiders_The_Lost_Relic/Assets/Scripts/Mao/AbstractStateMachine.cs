@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,14 +27,14 @@ namespace fym
 
         protected virtual void Update()
         {
-            Debug.Log(GetType() + "Current state:" +  m_currentState.GetType());
+            //Debug.Log(GetType() + "Current state:" +  m_currentState.GetType());
             m_currentState.OnUpdate();
             TryStateTransition();
         }
 
         protected virtual void FixedUpdate()
         {
-            Debug.Log(GetType() + "Current state:" + m_currentState.GetType());
+            //Debug.Log(GetType() + "Current state:" + m_currentState.GetType());
             m_currentState.OnFixedUpdate();
         }
 

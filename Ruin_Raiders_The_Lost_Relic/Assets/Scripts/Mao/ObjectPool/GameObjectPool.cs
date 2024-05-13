@@ -27,8 +27,9 @@ namespace fym
 
         private int availableIndex = 0;
 
-        void Start()
+        public void initialize()
         {
+            Debug.Log(poolName + " is initializing...");
             availableIndex = 0;
             if (poolSize <= 0)
             {
@@ -78,7 +79,6 @@ namespace fym
             }
             Debug.Log("Get object from pool");
             GameObject objFromPool = pool[availableIndex++];
-            objFromPool.SetActive(true);
             return objFromPool;
         }
 

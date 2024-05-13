@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Panda;
 
 namespace fym.ai.panda
 {
@@ -28,7 +27,6 @@ namespace fym.ai.panda
 
         protected BlackboardTransform targetTransform;
 
-        [Task]
         public virtual void OnEnter()
         {
             if(npcTransformKey != null)
@@ -45,7 +43,6 @@ namespace fym.ai.panda
             }
         }
 
-        [Task]
         public virtual void OnExit()
         {
             if (animator != null && nodeAnimationKey != null)

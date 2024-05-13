@@ -19,8 +19,8 @@ namespace MBT
 
         public override NodeResult Execute()
         {
-            Debug.Log("Executing LeafMoveNPC");
-            Debug.Log("Target position: " + targetPosition.Value);
+            //Debug.Log("Executing LeafMoveNPC");
+            //Debug.Log("Target position: " + targetPosition.Value);
             Vector2 target = targetPosition.Value;
             Transform obj = agentTransform.Value;
             float speed = this.speed.Value;

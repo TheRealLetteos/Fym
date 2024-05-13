@@ -1,5 +1,4 @@
-using Panda;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +20,6 @@ namespace fym.ai.panda
             destinationPosition = PandaBTBlackboard.Instance.GetVector3Ref(destinationVector3Key);
         }
 
-        [Task]
         public void MoveTo()
         {
             Debug.Log("Executing LeafMoveNPC");
@@ -34,9 +32,9 @@ namespace fym.ai.panda
             float dist = Vector2.Distance(destination, npc.position);
             if (dist > 0.001)
             {
-                ThisTask.debugInfo = "";
-                if (ThisTask.isInspected)
-                    ThisTask.debugInfo = string.Format("d={0:0.000}", dist);
+                //ThisTask.debugInfo = "";
+                //if (ThisTask.isInspected)
+                //    ThisTask.debugInfo = string.Format("d={0:0.000}", dist);
                 // Move towards target
                 npc.position = Vector2.MoveTowards(
                     npc.position,
@@ -46,8 +44,7 @@ namespace fym.ai.panda
             }
             else
             {
-                ThisTask.Succeed();
-                ThisTask.debugInfo = "d=0.000";
+                //ThisTask.Succeed();
             }
             
         }

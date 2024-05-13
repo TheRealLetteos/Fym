@@ -15,7 +15,7 @@ namespace MBT
 
         public override NodeResult Execute()
         {
-            Debug.Log("Executing LeafRandomTargetPosition");
+            //Debug.Log("Executing LeafRandomTargetPosition");
             var pos = Random.insideUnitCircle * movementRange.Value;
             float x = pos.x + agentTransform.Value.position.x;
             float y = agentTransform.Value.position.y;

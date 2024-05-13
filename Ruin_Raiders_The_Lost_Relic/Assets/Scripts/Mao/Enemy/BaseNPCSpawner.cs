@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using fym;
+using System.Collections.Generic;
 using UnityEngine;
 /**
 * abstract factory pattern will be applied to this class
@@ -10,6 +11,8 @@ public class BaseNPCSpawner
     public static List<GameObject> GenerateGameObjectsForLevel(LevelConfig config)
     {
 
+        List<GameObject> ret = new List<GameObject>();
+
         float sumOfEnemyLevels = config.enemyLevel * config.enemyCount;
 
         int maxNPCLevel = (int)Mathf.Ceil(config.enemyLevel);
@@ -20,19 +23,36 @@ public class BaseNPCSpawner
         }
 
         float totalNPCLevels = 0;
+        int currentNpcLevel = maxNPCLevel;
         while(totalNPCLevels < sumOfEnemyLevels)
         {
+            if(currentNpcLevel + totalNPCLevels >= sumOfEnemyLevels)
+            {
+                currentNpcLevel = minNPCLevel;
+            }
 
-            totalNPCLevels += Random.Range(minNPCLevel, maxNPCLevel + 1);
+            GameObject npc = NPCPoolManager.Instance.GetRandomNPCByLevel(currentNpcLevel);
+            if(npc != null)
+            {
+                ret.Add(npc);
+            }
+            else
+            {
+                Debug.LogWarning("NPC not found for level " + currentNpcLevel);
+            }
+            totalNPCLevels += currentNpcLevel;
         }
-
-        List<GameObject> npcs = new List<GameObject>();
-        for (int i = 0; i < config.enemyCount; i++)
+        if(ret.Count > 0)
         {
-            GameObject npc = new GameObject();
-            npcs.Add(npc);
+            Debug.Log("NPCs generated for level " + config.enemyLevel + ": " + ret.Count);
+            return ret;
         }
-        return npcs;
+        else
+        {
+            Debug.LogWarning("No NPCs generated for level " + config.enemyLevel);
+            return null;
+        }
+        //return ret.Count > 0 ? ret : null;
     }
 
     public static Vector2[] PickSpawnPositions(int spawnCount, float screenWidth, float screenHeight, float spawnDensity, float spawnRange)
@@ -69,12 +89,14 @@ public class BaseNPCSpawner
 
     public static void SpawnNPCs(List<GameObject> npcs, Vector2[] spawnPositions)
     {
+        int maxIndex = 0;
         if(npcs.Count != spawnPositions.Length)
         {
             Debug.LogWarning("NPC count does not match spawn position count.");
-            return;
+            //return;
         }
-        for (int i = 0; i < spawnPositions.Length; i++)
+        maxIndex = Mathf.Min(npcs.Count, spawnPositions.Length);
+        for (int i = 0; i < maxIndex; i++)
         {
             Vector2 spawnPosition = spawnPositions[i];
             GameObject npc = npcs[i];
@@ -86,7 +108,7 @@ public class BaseNPCSpawner
 
     public static void SpawnNPCs(List<GameObject> npcs, int spawnCount, float screenWidth, float screenHeight, float spawnDensity, float spawnRange)
     {
-        Vector2[] spawnPositions = PickSpawnPositions(spawnCount, screenWidth, screenHeight, spawnDensity, spawnRange);
+        Vector2[] spawnPositions = PickSpawnPositions(npcs.Count, screenWidth, screenHeight, spawnDensity, spawnRange);
         SpawnNPCs(npcs, spawnPositions);
     }
 

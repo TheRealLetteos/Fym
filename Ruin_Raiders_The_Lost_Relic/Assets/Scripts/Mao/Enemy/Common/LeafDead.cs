@@ -11,7 +11,7 @@ namespace MBT
     {
         public override NodeResult Execute()
         {
-            Debug.Log("Executing LeafDead");
+            //Debug.Log("Executing LeafDead");
             agentTransform.Value.GetComponent<BaseEnemyController>().Die();
             return NodeResult.success;
         }
