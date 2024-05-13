@@ -111,6 +111,7 @@ MonoBehaviour:
   _tr: {fileID: 1470604054041327254}
   _dashStrength: 50
   _repulsionForce: 100
+  _gravity: 5
   _attackRange: 0.5
   _enemyLayer:
     serializedVersion: 2
