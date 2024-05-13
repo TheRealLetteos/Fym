@@ -52,9 +52,10 @@ namespace fym
 
         [SerializeField] private Transform groundCheck;
         [SerializeField] private LayerMask groundLayer;
-        [SerializeField] private Image[] hearts;
-        [SerializeField] private GameObject _restartUI;
-        [SerializeField] private GameObject _inventoryUI;
+        
+        private GameObject _restartUI;
+        private GameObject _inventoryUI;
+        private Image[] hearts;
 
 
         // Start is called before the first frame update
@@ -73,6 +74,19 @@ namespace fym
             _rend = GetComponent<Renderer>();
             _spriteColor = _rend.material.color;
             
+            GameObject healthParent = GameObject.Find("Health");
+            hearts = new Image[3];
+            for (int i = 0; i < hearts.Length; i++)
+            {
+                Transform heartTransform = healthParent.transform.Find("Heart" + (i + 1));
+                hearts[i] = heartTransform.GetComponent<Image>();
+            }
+            GameObject canvasObject = GameObject.Find("Canvas");
+            Transform inventoryUITransform = canvasObject.transform.Find("Inventory");
+            _inventoryUI = inventoryUITransform.gameObject;
+            Transform restartUITransform = canvasObject.transform.Find("ReplayScreen");
+            _restartUI = restartUITransform.gameObject;
+
             _life = 3;
             UpdateHealth();
         }
