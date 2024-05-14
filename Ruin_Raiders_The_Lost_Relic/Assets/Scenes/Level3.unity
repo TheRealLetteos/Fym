@@ -133,11 +133,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 953555697615918517, guid: c028a6a7db89e07438acc8cc1a271eac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.57
+      value: 9.11
       objectReference: {fileID: 0}
     - target: {fileID: 953555697615918517, guid: c028a6a7db89e07438acc8cc1a271eac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.47
+      value: -6.66
       objectReference: {fileID: 0}
     - target: {fileID: 953555697615918517, guid: c028a6a7db89e07438acc8cc1a271eac, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11915,7 +11915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 121569101058436340, guid: 2e871042d3289dc4590978a861773d1b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.273851
+      value: 7.35
       objectReference: {fileID: 0}
     - target: {fileID: 121569101058436340, guid: 2e871042d3289dc4590978a861773d1b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11982,16 +11982,20 @@ PrefabInstance:
       value: PuzzleOfficiel
       objectReference: {fileID: 0}
     - target: {fileID: 8331018639300914886, guid: 2e871042d3289dc4590978a861773d1b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.72084963
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331018639300914886, guid: 2e871042d3289dc4590978a861773d1b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.1744689
+      value: 0.83607507
       objectReference: {fileID: 0}
     - target: {fileID: 8331018639300914886, guid: 2e871042d3289dc4590978a861773d1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.54
+      value: 8.4
       objectReference: {fileID: 0}
     - target: {fileID: 8331018639300914886, guid: 2e871042d3289dc4590978a861773d1b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 26.59
+      value: 26.21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
