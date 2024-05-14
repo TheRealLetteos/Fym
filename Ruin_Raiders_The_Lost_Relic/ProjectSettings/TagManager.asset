@@ -25,11 +25,11 @@ TagManager:
   - Item
   - puzzle
   - Enemy
-  - VisionRange
+  - 
   - Player
   - Projectile
   - Decoration
-  - 
+  - VisionRange
   - 
   - 
   - 

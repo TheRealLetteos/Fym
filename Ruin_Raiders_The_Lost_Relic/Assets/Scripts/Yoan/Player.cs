@@ -17,10 +17,14 @@ namespace fym
         private bool _canDoubleJump = false;
         private bool _canDash = true;
         private bool _isFacingRight = true;
+        private Color _spriteColor;
+        private Renderer _rend;
 
         [SerializeField] private TrailRenderer _tr;
         [SerializeField] protected int _dashStrength;
         [SerializeField] private float _repulsionForce;
+        [SerializeField] private float _gravity;
+        private Vector2 _vecGravity;
         [SerializeField] private float _attackRange = 1.5f;
         [SerializeField] private LayerMask _enemyLayer;
         private RaycastHit2D[] _hits;
@@ -48,9 +52,10 @@ namespace fym
 
         [SerializeField] private Transform groundCheck;
         [SerializeField] private LayerMask groundLayer;
-        [SerializeField] private Image[] hearts;
-        [SerializeField] private GameObject _restartUI;
-        [SerializeField] private GameObject _inventoryUI;
+        
+        private GameObject _restartUI;
+        private GameObject _inventoryUI;
+        private Image[] hearts;
 
 
         // Start is called before the first frame update
@@ -66,9 +71,32 @@ namespace fym
 
             //Get player rigidbody
             _rb = GetComponent<Rigidbody2D>();
+            _rend = GetComponent<Renderer>();
+            _spriteColor = _rend.material.color;
             
+            GameObject healthParent = GameObject.Find("Health");
+            hearts = new Image[3];
+            for (int i = 0; i < hearts.Length; i++)
+            {
+                Transform heartTransform = healthParent.transform.Find("Heart" + (i + 1));
+                hearts[i] = heartTransform.GetComponent<Image>();
+            }
+            GameObject canvasObject = GameObject.Find("Canvas");
+            Transform inventoryUITransform = canvasObject.transform.Find("Inventory");
+            _inventoryUI = inventoryUITransform.gameObject;
+            Transform restartUITransform = canvasObject.transform.Find("ReplayScreen");
+            _restartUI = restartUITransform.gameObject;
+
             _life = 3;
             UpdateHealth();
+        }
+
+        private void Update()
+        {
+            if (_rb.velocity.y < 0)
+            {
+                _rb.velocity += Vector2.up * Physics2D.gravity.y * (_gravity - 1) * Time.deltaTime;
+            }
         }
 
         private void Inventory()
@@ -100,8 +128,16 @@ namespace fym
 
         IEnumerator WaitHurtTime()
         {
+            Physics2D.IgnoreLayerCollision(8, 10, true);
+            _spriteColor.a = 0.5f;
+            _rend.material.color = _spriteColor;
             yield return new WaitForSeconds(0.5f);
             _isHurt = false;
+            yield return new WaitForSeconds(1.5f);
+            Physics2D.IgnoreLayerCollision(8, 10, false);
+            _spriteColor.a = 1f;
+            _rend.material.color = _spriteColor;
+            
         }
 
         void FixedUpdate()
@@ -182,6 +218,8 @@ namespace fym
                 _audioShortSource.Play();
             }
         }
+
+       
 
         public override void Attack()
         {
