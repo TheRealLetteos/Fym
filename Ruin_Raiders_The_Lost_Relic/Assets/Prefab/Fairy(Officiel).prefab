@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 7285283603808492814}
+  selectedEditorNode: {fileID: 2467935162872230763}
   repeatOnFinish: 0
   maxExecutionsPerTick: 60
   parent: {fileID: 0}
@@ -968,8 +968,8 @@ MonoBehaviour:
   title: Dead
   rect:
     serializedVersion: 2
-    x: -337
-    y: -64.8
+    x: -326
+    y: -63.800003
     width: 160
     height: 44
   parent: {fileID: 6835700208019623871}
@@ -1043,8 +1043,8 @@ MonoBehaviour:
   title: Being Hurt
   rect:
     serializedVersion: 2
-    x: -206
-    y: -234.8
+    x: -196
+    y: -240.80002
     width: 160
     height: 44
   parent: {fileID: 8174634446139580587}

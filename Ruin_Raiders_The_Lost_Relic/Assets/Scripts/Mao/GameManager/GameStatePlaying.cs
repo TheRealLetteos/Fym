@@ -25,7 +25,8 @@ namespace fym
             mainMenuAudio = audioManager.GetComponent<AudioSource>();
             mainMenuAudio.Stop();
             //--------------------------------------------------------
-            GameManager.Instance.LoadScene(GameManager.LOBBY_SCENE, GameManager.SAMPLE_SCENE, false);
+            GameManager.Instance.LoadScene(
+                GameManager.LOBBY_SCENE, GameManager.SAMPLE_SCENE, false);
             //BaseNPCSpawner.SpawnNPCs(LevelConfig.GetNextLevelConfig());
 
         }

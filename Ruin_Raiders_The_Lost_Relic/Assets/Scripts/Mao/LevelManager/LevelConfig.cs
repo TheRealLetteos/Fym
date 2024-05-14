@@ -1,6 +1,6 @@
 ﻿
 using System;
-
+using System.Numerics;
 
 namespace fym
 {
@@ -38,11 +38,13 @@ namespace fym
 
         public float spawnRange { get; private set; }
 
-        public float screenWidth { get; private set; }
+        public float screenWidth { get; set; }
 
-        public float screenHeight { get; private set; }
+        public float screenHeight { get; set; }
 
         public float levelDifficulty { get; private set; }
+
+        public Vector2 screenCenterPos { get; private set; }
 
         public LevelConfig(
             int levelNumber = 1,

@@ -55,7 +55,7 @@ public class BaseNPCSpawner
         //return ret.Count > 0 ? ret : null;
     }
 
-    public static Vector2[] PickSpawnPositions(int spawnCount, float screenWidth, float screenHeight, float spawnDensity, float spawnRange)
+    public static Vector2[] PickSpawnPositions(int spawnCount, Vector2 screenCenter, float screenWidth, float screenHeight, float spawnDensity, float spawnRange)
     {
         Vector2[] spawnPositions = new Vector2[spawnCount];
         int spawnIndex = 0;
@@ -80,14 +80,14 @@ public class BaseNPCSpawner
             }
             if (validSpawn)
             {
-                spawnPositions[spawnIndex] = spawnPosition;
+                spawnPositions[spawnIndex] = spawnPosition + screenCenter;
                 spawnIndex++;
             }
         }
         return spawnPositions;
     }
 
-    public static void SpawnNPCs(List<GameObject> npcs, Vector2[] spawnPositions)
+    public static void SpawnNPCs(List<GameObject> npcs, Vector2 screenCenter, Vector2[] spawnPositions)
     {
         int maxIndex = 0;
         if(npcs.Count != spawnPositions.Length)
@@ -100,21 +100,21 @@ public class BaseNPCSpawner
         {
             Vector2 spawnPosition = spawnPositions[i];
             GameObject npc = npcs[i];
+            npc.GetComponent<BaseEnemyController>().Initialize();
             npc.transform.position = spawnPosition;
-            npc.SetActive(true);
         }
     }
 
 
-    public static void SpawnNPCs(List<GameObject> npcs, int spawnCount, float screenWidth, float screenHeight, float spawnDensity, float spawnRange)
+    public static void SpawnNPCs(List<GameObject> npcs, Vector2 screenCenter, int spawnCount, float screenWidth, float screenHeight, float spawnDensity, float spawnRange)
     {
-        Vector2[] spawnPositions = PickSpawnPositions(npcs.Count, screenWidth, screenHeight, spawnDensity, spawnRange);
-        SpawnNPCs(npcs, spawnPositions);
+        Vector2[] spawnPositions = PickSpawnPositions(npcs.Count, screenCenter, screenWidth, screenHeight, spawnDensity, spawnRange);
+        SpawnNPCs(npcs, screenCenter, spawnPositions);
     }
 
-    public static void SpawnNPCs(LevelConfig levelConfig)
+    public static void SpawnNPCs(LevelConfig levelConfig, Vector2 screenCenter)
     {
-        SpawnNPCs(GenerateGameObjectsForLevel(levelConfig),
+        SpawnNPCs(GenerateGameObjectsForLevel(levelConfig), screenCenter,
             levelConfig.enemyCount, levelConfig.screenWidth, levelConfig.screenHeight, levelConfig.spawnDensity, levelConfig.spawnRange);
     }
 

@@ -14,7 +14,7 @@ namespace MBT
     {
         
         // The animator of the enemy
-        public Animator animator;
+        private Animator animator;
 
         // The transform of the enemy
         public TransformReference agentTransform;
@@ -24,12 +24,22 @@ namespace MBT
         // The key of the animation
         public string nodeAnimationKey = null;
 
+        void Awake()
+        {
+            animator = agentTransform.Value.GetComponent<Animator>();
+        }
+
         public override void OnEnter()
         {
             base.OnEnter();
             if (animator != null && nodeAnimationKey != null)
             {
                 animator.SetBool(nodeAnimationKey, true);
+                Debug.Log("Animator has set key " + nodeAnimationKey + " to true");
+            }
+            else
+            {
+                Debug.LogError("Animator or nodeAnimationKey is null");
             }
         }
 
@@ -39,6 +49,11 @@ namespace MBT
             if (animator != null && nodeAnimationKey != null)
             {
                 animator.SetBool(nodeAnimationKey, false);
+                Debug.Log("Animator has set key " + nodeAnimationKey + " to false");
+            }
+            else
+            {
+                Debug.LogError("Animator or nodeAnimationKey is null");
             }
         }
 

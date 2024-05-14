@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace fym
 {
-    public class BaseEnemyController : MonoBehaviour
+    public class BaseEnemyController : IPoolingObject
     {
 
         public string npcName;
@@ -24,9 +24,12 @@ namespace fym
 
         private bool isAttacking = false;
 
-        void Awake()
+        public override void Initialize()
         {
+            gameObject.SetActive(true);
             health = maxHealth;
+            isBeingAttacked = false;
+            isAttacking = false;
         }
 
         public void Attack(Player player)
@@ -49,11 +52,7 @@ namespace fym
                 return;
             }
             BaseProjectileController projectileController = projectile.GetComponent<BaseProjectileController>();
-            /*projectile.SetActive(true);
-            projectile.transform.position = transform.position;
-            projectileController.direction = direction;*/
             projectileController.Initialize(transform.position, direction);
-            //projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileController.speed;
             Debug.Log("NPC has shot a projectile.");
         }
 
@@ -77,7 +76,8 @@ namespace fym
         {
             health = maxHealth;
             isBeingAttacked = false;
-            NPCPoolManager.Instance.ReturnNPCToPool(npcName, gameObject);
+            gameObject.SetActive(false);
+            //NPCPoolManager.Instance.ReturnNPCToPool(npcName, gameObject);
         }
 
         public bool IsBeingAttacked()

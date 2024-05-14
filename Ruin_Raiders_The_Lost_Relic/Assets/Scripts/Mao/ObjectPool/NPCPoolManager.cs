@@ -37,7 +37,7 @@ namespace fym
         {
             foreach (GameObjectPool pool in allNPCPools)
             {
-                pool.initialize();
+                pool.Initialize();
                 if(!npcPools.ContainsKey(pool.poolName))
                 {
                     npcPools[pool.poolName] = pool;
@@ -79,7 +79,7 @@ namespace fym
             return null;
         }
 
-        public void ReturnNPCToPool(string poolName, GameObject npc)
+        /*public void ReturnNPCToPool(string poolName, GameObject npc)
         {
             if(npcPools.ContainsKey(poolName))
             {
@@ -89,7 +89,7 @@ namespace fym
             {
                 Destroy(npc);
             }
-        }
+        }*/
 
     }
 }

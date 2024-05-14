@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9151569647796051278}
   - component: {fileID: 4487590750621276512}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Bolt
-  m_TagString: Projectile
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2032609063
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.9716981, g: 0.59234786, b: 0.2979263, a: 1}
@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 7230693094433629643}
   - component: {fileID: 962506417096347051}
   - component: {fileID: 8642179708594002977}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: MagicBolt
-  m_TagString: Projectile
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,9 +166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileName: MagicBolt
-  speed: 1
-  lifeTime: 2
+  speed: 3
+  lifeTime: 3
   damage: 1
-  range: 10
+  range: 8
   direction: {x: 0, y: 0, z: 0}
   ownerTag: Enemy

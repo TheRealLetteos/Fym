@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 namespace fym
 {
@@ -82,15 +83,21 @@ namespace fym
         {
             if(async)
             {
-                //StartCoroutine("AsyncUnloadScene", oldSceneName);
+                StartCoroutine("AsyncUnloadScene", oldSceneName);
                 StartCoroutine("AsyncLoadScene", sceneName);
             }
             else
             {
                 //StartCoroutine("AsyncUnloadScene", oldSceneName);
-                SceneManager.UnloadScene(oldSceneName);
+                //SceneManager.UnloadScene(oldSceneName);
                 SceneManager.LoadScene(sceneName);
-                BaseNPCSpawner.SpawnNPCs(LevelConfig.GetNextLevelConfig());
+                StartCoroutine("OnSceneLoaded");
+
+                /*GameObject ground = GameObject.Find("Ground");
+                LevelConfig config = LevelConfig.GetNextLevelConfig();
+                config.screenWidth = ground.GetComponent<TilemapRenderer>().bounds.size.x;
+                config.screenHeight = ground.GetComponent<TilemapRenderer>().bounds.size.y;
+                BaseNPCSpawner.SpawnNPCs(config, ground.transform.position);*/
                 //StartCoroutine("AsyncLoadScene", sceneName);
                 //SceneManager.LoadScene(sceneName);
             }
@@ -103,6 +110,7 @@ namespace fym
             {
                 yield return null;
             }
+            Debug.Log("Scene " + SceneManager.GetActiveScene().name + " is unloaded");
         }
 
         public IEnumerable AsyncLoadScene(string sceneName)
@@ -116,15 +124,17 @@ namespace fym
 
             while (!asyncLoad.isDone)
             {
-                if (asyncLoad.progress >= 0.95f)
+                /*if (asyncLoad.progress >= 0.95f)
                 {
+                    Debug.Log("Scene " + sceneName + " is loaded");
                     asyncLoad.allowSceneActivation = true;
-                }
+                }*/
 
                 yield return null;
             }
+            asyncLoad.allowSceneActivation = true;
 
-            Debug.Log("new level loaded...");
+            Debug.Log("new level " + sceneName + " loaded...");
             StartCoroutine("OnSceneLoaded");
             //BaseNPCSpawner.SpawnNPCs(LevelConfig.GetNextLevelConfig());
         }
@@ -132,7 +142,11 @@ namespace fym
         public IEnumerable OnSceneLoaded()
         {
             yield return new WaitForSeconds(1);
-            BaseNPCSpawner.SpawnNPCs(LevelConfig.currentLevelConfig);
+            GameObject ground = GameObject.Find("Ground");
+            LevelConfig config = LevelConfig.GetNextLevelConfig();
+            config.screenWidth = ground.GetComponent<TilemapRenderer>().bounds.size.x;
+            config.screenHeight = ground.GetComponent<TilemapRenderer>().bounds.size.y;
+            BaseNPCSpawner.SpawnNPCs(config, ground.transform.position);
         }
     }
 

@@ -8,6 +8,8 @@ namespace fym
     public class GameObjectPool : MonoBehaviour, IPool<GameObject>
     {
 
+        public bool isDebug = false;
+
         public int npcLevel = 1;
 
         public string poolName;
@@ -22,12 +24,13 @@ namespace fym
         [SerializeField]
         public int poolSize = 10;
 
-        [SerializeField]
-        public Queue<GameObject> pool { get; private set; }
+        public List<GameObject> pool { get; private set; } = new List<GameObject>();
+
+        private List<int> activity = new List<int>();
 
         //private int availableIndex = 0;
 
-        public void initialize()
+        public void Initialize()
         {
             Debug.Log(poolName + " is initializing...");
             //availableIndex = 0;
@@ -36,12 +39,12 @@ namespace fym
                 Debug.LogWarning("Pool size must be greater than 0");
                 return;
             }
-            pool = new Queue<GameObject>();
             for (int i = 0; i < poolSize; i++)
             {
                 GameObject go = Instantiate(prefab, transform);
                 go.SetActive(false);
-                pool.Enqueue(go);
+                pool.Add(go);
+                activity.Add(i);
                 Debug.Log("Object :" + go.name + " created");
             };
         }
@@ -49,15 +52,23 @@ namespace fym
 
         public void Reinitialize()
         {
-            foreach (var go in pool)
+            activity.Clear();
+            for (int i=0;i<poolSize;i++)
             {
-                go.SetActive(false);
+                pool[i].SetActive(false);
+                activity.Add(i);
             }
             //availableIndex = 0;
         }
 
-        public bool ReturnObject(GameObject obj)
+        /*public bool ReturnObject(GameObject obj)
         {
+            if(isDebug)
+            {
+                Debug.Log("Returning object " + obj.name + " to pool " + poolName);
+                Destroy(obj);
+                return true;
+            }
             if (obj == null)
             {
                 Debug.LogWarning("Object is null");
@@ -65,24 +76,32 @@ namespace fym
             }
             Debug.Log("Returning object " + obj.name + " to pool " + poolName);
             obj.SetActive(false);
-            pool.Enqueue(obj);
+            availableObjectPool.Enqueue(obj);
             return true;
-        }
+        }*/
 
         public GameObject GetObject()
         {
-            if (pool.Count <= 0)
+            if (isDebug)
+            {
+                Debug.Log("Getting object from pool " + poolName);
+                return Instantiate(prefab, transform);
+            }
+            if (activity.Count <= 0)
             {
                 Debug.LogWarning("No available object in pool");
                 if(autoResize)
                 {
-                    for (int i = poolSize; i < Mathf.Min(MaxPoolSize, poolSize * 2); i++)
+                    /*for (int i = poolSize; i < Mathf.Min(MaxPoolSize, poolSize * 2); i++)
                     {
                         GameObject go = Instantiate(prefab, transform);
                         go.SetActive(false);
-                        pool.Enqueue(go);
+                        pool.Add(go);
+                        activity.Add(i);
                     }
-                    poolSize = Mathf.Min(MaxPoolSize, poolSize * 2);
+                    poolSize = Mathf.Min(MaxPoolSize, poolSize * 2);*/
+                    Debug.Log("Unsupport auto resize");
+                    return null;
                 }
                 else
                 {
@@ -91,23 +110,27 @@ namespace fym
                 }
             }
             Debug.Log("Getting object from pool " + poolName);
-            GameObject objFromPool = pool.Dequeue();
+            int index = activity[activity.Count - 1];
+            GameObject objFromPool = pool[index];
+            activity.RemoveAt(activity.Count - 1);
             return objFromPool;
         }
 
-        void FixedUpdate()
+        void Update()
         {
-            /*int last = availableIndex;
-            for (int i = last - 1; i >= 0; i--)
+            if(pool == null)
             {
-                if (!pool[i].activeSelf)
+                Debug.Log("Pool is not initialized");
+                return;
+            }
+            for (int i = 0; i < pool.Count;i++)
+            {
+                if (!pool[i].activeSelf && !activity.Contains(i))
                 {
-                    GameObject temp = pool[availableIndex-1];
-                    pool[availableIndex-1] = pool[i];
-                    pool[i] = temp;
-                    availableIndex--;
+                    Debug.Log("Object " + pool[i].name + " is inactive");
+                    activity.Add(i);
                 }
-            }*/
+            }
         }
     }
 }

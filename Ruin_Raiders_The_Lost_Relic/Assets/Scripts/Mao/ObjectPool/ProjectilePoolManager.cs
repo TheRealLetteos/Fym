@@ -34,7 +34,7 @@ namespace fym
         {
             foreach (GameObjectPool pool in allProjectilePools)
             {
-                pool.initialize();
+                pool.Initialize();
                 if (!npcProjectilePools.ContainsKey(pool.poolName))
                 {
                     npcProjectilePools[pool.poolName] = pool;
@@ -48,11 +48,10 @@ namespace fym
             {
                 return null;
             }
-            GameObjectPool pool = npcProjectilePools[poolName];
-            return pool.GetObject();
+            return npcProjectilePools[poolName].GetObject();
         }
 
-        public bool ReturnProjectileToPool(string poolName, GameObject projectile)
+        /*public bool ReturnProjectileToPool(string poolName, GameObject projectile)
         {
             if (!npcProjectilePools.ContainsKey(poolName))
             {
@@ -62,7 +61,7 @@ namespace fym
             GameObjectPool pool = npcProjectilePools[poolName];
             pool.ReturnObject(projectile);
             return true;
-        }
+        }*/
 
     }
 }
