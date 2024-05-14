@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5468112881755078853}
   - component: {fileID: 8839346267761470080}
   - component: {fileID: 8573136851922889052}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: ViewField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,9 +328,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063034045b1d4684e91618b3d7e990a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcName: Fairy
+  projetileName: MagicBolt
   maxHealth: 2
   physicalDamage: 1
-  projectilePool: {fileID: 0}
 --- !u!1 &9133285587838559967
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,14 +21,14 @@ namespace MBT
                 //Debug.Log("Player entering vision");
 
                 //commented for testing
-                if (!Physics2D.Raycast(
+                /*if (!Physics2D.Raycast(
                     transform.position,
                     collision.transform.position - transform.position,
                     Vector2.Distance(transform.position, collision.transform.position),
                     LayerMask.GetMask("Ground", "Water", "Enemy", "VisionRange", "Projectile", "Default")))
                 {
-                    //Debug.Log("Player layer detected");
-                }
+                    Debug.Log("Player layer detected");
+                }*/
                 targetInRange = true;
                 targetTransform = collision.transform;
             }

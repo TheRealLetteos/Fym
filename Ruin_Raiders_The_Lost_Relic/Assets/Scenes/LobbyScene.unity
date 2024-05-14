@@ -852,7 +852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcLevel: 1
-  poolName: SlimePool
+  poolName: Slime
   autoResize: 0
   prefab: {fileID: 8297831790140703156, guid: e2897db958ac7d842baa8a2d425e03cc, type: 3}
   poolSize: 10
@@ -1056,7 +1056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcLevel: 2
-  poolName: FairyPool
+  poolName: Fairy
   autoResize: 0
   prefab: {fileID: 8297831790140703156, guid: 05e802880af23ac42805b52ee6615d04, type: 3}
   poolSize: 10
@@ -1113,6 +1113,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5249776893099645159, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+      propertyPath: poolName
+      value: MagicBolt
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249776893099645159, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
       propertyPath: poolSize
       value: 30
       objectReference: {fileID: 0}
@@ -1151,7 +1155,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1185010329}
   - component: {fileID: 1185010331}
-  - component: {fileID: 1185010332}
   - component: {fileID: 1185010333}
   m_Layer: 0
   m_Name: AudioManager
@@ -1273,18 +1276,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1185010332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185010328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaf32310bda41664a8ba01d530f60327, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1185010333
 MonoBehaviour:
   m_ObjectHideFlags: 0

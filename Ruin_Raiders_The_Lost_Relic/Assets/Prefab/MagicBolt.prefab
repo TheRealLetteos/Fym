@@ -93,7 +93,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7230693094433629643}
-  - component: {fileID: 8725083088693174696}
   - component: {fileID: 962506417096347051}
   - component: {fileID: 8642179708594002977}
   m_Layer: 11
@@ -119,33 +118,6 @@ Transform:
   - {fileID: 9151569647796051278}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &8725083088693174696
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6235948197392946594}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.001
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!58 &962506417096347051
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -193,9 +165,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758b0e52b8ec79c42b9dc55dab1817ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileName: MagicBolt
   speed: 1
   lifeTime: 2
   damage: 1
   range: 10
-  direction: {x: 0, y: 0}
+  direction: {x: 0, y: 0, z: 0}
   ownerTag: Enemy

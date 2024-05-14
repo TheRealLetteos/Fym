@@ -52,5 +52,17 @@ namespace fym
             return pool.GetObject();
         }
 
+        public bool ReturnProjectileToPool(string poolName, GameObject projectile)
+        {
+            if (!npcProjectilePools.ContainsKey(poolName))
+            {
+                Destroy(projectile);
+                return false;
+            }
+            GameObjectPool pool = npcProjectilePools[poolName];
+            pool.ReturnObject(projectile);
+            return true;
+        }
+
     }
 }

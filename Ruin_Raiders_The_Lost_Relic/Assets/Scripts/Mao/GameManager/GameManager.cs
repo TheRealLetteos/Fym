@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -43,11 +44,11 @@ namespace fym
 
         public static GameManager Instance { get; private set; }
 
-        public static string FAIRY_POOL_NAME { get; private set; } = "FairyPool";
+        public static string FAIRY_POOL_NAME { get; private set; } = "Fairy";
 
-        public static string SLIME_POOL_NAME { get; private set; } = "SlimePool";
+        public static string SLIME_POOL_NAME { get; private set; } = "Slime";
 
-        public static string MAGICBOLT_POOL_NAME { get; private set; } = "MagicBoltPool";
+        public static string MAGICBOLT_POOL_NAME { get; private set; } = "MagicBolt";
 
         protected override void Awake()
         {
@@ -77,12 +78,62 @@ namespace fym
             };
         }
 
-        public void LoadScene(string sceneName)
+        public void LoadScene(string oldSceneName, string sceneName, bool async)
         {
-            SceneManager.LoadScene(sceneName);
-            BaseNPCSpawner.SpawnNPCs(LevelConfig.GetNextLevelConfig());
+            if(async)
+            {
+                //StartCoroutine("AsyncUnloadScene", oldSceneName);
+                StartCoroutine("AsyncLoadScene", sceneName);
+            }
+            else
+            {
+                //StartCoroutine("AsyncUnloadScene", oldSceneName);
+                SceneManager.UnloadScene(oldSceneName);
+                SceneManager.LoadScene(sceneName);
+                BaseNPCSpawner.SpawnNPCs(LevelConfig.GetNextLevelConfig());
+                //StartCoroutine("AsyncLoadScene", sceneName);
+                //SceneManager.LoadScene(sceneName);
+            }
         }
 
+        public IEnumerable AsyncUnloadScene()
+        {
+            AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+            while (!asyncUnload.isDone)
+            {
+                yield return null;
+            }
+        }
+
+        public IEnumerable AsyncLoadScene(string sceneName)
+        {
+            LevelConfig levelConfig = LevelConfig.GetNextLevelConfig();
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(
+                sceneName == null ? "Level " + levelConfig.levelNumber : sceneName,
+                LoadSceneMode.Single);
+
+            asyncLoad.allowSceneActivation = false;
+
+            while (!asyncLoad.isDone)
+            {
+                if (asyncLoad.progress >= 0.95f)
+                {
+                    asyncLoad.allowSceneActivation = true;
+                }
+
+                yield return null;
+            }
+
+            Debug.Log("new level loaded...");
+            StartCoroutine("OnSceneLoaded");
+            //BaseNPCSpawner.SpawnNPCs(LevelConfig.GetNextLevelConfig());
+        }
+
+        public IEnumerable OnSceneLoaded()
+        {
+            yield return new WaitForSeconds(1);
+            BaseNPCSpawner.SpawnNPCs(LevelConfig.currentLevelConfig);
+        }
     }
 
 }

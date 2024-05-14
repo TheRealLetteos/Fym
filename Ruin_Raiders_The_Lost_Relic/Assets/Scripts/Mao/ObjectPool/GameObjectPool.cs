@@ -23,42 +23,55 @@ namespace fym
         public int poolSize = 10;
 
         [SerializeField]
-        public List<GameObject> pool { get; private set; }
+        public Queue<GameObject> pool { get; private set; }
 
-        private int availableIndex = 0;
+        //private int availableIndex = 0;
 
         public void initialize()
         {
             Debug.Log(poolName + " is initializing...");
-            availableIndex = 0;
+            //availableIndex = 0;
             if (poolSize <= 0)
             {
                 Debug.LogWarning("Pool size must be greater than 0");
                 return;
             }
-            pool = new List<GameObject>();
+            pool = new Queue<GameObject>();
             for (int i = 0; i < poolSize; i++)
             {
                 GameObject go = Instantiate(prefab, transform);
                 go.SetActive(false);
-                pool.Add(go);
-                Debug.Log("Object :" + pool[i].name + " created");
+                pool.Enqueue(go);
+                Debug.Log("Object :" + go.name + " created");
             };
         }
 
 
         public void Reinitialize()
         {
-            for(int i = 0; i < poolSize; i++)
+            foreach (var go in pool)
             {
-                pool[i].SetActive(false);
+                go.SetActive(false);
             }
-            availableIndex = 0;
+            //availableIndex = 0;
+        }
+
+        public bool ReturnObject(GameObject obj)
+        {
+            if (obj == null)
+            {
+                Debug.LogWarning("Object is null");
+                return false;
+            }
+            Debug.Log("Returning object " + obj.name + " to pool " + poolName);
+            obj.SetActive(false);
+            pool.Enqueue(obj);
+            return true;
         }
 
         public GameObject GetObject()
         {
-            if (availableIndex >= poolSize)
+            if (pool.Count <= 0)
             {
                 Debug.LogWarning("No available object in pool");
                 if(autoResize)
@@ -67,24 +80,24 @@ namespace fym
                     {
                         GameObject go = Instantiate(prefab, transform);
                         go.SetActive(false);
-                        pool.Add(go);
+                        pool.Enqueue(go);
                     }
                     poolSize = Mathf.Min(MaxPoolSize, poolSize * 2);
                 }
                 else
                 {
-                    Debug.Log("Get no object in pool");
+                    Debug.Log("Pool " + poolName + " is empty, no game object is available");
                     return null;
                 }
             }
-            Debug.Log("Get object from pool");
-            GameObject objFromPool = pool[availableIndex++];
+            Debug.Log("Getting object from pool " + poolName);
+            GameObject objFromPool = pool.Dequeue();
             return objFromPool;
         }
 
         void FixedUpdate()
         {
-            int last = availableIndex;
+            /*int last = availableIndex;
             for (int i = last - 1; i >= 0; i--)
             {
                 if (!pool[i].activeSelf)
@@ -94,7 +107,7 @@ namespace fym
                     pool[i] = temp;
                     availableIndex--;
                 }
-            }
+            }*/
         }
     }
 }

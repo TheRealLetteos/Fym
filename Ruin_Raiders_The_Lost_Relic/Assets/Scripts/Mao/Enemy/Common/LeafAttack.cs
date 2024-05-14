@@ -20,7 +20,7 @@ namespace MBT
                 return NodeResult.failure;
             }
             //Debug.Log("Executing LeafAttack");
-            Vector2 direction = targetTransform.Value.position - agentTransform.Value.position;
+            Vector3 direction = targetTransform.Value.position - agentTransform.Value.position;
             direction.Normalize();
             BaseEnemyController baseEnemyController = agentTransform.Value.GetComponent<BaseEnemyController>();
             if (isRemoteAttack)
@@ -33,7 +33,8 @@ namespace MBT
             {
                 //Debug.Log("Melee attack");
                 //baseEnemyController.Attack(targetTransform.Value.GetComponent<Player>());
-                StartCoroutine("Attack");
+                baseEnemyController.Attack(targetTransform.Value.GetComponent<Player>());
+                //StartCoroutine("Attack");
             }
             return NodeResult.success;
         }

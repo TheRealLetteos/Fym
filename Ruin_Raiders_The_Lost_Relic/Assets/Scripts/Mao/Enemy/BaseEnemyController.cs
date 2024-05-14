@@ -9,6 +9,10 @@ namespace fym
     public class BaseEnemyController : MonoBehaviour
     {
 
+        public string npcName;
+
+        public string projetileName;
+
         public float maxHealth = 1.0f;
 
         //set to 1 for testing
@@ -28,26 +32,28 @@ namespace fym
         public void Attack(Player player)
         {
             // player takes damage
+            Debug.Log("NPC : " + gameObject.name + "is attacking player.");
 
             // if player class detects collision with enemy, player takes damage itself, no need to call this function
             isAttacking = true;
         }
 
-        public void Shoot(Vector2 direction)
+        public void Shoot(Vector3 direction)
         {
-            Debug.Log("NPC is shooting at player.");
+            Debug.Log("NPC : " + gameObject.name + "is shooting at player.");
             isAttacking = true;
-            GameObject magicbolt = ProjectilePoolManager.Instance.GetProjectileByPoolName(GameManager.MAGICBOLT_POOL_NAME);
-            if (magicbolt == null)
+            GameObject projectile = ProjectilePoolManager.Instance.GetProjectileByPoolName(projetileName);
+            if (projectile == null)
             {
-                Debug.Log("Magic bolt is null.");
+                Debug.Log("projectile is null.");
                 return;
             }
-            magicbolt.transform.position = transform.position;
-            //magicbolt.GetComponent<Rigidbody2D>().AddForce(direction * 10, ForceMode2D.Impulse);
-            BaseProjectileController projectileController = magicbolt.GetComponent<BaseProjectileController>();
-            projectileController.direction = direction;
-            magicbolt.SetActive(true);
+            BaseProjectileController projectileController = projectile.GetComponent<BaseProjectileController>();
+            /*projectile.SetActive(true);
+            projectile.transform.position = transform.position;
+            projectileController.direction = direction;*/
+            projectileController.Initialize(transform.position, direction);
+            //projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileController.speed;
             Debug.Log("NPC has shot a projectile.");
         }
 
@@ -71,7 +77,7 @@ namespace fym
         {
             health = maxHealth;
             isBeingAttacked = false;
-            gameObject.SetActive(false);
+            NPCPoolManager.Instance.ReturnNPCToPool(npcName, gameObject);
         }
 
         public bool IsBeingAttacked()

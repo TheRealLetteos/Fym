@@ -12,7 +12,8 @@ namespace fym
         private Dictionary<int, List<GameObjectPool>> levelingNPCPools =
             new Dictionary<int, List<GameObjectPool>>();
 
-
+        private Dictionary<string, GameObjectPool> npcPools =
+            new Dictionary<string, GameObjectPool>();
 
         public List<GameObjectPool> allNPCPools = new List<GameObjectPool>();
 
@@ -37,6 +38,10 @@ namespace fym
             foreach (GameObjectPool pool in allNPCPools)
             {
                 pool.initialize();
+                if(!npcPools.ContainsKey(pool.poolName))
+                {
+                    npcPools[pool.poolName] = pool;
+                }
                 if (!levelingNPCPools.ContainsKey(pool.npcLevel))
                 {
                     levelingNPCPools[pool.npcLevel] = new List<GameObjectPool>();
@@ -63,6 +68,27 @@ namespace fym
             int randomIndex = Random.Range(0, pools.Count);
             GameObjectPool pool = pools[randomIndex];
             return pool.GetObject();
+        }
+
+        public GameObject GetNPCByName(string npcName)
+        {
+            if(npcPools.ContainsKey(npcName))
+            {
+                return npcPools[npcName].GetObject();
+            }
+            return null;
+        }
+
+        public void ReturnNPCToPool(string poolName, GameObject npc)
+        {
+            if(npcPools.ContainsKey(poolName))
+            {
+                npcPools[poolName].ReturnObject(npc);
+            }
+            else
+            {
+                Destroy(npc);
+            }
         }
 
     }
