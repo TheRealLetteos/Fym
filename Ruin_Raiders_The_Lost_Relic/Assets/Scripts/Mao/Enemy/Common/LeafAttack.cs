@@ -26,11 +26,7 @@ namespace MBT
             if (isRemoteAttack)
             {
                 //Debug.Log("Remote attack");
-                if (baseEnemyController!= null && direction !=null) 
-                {
-                    baseEnemyController.Shoot(direction);
-                }
-                
+                baseEnemyController.Shoot(direction);
                 //StartCoroutine("Shoot", direction);
             }
             else
