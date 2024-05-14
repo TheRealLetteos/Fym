@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 public class LevelManager : MonoBehaviour
 {
 
-    public Tilemap tilemap;  
+    public Tilemap tilemap; //put ground there, probably add in awake() for spring 5
     public Tile spikeTile;
     public Tile lavaTile; // dont have a lava asset yet, should be insta death, maybe burn stuff around?
 
@@ -16,11 +16,11 @@ public class LevelManager : MonoBehaviour
     new Obstacle { type = ObstacleType.ExtraEnemy, probability = 20 },
     new Obstacle { type = ObstacleType.Spikes, probability = 20 },
     new Obstacle { type = ObstacleType.Lava, probability = 10 },
-    new Obstacle { type = ObstacleType.SpeedIncrease, probability = 10 },
+    new Obstacle { type = ObstacleType.SpeedIncrease, probability = 5 },
     new Obstacle { type = ObstacleType.ExtraHealth, probability = 10 },
     new Obstacle { type = ObstacleType.DamageTimerDecrease, probability = 10 },
-    new Obstacle { type = ObstacleType.DamageReduction, probability = 10 },
-    new Obstacle { type = ObstacleType.ExtraTile, probability = 10 }
+    new Obstacle { type = ObstacleType.DamageReduction, probability = 5 },
+    new Obstacle { type = ObstacleType.ExtraTile, probability = 5 }
 }; //Suuuuuppeerrr extensible!!! Nicolas serait proud!!!
     
     public void ApplyRandomObstacle()
@@ -75,20 +75,53 @@ public class LevelManager : MonoBehaviour
     // Each obstacle does...
     void SpawnExtraEnemy()
     {
-        if (enemyPrefabs.Length > 0)
+        BoundsInt bounds = tilemap.cellBounds;
+        TileBase[] allTiles = tilemap.GetTilesBlock(bounds);
+
+       
+        List<Vector3Int> suitableTilePositions = new List<Vector3Int>();
+
+       
+        for (int x = 0; x < bounds.size.x; x++)
         {
-            Vector3 spawnPosition = GetRandomSpawnPosition(); 
-            int randomIndex = Random.Range(0, enemyPrefabs.Length); 
-            GameObject chosenPrefab = enemyPrefabs[randomIndex]; 
+            for (int y = 0; y < bounds.size.y; y++)
+            {
+                TileBase tile = allTiles[x + y * bounds.size.x];
+                if (tile != null) 
+                {
+                    Vector3Int groundPos = new Vector3Int(x + bounds.x, y + bounds.y, 0);
+                    Vector3Int abovePos = new Vector3Int(groundPos.x, groundPos.y + 1, 0);
 
-            GameObject newEnemy = Instantiate(chosenPrefab, spawnPosition, Quaternion.identity);
+                    
+                    if (!tilemap.HasTile(abovePos))
+                    {
+                        suitableTilePositions.Add(groundPos);
+                    }
+                }
+            }
+        } // again, build every time as level can change
 
+        
+        if (suitableTilePositions.Count > 0)
+        {
+            Vector3Int randomTilePosition = suitableTilePositions[Random.Range(0, suitableTilePositions.Count)];
+            Vector3 spawnPosition = tilemap.CellToWorld(randomTilePosition) + new Vector3(0f, 2.0f, 0);  // enemy are gameobjects in game, so float it is
 
-            Debug.Log("New enemy created at " + spawnPosition + " of type " + chosenPrefab.name);
+            // Randomly pick one of the enemy prefabs
+            if (enemyPrefabs.Length > 0)
+            {
+                GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+                Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                Debug.Log("Enemy spawned at: " + spawnPosition);
+            }
+            else
+            {
+                Debug.LogError("No enemy prefabs are assigned in the array!");
+            }
         }
         else
         {
-            Debug.LogError("No enemy prefabs are assigned in the array!");
+            Debug.Log("No suitable positions available for enemy placement.");
         }
     }
 
@@ -135,7 +168,7 @@ public class LevelManager : MonoBehaviour
             for (int y = 0; y < bounds.size.y; y++)
             {
                 TileBase tile = allTiles[x + y * bounds.size.x];
-                if (tile != null) // Also possible to check if top ground
+                if (tile != null) // Also possible to check if top ground, see spawnenemies
                 {
                     groundTilePositions.Add(new Vector3Int(x + bounds.x, y + bounds.y, 0));
                 }
@@ -146,39 +179,35 @@ public class LevelManager : MonoBehaviour
         if (groundTilePositions.Count > 0)
         {
             Vector3Int randomTilePosition = groundTilePositions[Random.Range(0, groundTilePositions.Count)];
-            tilemap.SetTile(randomTilePosition, lavaTile);  // Set the selected tile to a spike
+            tilemap.SetTile(randomTilePosition, lavaTile);  // Set the selected tile to a lava (insta kill)
         }
     }
 
     void IncreaseEnemySpeed() 
     { 
-        // TODO: in game manager, discuss with team
+        // Cancelled
     }
 
     void IncreaseEnemyHealth() 
     {
-        // TODO : in game manager, discuss with team
+        // Cancelled
 
-   
+
     }
 
     void DecreaseDamageTimer() 
     {
-        // TODO : in game manager, discuss with team
+        // Cancelled
     }
     void ReducePlayerDamage() 
     {
-        // TODO : in game manager, discuss with team
+        // Cancelled
     }
 
     void AddExtraTile() 
     {
-        // TODO : in game manager, discuss with team
+        // Cancelled
     }
 
-    private Vector3 GetRandomSpawnPosition()
-    {
-        // Adjust this method to return a valid position within your game environment
-        return new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), 0);
-    }
+   
 }

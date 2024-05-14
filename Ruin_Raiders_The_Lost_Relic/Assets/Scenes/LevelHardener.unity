@@ -1144,7 +1144,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 854434242}
   spikeTile: {fileID: 11400000, guid: aa5845aaf766521418df4ac521e7e394, type: 2}
-  lavaTile: {fileID: 0}
+  lavaTile: {fileID: 11400000, guid: 5dd58357d1b163449baef7a7323f990b, type: 2}
+  enemyPrefabs:
+  - {fileID: 8297831790140703156, guid: e2897db958ac7d842baa8a2d425e03cc, type: 3}
+  - {fileID: 8297831790140703156, guid: 05e802880af23ac42805b52ee6615d04, type: 3}
+  enemiesParent: {fileID: 0}
   obstacles:
   - type: 0
     probability: 20
