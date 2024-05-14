@@ -11,6 +11,8 @@ namespace fym
     {
         private Button startButton;
 
+        private Button secondLevelButton;
+
         private Button optionButton;
 
         private Button sceneEditorButton;
@@ -24,6 +26,8 @@ namespace fym
             Initialize();
             startButton = rootMenuDocument.rootVisualElement.Q<Button>("StartButton");
             startButton.clicked += () => OnStartGameClick();
+            secondLevelButton = rootMenuDocument.rootVisualElement.Q<Button>("SecondLevelButton");
+            secondLevelButton.clicked += () => OnSecondLevelClick();
             optionButton = rootMenuDocument.rootVisualElement.Q<Button>("OptionButton");
             optionButton.clicked += () => OnOptionClick();
             sceneEditorButton = rootMenuDocument.rootVisualElement.Q<Button>("SceneEditorButton");
@@ -61,6 +65,11 @@ namespace fym
             //SceneManager.LoadScene("SampleScene");
             //leave this op to the game play module
             Notify(GameEvent.Playing);
+        }
+
+        private void OnSecondLevelClick()
+        {
+            Notify(GameEvent.SecondLevelScene); 
         }
 
         private void OnSceneEditorClick()
