@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class LevelHardener : MonoBehaviour
 {
     public Slider difficultySlider;
-    public LevelManager levelManager; 
+    public LevelManager levelManager;
 
-   
+    private int lastDifficultyLevel = 0;
 
     void Start()
     {
@@ -17,10 +17,16 @@ public class LevelHardener : MonoBehaviour
 
     void AdjustLevelDifficulty()
     {
-        int difficultyLevel = Mathf.FloorToInt(difficultySlider.value);
-        for (int i = 0; i < difficultyLevel; i++)
+        int currentDifficultyLevel = Mathf.FloorToInt(difficultySlider.value);
+
+        if (currentDifficultyLevel > lastDifficultyLevel)
         {
-            levelManager.ApplyRandomObstacle();
+            for (int i = lastDifficultyLevel; i < currentDifficultyLevel; i++)
+            {
+                levelManager.ApplyRandomObstacle();
+            }
         }
+
+        lastDifficultyLevel = currentDifficultyLevel;  // Update the last difficulty level
     }
 }

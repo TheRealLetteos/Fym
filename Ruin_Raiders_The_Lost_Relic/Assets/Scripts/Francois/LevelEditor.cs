@@ -201,7 +201,7 @@ public class LevelEditor : MonoBehaviour
         Debug.Log("End spawn created at: " + mouseWorldPos);
     }
 
-    private Vector3 GetMouseWorldPosition()
+    private Vector3 GetMouseWorldPosition() // used by above, easier to split
     {
         Vector3 mousePoint = Input.mousePosition;
         mousePoint.z = Camera.main.nearClipPlane;
