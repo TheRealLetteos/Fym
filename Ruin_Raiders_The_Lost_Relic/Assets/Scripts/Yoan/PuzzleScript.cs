@@ -22,6 +22,7 @@ public class PuzzleScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Key"))
         {
             // Désactiver le collider du cube
+            Debug.Log("Comparaison fait");
             _key.transform.position = this.transform.position;
             cubeCollider.enabled = false;
             _keyRb.bodyType = RigidbodyType2D.Static;
