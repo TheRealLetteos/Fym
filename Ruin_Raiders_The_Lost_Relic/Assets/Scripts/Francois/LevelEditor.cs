@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 using System;
 using UnityEngine.EventSystems;
 using System.Windows.Forms;
+using System.Collections.Generic;
 public class LevelEditor : MonoBehaviour
 {
     public Tilemap tilemap;
@@ -15,6 +16,16 @@ public class LevelEditor : MonoBehaviour
     private CommandManager commandManager = new CommandManager();
 
     private Camera mainCamera;
+
+    //Level end and start
+    public GameObject playerSpawnPrefab;
+    public GameObject endSpawnPrefab;
+
+    private GameObject currentPlayerSpawn;
+    private GameObject currentEndSpawn;
+    //public Dictionary<string, Vector3Int> specialPositions = new Dictionary<string, Vector3Int>();
+
+    //End level end and start ;)
 
     private void Awake()
     {
@@ -162,5 +173,38 @@ public class LevelEditor : MonoBehaviour
                 Debug.LogError("Failed to load level data.");
             }
         }
+    }
+
+    public void CreatePlayerSpawn()
+    {
+        Vector3 mouseWorldPos = GetMouseWorldPosition();
+
+        if (currentPlayerSpawn != null)
+        {
+            Destroy(currentPlayerSpawn); // Remove the previous marker if it exists
+        }
+
+        currentPlayerSpawn = Instantiate(playerSpawnPrefab, mouseWorldPos, Quaternion.identity);
+        Debug.Log("Player spawn created at: " + mouseWorldPos);
+    }
+
+    public void CreateEndSpawn()
+    {
+        Vector3 mouseWorldPos = GetMouseWorldPosition();
+
+        if (currentEndSpawn != null)
+        {
+            Destroy(currentEndSpawn); // Remove the previous marker if it exists
+        }
+
+        currentEndSpawn = Instantiate(endSpawnPrefab, mouseWorldPos, Quaternion.identity);
+        Debug.Log("End spawn created at: " + mouseWorldPos);
+    }
+
+    private Vector3 GetMouseWorldPosition()
+    {
+        Vector3 mousePoint = Input.mousePosition;
+        mousePoint.z = Camera.main.nearClipPlane;
+        return Camera.main.ScreenToWorldPoint(mousePoint);
     }
 }
