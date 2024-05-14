@@ -94,7 +94,8 @@ namespace fym
                 //StartCoroutine("AsyncUnloadScene", oldSceneName);
                 //SceneManager.UnloadScene(oldSceneName);
                 SceneManager.LoadScene(sceneName);
-                StartCoroutine("OnSceneLoaded");
+                //StartCoroutine("OnSceneLoaded");
+                OnSceneLoaded();
 
                 /*GameObject ground = GameObject.Find("Ground");
                 LevelConfig config = LevelConfig.GetNextLevelConfig();
@@ -142,10 +143,10 @@ namespace fym
             //BaseNPCSpawner.SpawnNPCs(LevelConfig.GetNextLevelConfig());
         }
 
-        public IEnumerable OnSceneLoaded()
+        public void OnSceneLoaded()
         {
-            yield return new WaitForSeconds(1);
-            GameObject ground = GameObject.Find("Ground");
+            //yield return new WaitForSeconds(1);
+            GameObject ground = GameObject.Find("Background");
             LevelConfig config = LevelConfig.GetNextLevelConfig();
             config.screenWidth = ground.GetComponent<TilemapRenderer>().bounds.size.x;
             config.screenHeight = ground.GetComponent<TilemapRenderer>().bounds.size.y;

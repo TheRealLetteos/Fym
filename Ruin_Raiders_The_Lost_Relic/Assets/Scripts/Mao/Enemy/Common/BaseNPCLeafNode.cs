@@ -35,6 +35,7 @@ namespace MBT
             if (animator != null && nodeAnimationKey != null)
             {
                 animator.SetBool(nodeAnimationKey, true);
+                animator.SetTrigger(nodeAnimationKey);
                 Debug.Log("Animator has set key " + nodeAnimationKey + " to true");
             }
             else
