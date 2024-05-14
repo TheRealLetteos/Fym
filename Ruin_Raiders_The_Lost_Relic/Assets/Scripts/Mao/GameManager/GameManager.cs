@@ -15,9 +15,11 @@ namespace fym
 
         public static string LOBBY_SCENE { get; private set; } = "LobbyScene";
 
-        public static string SAMPLE_SCENE { get; private set; } = "SampleScene";
+        public static string SAMPLE_SCENE { get; private set; } = "Level3";
 
         public static string Loading_UI { get; internal set; } = "LoadingUI";
+        
+        public static string SECONDLEVEL_SCENE { get; private set; } = "Level2";
 
         public static string LEVELEDITOR_SCENE { get; private set; } = "NewLevelEditor";
         
@@ -72,6 +74,7 @@ namespace fym
                 new GameStateLoading(this),
                 new GameStateLobby(this),
                 new GameStatePlaying(this),
+                new GameStateSecondLevel(this),
                 new GameStatePaused(this),
                 new GameStateSceneEditor(this),
                 new GameStateSceneLevelHardener(this),

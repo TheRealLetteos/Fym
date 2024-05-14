@@ -30,7 +30,7 @@ TagManager:
   - Projectile
   - Decoration
   - VisionRange
-  - 
+  - Key
   - 
   - 
   - 
@@ -55,12 +55,18 @@ TagManager:
   - name: Background
     uniqueID: 2234674645
     locked: 0
+  - name: Door
+    uniqueID: 1235082401
+    locked: 0
+  - name: Shader
+    uniqueID: 1666650395
+    locked: 0
+  - name: Foreground
+    uniqueID: 1057560645
+    locked: 0
   - name: Player
     uniqueID: 4112584149
     locked: 0
   - name: Enemy
     uniqueID: 2032609063
-    locked: 0
-  - name: Foreground
-    uniqueID: 1057560645
     locked: 0

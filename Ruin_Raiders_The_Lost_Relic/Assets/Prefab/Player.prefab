@@ -81,7 +81,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -182383147
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 956687639, guid: df82f67731ebdf9449d00004c8e19ecc, type: 3}
   m_Color: {r: 0.9339623, g: 0.9339623, b: 0.9339623, a: 1}
@@ -112,7 +112,7 @@ MonoBehaviour:
   _dashStrength: 50
   _repulsionForce: 100
   _gravity: 5
-  _attackRange: 0.5
+  _attackRange: 0.6
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -126,12 +126,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _restartUI: {fileID: 0}
-  _inventoryUI: {fileID: 0}
 --- !u!114 &5831341574103637477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,7 +261,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -182383147
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Time: 0.2
   m_PreviewTimeScale: 1
