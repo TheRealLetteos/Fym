@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 953555697615918517, guid: c028a6a7db89e07438acc8cc1a271eac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.68
+      value: -2.47
       objectReference: {fileID: 0}
     - target: {fileID: 953555697615918517, guid: c028a6a7db89e07438acc8cc1a271eac, type: 3}
       propertyPath: m_LocalPosition.z
@@ -625,7 +625,6 @@ GameObject:
   m_Component:
   - component: {fileID: 309464969}
   - component: {fileID: 309464970}
-  - component: {fileID: 309464971}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
@@ -744,18 +743,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &309464971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 309464968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaf32310bda41664a8ba01d530f60327, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &332782825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,6 +1594,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 49353051}
     - target: {fileID: 4649965406266279145, guid: 463af775a21500e42b80e6814f4fc550, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649965406266279145, guid: 463af775a21500e42b80e6814f4fc550, type: 3}
       propertyPath: _restartUI
       value: 
       objectReference: {fileID: 158844941}
@@ -1666,8 +1657,7 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a2497e4a5491b1044b5f283921520cc6, type: 2}
-    m_RemovedComponents:
-    - {fileID: 3545781980440777402, guid: 463af775a21500e42b80e6814f4fc550, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1707,6 +1697,17 @@ MonoBehaviour:
   _key: {fileID: 1169791829387556406}
   _doorMaterial: {fileID: 1106472842}
   _newMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+--- !u!114 &1106472844 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4649965406266279145, guid: 463af775a21500e42b80e6814f4fc550, type: 3}
+  m_PrefabInstance: {fileID: 1106472839}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106472840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb93a80b5a592b142bd2211dd9c5aa48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1165505618
 GameObject:
   m_ObjectHideFlags: 0
@@ -8450,7 +8451,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1106472844}
         m_TargetAssemblyTypeName: EndGameUI, Assembly-CSharp
         m_MethodName: restart
         m_Mode: 1
@@ -11782,7 +11783,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2119861476}
   - component: {fileID: 2119861477}
-  - component: {fileID: 2119861478}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -11901,18 +11901,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2119861478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2119861475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaf32310bda41664a8ba01d530f60327, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2144290074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11994,12 +11982,16 @@ PrefabInstance:
       value: PuzzleOfficiel
       objectReference: {fileID: 0}
     - target: {fileID: 8331018639300914886, guid: 2e871042d3289dc4590978a861773d1b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1744689
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331018639300914886, guid: 2e871042d3289dc4590978a861773d1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.67
+      value: 8.54
       objectReference: {fileID: 0}
     - target: {fileID: 8331018639300914886, guid: 2e871042d3289dc4590978a861773d1b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 26.73
+      value: 26.59
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
