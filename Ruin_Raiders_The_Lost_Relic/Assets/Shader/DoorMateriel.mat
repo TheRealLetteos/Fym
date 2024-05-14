@@ -55,7 +55,7 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _MainColor: {r: 0, g: 0, b: 0, a: 0}
+    - _MainColor: {r: 0.31772876, g: 0.5095597, b: 0.5660378, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _ScrollSpeed: {r: 0.2, g: 0.2, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
