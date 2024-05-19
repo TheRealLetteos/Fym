@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -25,6 +25,12 @@ namespace fym
 
         [SerializeField]
         private QuitMenuController quitMenu;
+
+        [SerializeField]
+        private LevelPassedMenuController levelPassedMenu;
+
+        [SerializeField]
+        private LevelFailedMenuController levelFailedMenu;
 
         private void Awake()
         {
@@ -79,6 +85,20 @@ namespace fym
             quitMenu.gameObject.SetActive(true);
         }
 
+        public void LoadLevelPassedMenu()
+        {
+            DeactivateAllMenu();
+            levelPassedMenu.ActivateMenu();
+            levelPassedMenu.gameObject.SetActive(true);
+        }
+
+        public void LoadLevelFailedMenu()
+        {
+            DeactivateAllMenu();
+            levelFailedMenu.ActivateMenu();
+            levelFailedMenu.gameObject.SetActive(true);
+        }
+
         public void DeactivateAllMenu()
         {
             loadingUI.DeactivateMenu();
@@ -86,7 +106,8 @@ namespace fym
             optionMenu.DeactivateMenu();
             pauseMenu.DeactivateMenu();
             quitMenu.DeactivateMenu();
-
+            levelPassedMenu.DeactivateMenu();
+            levelFailedMenu.DeactivateMenu();
         }
 
     }

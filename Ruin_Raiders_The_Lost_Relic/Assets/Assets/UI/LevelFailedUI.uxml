@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Assets/UI/UIToolkit/USS/fym_label.uss?fileID=7433441132597879392&amp;guid=12127b7324453e84ba8146dfff0f4cfb&amp;type=3#fym_label" />
+    <Style src="project://database/Assets/Assets/UI/UIToolkit/USS/fym_sublabel.uss?fileID=7433441132597879392&amp;guid=ca0f681df21918842afc6ba23d29402a&amp;type=3#fym_sublabel" />
+    <Style src="project://database/Assets/Assets/UI/UIToolkit/USS/fym_button.uss?fileID=7433441132597879392&amp;guid=e34e85b653a8b164db833be3dad64e5e&amp;type=3#fym_button" />
+    <ui:VisualElement name="Screen" style="flex-grow: 1;">
+        <ui:VisualElement name="MenuContainer" style="flex-grow: 1; justify-content: center; align-items: center;">
+            <ui:VisualElement name="LevelFailedMenu" style="flex-grow: 1; justify-content: center; align-items: stretch; width: 30%; height: 100%;">
+                <ui:Label tabindex="-1" text="You didn&apos;t make it..." parse-escape-sequences="true" display-tooltip-when-elided="true" name="LevelFailedTitle" class="label-title" />
+                <ui:Button text="Restart level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="RestartLevelButton" class="button-title" />
+                <ui:Button text="Main Menu" parse-escape-sequences="true" display-tooltip-when-elided="true" name="MainMenuButton" class="button-title" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

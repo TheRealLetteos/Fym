@@ -146,7 +146,7 @@ namespace fym
         public void OnSceneLoaded()
         {
             //yield return new WaitForSeconds(1);
-            GameObject ground = GameObject.Find("Background");
+            GameObject ground = GameObject.Find("/Grid/Background");
             LevelConfig config = LevelConfig.GetNextLevelConfig();
             config.screenWidth = ground.GetComponent<TilemapRenderer>().bounds.size.x;
             config.screenHeight = ground.GetComponent<TilemapRenderer>().bounds.size.y;
