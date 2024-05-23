@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,12 +6,15 @@ using UnityEngine;
 namespace fym
 {
 
+    /**
+     * Deprecated
+     */
     public interface IPool<T>
     {
 
         public void Reinitialize();
 
-        public T GetObject();
+        public T GetObjectController(GameObject go);
 
 
 

@@ -9,13 +9,13 @@ namespace fym
     {
 
         [SerializeField]
-        private Dictionary<int, List<GameObjectPool>> levelingNPCPools =
-            new Dictionary<int, List<GameObjectPool>>();
+        private Dictionary<int, List<NPCPool>> levelingNPCPools =
+            new Dictionary<int, List<NPCPool>>();
 
-        private Dictionary<string, GameObjectPool> npcPools =
-            new Dictionary<string, GameObjectPool>();
+        private Dictionary<string, NPCPool> npcPools =
+            new Dictionary<string, NPCPool>();
 
-        public List<GameObjectPool> allNPCPools = new List<GameObjectPool>();
+        public List<NPCPool> allNPCPools = new List<NPCPool>();
 
         public static NPCPoolManager Instance { get; private set; }
 
@@ -35,7 +35,7 @@ namespace fym
 
         private void Start()
         {
-            foreach (GameObjectPool pool in allNPCPools)
+            foreach (NPCPool pool in allNPCPools)
             {
                 pool.Initialize();
                 if(!npcPools.ContainsKey(pool.poolName))
@@ -44,7 +44,7 @@ namespace fym
                 }
                 if (!levelingNPCPools.ContainsKey(pool.npcLevel))
                 {
-                    levelingNPCPools[pool.npcLevel] = new List<GameObjectPool>();
+                    levelingNPCPools[pool.npcLevel] = new List<NPCPool>();
                 }
                 levelingNPCPools[pool.npcLevel].Add(pool);
                 if (pool.npcLevel > MAX_NPC_LEVEL)
@@ -60,13 +60,13 @@ namespace fym
             {
                 return null;
             }
-            List<GameObjectPool> pools = levelingNPCPools[level];
+            List<NPCPool> pools = levelingNPCPools[level];
             if (pools.Count == 0)
             {
                 return null;
             }
             int randomIndex = Random.Range(0, pools.Count);
-            GameObjectPool pool = pools[randomIndex];
+            NPCPool pool = pools[randomIndex];
             return pool.GetObject();
         }
 

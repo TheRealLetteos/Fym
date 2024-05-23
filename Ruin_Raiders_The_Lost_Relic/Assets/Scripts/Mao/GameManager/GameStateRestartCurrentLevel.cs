@@ -5,18 +5,27 @@ using UnityEngine;
 namespace fym
 {
 
-    public class GameStateRestartCurrentLevel : MonoBehaviour
+    public class GameStateRestartCurrentLevel : GameState
     {
-        // Start is called before the first frame update
-        void Start()
+        public GameStateRestartCurrentLevel(GameManager gameManager) : base(gameManager)
         {
-
         }
 
-        // Update is called once per frame
-        void Update()
+        public override void OnEnter()
         {
+            base.OnEnter();
+            // Restart the current level
+            GameManager.Instance.RestartCurrentLevel();
+        }
 
+        public override void OnExit()
+        {
+            base.OnExit();
+        }
+
+        public override void OnUpdate()
+        {
+            base.OnUpdate();
         }
     }
 

@@ -9,10 +9,10 @@ namespace fym
     {
 
         [SerializeField]
-        private Dictionary<string, GameObjectPool> npcProjectilePools =
-            new Dictionary<string, GameObjectPool>();
+        private Dictionary<string, ProjectilePool> npcProjectilePools =
+            new Dictionary<string, ProjectilePool>();
 
-        public List<GameObjectPool> allProjectilePools = new List<GameObjectPool>();
+        public List<ProjectilePool> allProjectilePools = new List<ProjectilePool>();
 
         public static ProjectilePoolManager Instance { get; private set; }
 
@@ -32,7 +32,7 @@ namespace fym
 
         private void Start()
         {
-            foreach (GameObjectPool pool in allProjectilePools)
+            foreach (ProjectilePool pool in allProjectilePools)
             {
                 pool.Initialize();
                 if (!npcProjectilePools.ContainsKey(pool.poolName))
@@ -58,7 +58,7 @@ namespace fym
                 Destroy(projectile);
                 return false;
             }
-            GameObjectPool pool = npcProjectilePools[poolName];
+            NPCPool pool = npcProjectilePools[poolName];
             pool.ReturnObject(projectile);
             return true;
         }*/

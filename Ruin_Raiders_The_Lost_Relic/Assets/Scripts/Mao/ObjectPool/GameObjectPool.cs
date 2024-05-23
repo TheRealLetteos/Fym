@@ -5,30 +5,28 @@ using UnityEngine;
 namespace fym
 {
 
-    public class GameObjectPool : MonoBehaviour, IPool<GameObject>
+    public abstract class GameObjectPool<T> : MonoBehaviour
     {
 
-        public bool isDebug = false;
-
-        public int npcLevel = 1;
+        [SerializeField]
+        protected bool isDebug = false;
 
         public string poolName;
 
-        public int MaxPoolSize { get; set; } = 40;
-
-        [SerializeField] private bool autoResize = false;
+        [SerializeField]
+        protected int MaxPoolSize = 40;
 
         [SerializeField]
-        private GameObject prefab;
+        protected bool autoResize = false;
 
         [SerializeField]
+        protected GameObject prefab;
+
         public int poolSize = 10;
 
-        public List<GameObject> pool { get; private set; } = new List<GameObject>();
+        protected List<GameObject> pool = new List<GameObject>();
 
-        private List<int> activity = new List<int>();
-
-        //private int availableIndex = 0;
+        protected List<int> activity = new List<int>();
 
         public void Initialize()
         {
@@ -58,27 +56,7 @@ namespace fym
                 pool[i].SetActive(false);
                 activity.Add(i);
             }
-            //availableIndex = 0;
         }
-
-        /*public bool ReturnObject(GameObject obj)
-        {
-            if(isDebug)
-            {
-                Debug.Log("Returning object " + obj.name + " to pool " + poolName);
-                Destroy(obj);
-                return true;
-            }
-            if (obj == null)
-            {
-                Debug.LogWarning("Object is null");
-                return false;
-            }
-            Debug.Log("Returning object " + obj.name + " to pool " + poolName);
-            obj.SetActive(false);
-            availableObjectPool.Enqueue(obj);
-            return true;
-        }*/
 
         public GameObject GetObject()
         {
@@ -92,16 +70,17 @@ namespace fym
                 Debug.LogWarning("No available object in pool");
                 if(autoResize)
                 {
-                    /*for (int i = poolSize; i < Mathf.Min(MaxPoolSize, poolSize * 2); i++)
+                    int maxSize = Mathf.Min(MaxPoolSize, poolSize * 2);
+                    for (int i = poolSize; i < maxSize; i++)
                     {
                         GameObject go = Instantiate(prefab, transform);
                         go.SetActive(false);
                         pool.Add(go);
                         activity.Add(i);
                     }
-                    poolSize = Mathf.Min(MaxPoolSize, poolSize * 2);*/
-                    Debug.Log("Unsupport auto resize");
-                    return null;
+                    poolSize = maxSize;
+                    //Debug.Log("Unsupport auto resize");
+                    //return null;
                 }
                 else
                 {
@@ -132,5 +111,7 @@ namespace fym
                 }
             }
         }
+
+        public abstract T GetObjectController(GameObject go);
     }
 }

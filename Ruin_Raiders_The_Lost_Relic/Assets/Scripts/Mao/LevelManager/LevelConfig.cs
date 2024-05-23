@@ -1,52 +1,34 @@
 ﻿
-using System;
-using System.Numerics;
+using UnityEngine;
 
 namespace fym
 {
-    public class LevelConfig
+    [CreateAssetMenu(fileName = "LevelConfig", menuName = "Level/LevelConfig")]
+    public class LevelConfig : ScriptableObject
     {
 
-        public static LevelConfig currentLevelConfig { get; private set; }
+        public int levelNumber;
 
-        //when entering the game, the current level is always 1
-        private static int CURRENT_LEVEL = 0;
+        public int enemyCount;
 
-        public const int MAX_LEVEL = 99;
+        public float enemyLevel;
 
-        public int MAX_ENEMY_COUNT = 49;
+        public float spawnDensity;
 
-        public int MAX_ENEMY_LEVEL = 99;
+        public float spawnRange;
 
-        public float MAX_SPAWN_DENSITY = 0.3f;
+        public float screenWidth;
 
-        public float MAX_SPAWN_RANGE = 20.0f;
+        public float screenHeight;
 
-        public float MAX_SCREEN_WIDTH = 1920.0f;
+        public float levelDifficulty;
 
-        public float MAX_SCREEN_HEIGHT = 1080.0f;
+        public UnityEngine.Vector2 screenCenterPos;
 
-        public float MAX_LEVEL_DIFFICULTY = 30;
+        public string levelPath;
 
-        public int levelNumber { get; private set; }
-
-        public int enemyCount { get; private set; }
-
-        public float enemyLevel { get; private set; }
-
-        public float spawnDensity { get; private set; }
-
-        public float spawnRange { get; private set; }
-
-        public float screenWidth { get; set; }
-
-        public float screenHeight { get; set; }
-
-        public float levelDifficulty { get; private set; }
-
-        public Vector2 screenCenterPos { get; private set; }
-
-        public LevelConfig(
+        public static LevelConfig CreateLevelConfig(
+            Vector2 screenCenterPos,
             int levelNumber = 1,
             int enemyCount = 5,
             float enemyLevel = 1,
@@ -56,47 +38,34 @@ namespace fym
             float screenHeight = 1080f,
             float levelDifficulty = 1)
         {
-            this.levelNumber = levelNumber;
-            this.enemyCount = enemyCount;
-            this.enemyLevel = enemyLevel;
-            this.spawnDensity = spawnDensity;
-            this.spawnRange = spawnRange;
-            this.screenWidth = screenWidth;
-            this.screenHeight = screenHeight;
-            this.levelDifficulty = levelDifficulty;
+            LevelConfig config = new LevelConfig();
+            config.screenCenterPos = screenCenterPos;
+            config.levelNumber = levelNumber;
+            config.enemyCount = enemyCount;
+            config.enemyLevel = enemyLevel;
+            config.spawnDensity = spawnDensity;
+            config.spawnRange = spawnRange;
+            config.screenWidth = screenWidth;
+            config.screenHeight = screenHeight;
+            config.levelDifficulty = levelDifficulty;
+            return config;
         }
 
-        public static LevelConfig GetLevelConfig(int ln)
+        public static LevelConfig GetRandomLevelConfig(Vector2 center, float screenWidth, float screenHeight, int ln)
         {
-            var random = new Random();
-            if (ln < 1 || ln > MAX_LEVEL)
+            var random = new System.Random();
+            if (ln < 1 || ln > LevelManager.MAX_LEVEL)
             {
-                return new LevelConfig(ln = 1);
+                return CreateLevelConfig(center, ln = 1);
             }
             int enemyCount = 5 + ln / 2;
             float enemyLevel = (float)random.NextDouble() % ln + ln;
             float spawnDensity = 0.05f + ln / 100.0f;
             float spawnRange = 15.0f + ln / 2.0f;
-            float screenWidth = 1920.0f;
-            float screenHeight = 1080.0f;
+            //float screenWidth = 1920.0f;
+            //float screenHeight = 1080.0f;
             float levelDifficulty = 1 + ln / 3;
-            return new LevelConfig(ln, enemyCount, enemyLevel, spawnDensity, spawnRange, screenWidth, screenHeight, levelDifficulty);
-        }
-
-        public static LevelConfig GetNextLevelConfig()
-        {
-            if (CURRENT_LEVEL >= MAX_LEVEL)
-            {
-                return null;
-            }
-            CURRENT_LEVEL++;
-            currentLevelConfig = GetLevelConfig(CURRENT_LEVEL);
-            return currentLevelConfig;
-        }
-
-        public static void ResetLevel()
-        {
-            CURRENT_LEVEL = 0;
+            return CreateLevelConfig(center, ln, enemyCount, enemyLevel, spawnDensity, spawnRange, screenWidth, screenHeight, levelDifficulty);
         }
 
     }

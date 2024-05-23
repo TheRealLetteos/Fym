@@ -11,7 +11,7 @@ namespace fym
 
         public string npcName;
 
-        public string projetileName;
+        public string projetilePoolName;
 
         public float maxHealth = 1.0f;
 
@@ -45,7 +45,7 @@ namespace fym
         {
             Debug.Log("NPC : " + gameObject.name + "is shooting at player.");
             isAttacking = true;
-            GameObject projectile = ProjectilePoolManager.Instance.GetProjectileByPoolName(projetileName);
+            GameObject projectile = ProjectilePoolManager.Instance.GetProjectileByPoolName(projetilePoolName);
             if (projectile == null)
             {
                 Debug.Log("projectile is null.");

@@ -75,6 +75,8 @@ namespace fym
                 new GameStateLobby(this),
                 new GameStatePlaying(this),
                 new GameStateSecondLevel(this),
+                new GameStateNextLevel(this),
+                new GameStateRestartCurrentLevel(this),
                 new GameStatePaused(this),
                 new GameStateSceneEditor(this),
                 new GameStateSceneLevelHardener(this),
@@ -119,7 +121,8 @@ namespace fym
 
         public IEnumerable AsyncLoadScene(string sceneName)
         {
-            LevelConfig levelConfig = LevelConfig.GetNextLevelConfig();
+            LevelConfig levelConfig = LevelManager.instance.GetLevelConfig(
+                LevelManager.instance.currentLevel);
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(
                 sceneName == null ? "Level " + levelConfig.levelNumber : sceneName,
                 LoadSceneMode.Single);
@@ -146,11 +149,17 @@ namespace fym
         public void OnSceneLoaded()
         {
             //yield return new WaitForSeconds(1);
+            LevelConfig config = LevelManager.instance.GetLevelConfig(
+                LevelManager.instance.currentLevel);
             GameObject ground = GameObject.Find("/Grid/Background");
-            LevelConfig config = LevelConfig.GetNextLevelConfig();
             config.screenWidth = ground.GetComponent<TilemapRenderer>().bounds.size.x;
             config.screenHeight = ground.GetComponent<TilemapRenderer>().bounds.size.y;
             BaseNPCSpawner.SpawnNPCs(config, ground.transform.position);
+        }
+
+        public void RestartCurrentLevel()
+        {
+            throw new NotImplementedException();
         }
     }
 

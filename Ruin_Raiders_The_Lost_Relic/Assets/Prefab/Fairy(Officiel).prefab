@@ -237,7 +237,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -182383147
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -1395421746, guid: 16984d9cbf5fd6347ab3d824c0871563, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcName: Fairy
-  projetileName: MagicBolt
+  projetilePoolName: MagicBoltPool
   maxHealth: 2
   physicalDamage: 1
 --- !u!1 &9133285587838559967
@@ -977,7 +977,6 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  animator: {fileID: 7864415329004638154}
   agentTransform:
     useConstant: 0
     mode: 0
@@ -1052,7 +1051,6 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  animator: {fileID: 7864415329004638154}
   agentTransform:
     useConstant: 0
     mode: 0
@@ -1164,7 +1162,6 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  animator: {fileID: 7864415329004638154}
   agentTransform:
     useConstant: 0
     mode: 0
@@ -1203,7 +1200,6 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  animator: {fileID: 0}
   agentTransform:
     useConstant: 0
     mode: 0
@@ -1253,7 +1249,6 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  animator: {fileID: 7864415329004638154}
   agentTransform:
     useConstant: 0
     mode: 0
