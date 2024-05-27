@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace fym
 {
-    public interface IState
+    public interface IState : IObserver
     {
         /**
          * Invoked in Start method

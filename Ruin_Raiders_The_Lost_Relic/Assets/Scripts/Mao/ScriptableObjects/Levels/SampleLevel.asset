@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea50ccc474f527341a6c906e486617f0, type: 3}
-  m_Name: Level_1
+  m_Name: SampleLevel
   m_EditorClassIdentifier: 
   levelNumber: 0
   enemyCount: 0
@@ -20,5 +20,7 @@ MonoBehaviour:
   screenWidth: 0
   screenHeight: 0
   levelDifficulty: 0
-  screenCenterPos: {x: 0, y: 0}
-  levelPath: 
+  bgmName: LobbyScene
+  playerStartPos: {x: 0, y: 0, z: 0}
+  screenCenterPos: {x: 0, y: 0, z: 0}
+  levelPath: Assets/Scenes/SampleScene.unity

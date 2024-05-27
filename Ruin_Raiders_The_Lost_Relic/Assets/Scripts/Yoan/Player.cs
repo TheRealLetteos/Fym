@@ -10,8 +10,10 @@ using UnityEngine.UI;
 
 namespace fym
 {
-    public class Player : Character
+    public class Player : Character, IObservedObject
     {
+
+        private IObserver observer;
 
         private Rigidbody2D _rb;
         private bool _canDoubleJump = false;
@@ -89,6 +91,8 @@ namespace fym
 
             _life = 3;
             UpdateHealth();
+
+            RegisterObserver(GameManager.Instance);
         }
 
         private void Update()
@@ -366,7 +370,8 @@ namespace fym
             _audioWalkingSource.Stop();
             // Ici tu peux déclencher l'animation de mort ou d'autres actions
             Debug.Log("Player is dead.");
-            _restartUI.SetActive(true);
+            //_restartUI.SetActive(true);
+            Notify(GameEvent.LevelFailed);
             enabled = false;
         }
         
@@ -374,6 +379,16 @@ namespace fym
         {
             _audioShortSource.clip = _attackClip;
             _audioShortSource.Play();
+        }
+
+        public void Notify(GameEvent e)
+        {
+            this.observer.OnNotify(e);
+        }
+
+        public void RegisterObserver(IObserver observer)
+        {
+            this.observer = observer;
         }
 
         //Get Set of the state

@@ -84,83 +84,19 @@ namespace fym
             };
         }
 
-        public void LoadScene(string oldSceneName, string sceneName, bool async)
-        {
-            if(async)
-            {
-                StartCoroutine("AsyncUnloadScene", oldSceneName);
-                StartCoroutine("AsyncLoadScene", sceneName);
-            }
-            else
-            {
-                //StartCoroutine("AsyncUnloadScene", oldSceneName);
-                //SceneManager.UnloadScene(oldSceneName);
-                SceneManager.LoadScene(sceneName);
-                //StartCoroutine("OnSceneLoaded");
-                OnSceneLoaded();
-
-                /*GameObject ground = GameObject.Find("Ground");
-                LevelConfig config = LevelConfig.GetNextLevelConfig();
-                config.screenWidth = ground.GetComponent<TilemapRenderer>().bounds.size.x;
-                config.screenHeight = ground.GetComponent<TilemapRenderer>().bounds.size.y;
-                BaseNPCSpawner.SpawnNPCs(config, ground.transform.position);*/
-                //StartCoroutine("AsyncLoadScene", sceneName);
-                //SceneManager.LoadScene(sceneName);
-            }
-        }
-
-        public IEnumerable AsyncUnloadScene()
-        {
-            AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-            while (!asyncUnload.isDone)
-            {
-                yield return null;
-            }
-            Debug.Log("Scene " + SceneManager.GetActiveScene().name + " is unloaded");
-        }
-
-        public IEnumerable AsyncLoadScene(string sceneName)
-        {
-            LevelConfig levelConfig = LevelManager.instance.GetLevelConfig(
-                LevelManager.instance.currentLevel);
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(
-                sceneName == null ? "Level " + levelConfig.levelNumber : sceneName,
-                LoadSceneMode.Single);
-
-            asyncLoad.allowSceneActivation = false;
-
-            while (!asyncLoad.isDone)
-            {
-                /*if (asyncLoad.progress >= 0.95f)
-                {
-                    Debug.Log("Scene " + sceneName + " is loaded");
-                    asyncLoad.allowSceneActivation = true;
-                }*/
-
-                yield return null;
-            }
-            asyncLoad.allowSceneActivation = true;
-
-            Debug.Log("new level " + sceneName + " loaded...");
-            StartCoroutine("OnSceneLoaded");
-            //BaseNPCSpawner.SpawnNPCs(LevelConfig.GetNextLevelConfig());
-        }
-
-        public void OnSceneLoaded()
-        {
-            //yield return new WaitForSeconds(1);
-            LevelConfig config = LevelManager.instance.GetLevelConfig(
-                LevelManager.instance.currentLevel);
-            GameObject ground = GameObject.Find("/Grid/Background");
-            config.screenWidth = ground.GetComponent<TilemapRenderer>().bounds.size.x;
-            config.screenHeight = ground.GetComponent<TilemapRenderer>().bounds.size.y;
-            BaseNPCSpawner.SpawnNPCs(config, ground.transform.position);
-        }
-
         public void RestartCurrentLevel()
         {
-            throw new NotImplementedException();
+            LevelManager.Instance.LoadLevel(LevelManager.Instance.currentLevel);
         }
+
+        public void LoadNextLevel()
+        {
+            LevelManager.Instance.IncreaseLevel();
+            LevelManager.Instance.LoadLevel(LevelManager.Instance.currentLevel);
+        }
+
+
+
     }
 
 }

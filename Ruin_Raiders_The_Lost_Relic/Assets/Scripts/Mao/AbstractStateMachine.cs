@@ -5,7 +5,7 @@ using UnityEngine;
 namespace fym
 {
 
-    public abstract class AbstractStateMachine<T> : MonoBehaviour where T : IState
+    public abstract class AbstractStateMachine<T> : MonoBehaviour, IObserver where T : IState
     {
         protected T m_currentState;
         protected List<T> m_possibleStates;
@@ -75,6 +75,14 @@ namespace fym
         public List<T> GetAllStates()
         {
             return m_possibleStates;
+        }
+
+        public void OnNotify(GameEvent e)
+        {
+            foreach(T state in m_possibleStates)
+            {
+                state.OnNotify(e);
+            }
         }
     }
 

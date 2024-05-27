@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,6 +34,11 @@ namespace fym
 
         public void OnFixedUpdate()
         {
+        }
+
+        public void OnNotify(GameEvent e)
+        {
+            
         }
 
         public void OnStart()

@@ -21,13 +21,15 @@ namespace fym
             //SceneManager.LoadSceneAsync(GameManager.CURRENT_SCENE);
             //SceneManager.UnloadSceneAsync(GameManager.LOBBY_SCENE);
             //Yoan---------------------------------------------------
-            audioManager = GameObject.Find("/AudioManager/Music");
+            /*audioManager = GameObject.Find("/AudioManager/Music");
             mainMenuAudio = audioManager.GetComponent<AudioSource>();
             mainMenuAudio.Stop();
             //--------------------------------------------------------
             GameManager.Instance.LoadScene(
-                GameManager.LOBBY_SCENE, GameManager.SAMPLE_SCENE, false);
+                GameManager.LOBBY_SCENE, GameManager.SAMPLE_SCENE, false);*/
             //BaseNPCSpawner.SpawnNPCs(LevelConfig.GetNextLevelConfig());
+
+            GameManager.Instance.LoadNextLevel();
 
         }
 

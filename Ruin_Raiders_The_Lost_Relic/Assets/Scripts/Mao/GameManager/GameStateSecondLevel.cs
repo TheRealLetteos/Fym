@@ -1,10 +1,11 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace fym
 {
+    //Deprecated
     public class GameStateSecondLevel : GameState
     {
         
@@ -18,10 +19,10 @@ namespace fym
 
         public override void OnNotify(GameEvent e)
         {
-            if (e == GameEvent.SecondLevelScene)
+            /*if (e == GameEvent.SecondLevelScene)
             {
                 canEnter = true;
-            }
+            }*/
         }
 
         public override void OnEnter()

@@ -132,7 +132,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 109691960}
-  - component: {fileID: 109691961}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
@@ -156,102 +155,6 @@ Transform:
   - {fileID: 653115883}
   m_Father: {fileID: 1185010329}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &109691961
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 109691959}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -704927886057411893, guid: ff9e38e98b38fa7478da174624e03ccd, type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &117868800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,6 +1744,7 @@ GameObject:
   - component: {fileID: 1185010329}
   - component: {fileID: 1185010331}
   - component: {fileID: 1185010333}
+  - component: {fileID: 1185010334}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -1976,6 +1880,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsManager: {fileID: 615801052}
   audioMixer: {fileID: 24100000, guid: ff9e38e98b38fa7478da174624e03ccd, type: 2}
+--- !u!114 &1185010334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185010328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93762c6c9a18cdf4ba7c5cee06b9f2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSources:
+  - name: LobbyScene
+    gameObject: {fileID: 315824037}
+  - name: Level1BGM
+    gameObject: {fileID: 258641326}
+  - name: Level2BGM
+    gameObject: {fileID: 1234401175}
+  - name: Level3BGM
+    gameObject: {fileID: 1910256044}
+  - name: SFXClip_0
+    gameObject: {fileID: 653115884}
 --- !u!1 &1213069905
 GameObject:
   m_ObjectHideFlags: 0
@@ -2328,6 +2255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1258689887}
+  - component: {fileID: 1258689888}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -2354,6 +2282,20 @@ Transform:
   - {fileID: 333275213}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1258689888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258689886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4a5d404ca516343bc965ffb27f1ca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerPrefab: {fileID: 1162631946947253076, guid: c028a6a7db89e07438acc8cc1a271eac, type: 3}
+  allLevels: {fileID: 11400000, guid: c0caee98fe30835448cccf5c13474c71, type: 2}
 --- !u!1 &1535570132
 GameObject:
   m_ObjectHideFlags: 0
@@ -3228,18 +3170,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2087711724}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67e752e183632e74793e71db95c25a95, type: 3}
+  m_Script: {fileID: 11500000, guid: 56dbc1aa7a86909409f204f5212ff6e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isDebug: 0
-  npcLevel: 0
   poolName: 
-  <MaxPoolSize>k__BackingField: 40
+  MaxPoolSize: 40
   autoResize: 0
   prefab: {fileID: 0}
   poolSize: 10
-  <pool>k__BackingField: []
-  activity: 
 --- !u!1 &2099354098
 GameObject:
   m_ObjectHideFlags: 0

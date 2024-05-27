@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace fym
 {
-    public abstract class GameState : IState, IObserver
+    public abstract class GameState : IState
     {
 
         protected GameManager m_gameManager;

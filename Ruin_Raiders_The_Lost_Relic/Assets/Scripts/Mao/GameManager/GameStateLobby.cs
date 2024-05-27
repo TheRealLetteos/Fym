@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,6 +27,8 @@ namespace fym
         public override void OnEnter()
         {
             base.OnEnter();
+            AudioManager.Instance.StopMusic();
+            AudioManager.Instance.PlayAudioClip("LobbyScene");
             MenuSystem.Instance.LoadMainMenu();
         }
 

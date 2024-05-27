@@ -25,7 +25,8 @@ namespace fym
 
         private void OnMainMenuClick()
         {
-            MenuSystem.Instance.LoadMainMenu();
+            //MenuSystem.Instance.LoadMainMenu();
+            Notify(GameEvent.Lobby);
         }
 
         private void OnRestartLevelClick()

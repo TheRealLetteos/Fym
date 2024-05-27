@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 namespace fym
 {
 
+    //Deprecated
     public class GameStateNextLevel : GameState
     {
 
@@ -27,12 +28,15 @@ namespace fym
         public override void OnEnter()
         {
             base.OnEnter();
-            //Yoan---------------------------------------------------
+            /*//Yoan---------------------------------------------------
             audioManager = GameObject.Find("/AudioManager/Music");
             mainMenuAudio = audioManager.GetComponent<AudioSource>();
             mainMenuAudio.Stop();
             //--------------------------------------------------------
-            SceneManager.LoadScene("Level2");
+            SceneManager.LoadScene("Level2");*/
+
+            //AudioManager.Instance.StopMusic();
+            GameManager.Instance.LoadNextLevel();
         }
 
         public override void OnExit()

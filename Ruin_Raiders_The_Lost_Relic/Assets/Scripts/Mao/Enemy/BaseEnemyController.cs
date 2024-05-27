@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace fym
 {
-    public class BaseEnemyController : IPoolingObject
+    public class BaseEnemyController : MonoBehaviour
     {
 
         public string npcName;
@@ -24,7 +24,7 @@ namespace fym
 
         private bool isAttacking = false;
 
-        public override void Initialize()
+        public void Initialize()
         {
             gameObject.SetActive(true);
             health = maxHealth;

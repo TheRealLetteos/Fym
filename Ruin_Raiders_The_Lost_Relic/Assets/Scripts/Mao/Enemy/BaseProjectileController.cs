@@ -5,7 +5,7 @@ using UnityEngine;
 namespace fym
 {
 
-    public class BaseProjectileController : IPoolingObject
+    public class BaseProjectileController : MonoBehaviour
     {
 
         public float maxLifeTime = 3;
@@ -23,7 +23,8 @@ namespace fym
         public Vector3 direction;
 
         public string ownerTag;
-        public override void Initialize()
+
+        public void Initialize()
         {
             gameObject.SetActive(true);
             lifeTime = maxLifeTime;

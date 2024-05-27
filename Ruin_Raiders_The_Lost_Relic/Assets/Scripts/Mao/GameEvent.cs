@@ -13,10 +13,12 @@ namespace fym
         Pausing,
         Ending,
         NextLevel,
-        Restarting,
+        LevelPassed,
+        LevelFailed,
+        //Restarting, // To be deprecated
         RestartCurrentLevel,
         Resuming,
-        SecondLevelScene,
+        //SecondLevelScene, // To be deprecated
         EditingScene,
         LevelHarndenerScene,
         Quitting

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +11,7 @@ namespace fym
     {
         private Button startButton;
 
-        private Button secondLevelButton;
+        //private Button secondLevelButton;
 
         private Button optionButton;
 
@@ -26,8 +26,8 @@ namespace fym
             Initialize();
             startButton = rootMenuDocument.rootVisualElement.Q<Button>("StartButton");
             startButton.clicked += () => OnStartGameClick();
-            secondLevelButton = rootMenuDocument.rootVisualElement.Q<Button>("SecondLevelButton");
-            secondLevelButton.clicked += () => OnSecondLevelClick();
+            //secondLevelButton = rootMenuDocument.rootVisualElement.Q<Button>("SecondLevelButton");
+            //secondLevelButton.clicked += () => OnSecondLevelClick();
             optionButton = rootMenuDocument.rootVisualElement.Q<Button>("OptionButton");
             optionButton.clicked += () => OnOptionClick();
             sceneEditorButton = rootMenuDocument.rootVisualElement.Q<Button>("SceneEditorButton");
@@ -67,10 +67,10 @@ namespace fym
             Notify(GameEvent.Playing);
         }
 
-        private void OnSecondLevelClick()
+        /*private void OnSecondLevelClick()
         {
             Notify(GameEvent.SecondLevelScene); 
-        }
+        }*/
 
         private void OnSceneEditorClick()
         {

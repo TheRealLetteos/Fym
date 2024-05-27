@@ -11,6 +11,14 @@ namespace fym
         {
         }
 
+        public override void OnNotify(GameEvent e)
+        {
+            if (e == GameEvent.RestartCurrentLevel)
+            {
+                canEnter = true;
+            }
+        }
+
         public override void OnEnter()
         {
             base.OnEnter();

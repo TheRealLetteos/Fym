@@ -8,7 +8,7 @@
                 <ui:Label tabindex="-1" text="Main menu" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LabelMainMenu" class="fym-label-title label-title" style="height: 77px; font-size: 60px; -unity-font-style: normal; -unity-text-align: middle-center; color: rgb(0, 75, 19); -unity-font: url(&apos;project://database/Assets/Assets/Font/ChelaOne-Regular.ttf?fileID=12800000&amp;guid=6a45f6ca762b8804bb9d44fbc7a11691&amp;type=3#ChelaOne-Regular&apos;); -unity-font-definition: initial;" />
                 <ui:Button text="Continue game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ContinueButton" class="button-title" />
                 <ui:Button text="Start new game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" enable-rich-text="true" class="button-title" />
-                <ui:Button text="Second Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SecondLevelButton" class="button-title" />
+                <!--<ui:Button text="Second Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SecondLevelButton" class="button-title" />-->
                 <ui:Button text="Options" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OptionButton" class="button-title" />
                 <ui:Button text="Scene Editor" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SceneEditorButton" class="button-title" />
                 <ui:Button text="Level Hardener" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LevelHardenerButton" class="button-title" />
