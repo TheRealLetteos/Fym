@@ -34,7 +34,7 @@ public class InputHandler : MonoBehaviour, MainInputs.IPlayerMovementsActions
         }
 
         
-        instance ??= this;
+        instance = this;
         _mInputs = new MainInputs();
     }
 
