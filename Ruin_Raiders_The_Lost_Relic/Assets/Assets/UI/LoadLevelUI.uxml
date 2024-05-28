@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Assets/UI/UIToolkit/USS/fym_label.uss?fileID=7433441132597879392&amp;guid=12127b7324453e84ba8146dfff0f4cfb&amp;type=3#fym_label" />
+    <Style src="project://database/Assets/Assets/UI/UIToolkit/USS/fym_progress_bar.uss?fileID=7433441132597879392&amp;guid=0d05f7a595d5bdc4a8d3d2967413252f&amp;type=3#fym_progress_bar" />
+    <ui:VisualElement name="Screen" style="flex-grow: 1;">
+        <ui:VisualElement name="UIContainer" style="flex-grow: 1; flex-direction: column; align-items: stretch; justify-content: flex-start; align-self: auto; width: auto; height: auto;">
+            <ui:VisualElement name="VisualElement" style="flex-grow: 1; align-items: stretch; justify-content: flex-end; width: 30%; height: 100%; align-self: center; flex-direction: column; flex-wrap: nowrap;">
+                <ui:Label tabindex="-1" text="new level loading&#10;&#10;&#10;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadingBarContainer" enable-rich-text="true" class="label-title">
+                    <ui:ProgressBar value="0" name="ProgressBar" high-value="1" style="-unity-background-image-tint-color: rgb(255, 255, 255);" />
+                </ui:Label>
+                <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BottomSpacer" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

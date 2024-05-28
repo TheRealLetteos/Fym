@@ -21,7 +21,7 @@ namespace fym
         public override void OnEnter()
         {
             base.OnEnter();
-            AudioManager.Instance.PlayAudioClip("LevelPassed");
+            //AudioManager.Instance.PlayAudioClip("LevelPassed");
             MenuSystem.Instance.LoadLevelPassedMenu();
         }
     }

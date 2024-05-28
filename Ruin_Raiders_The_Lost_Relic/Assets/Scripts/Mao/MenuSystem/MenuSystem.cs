@@ -32,11 +32,16 @@ namespace fym
         [SerializeField]
         private LevelFailedMenuController levelFailedMenu;
 
+        [SerializeField]
+        private LoadingUIController levelLoadingUI;
+
+
         private void Awake()
         {
             if(Instance == null)
             {
                 Instance = this;
+                DontDestroyOnLoad(this);
             }
             else
             {
@@ -85,6 +90,23 @@ namespace fym
             quitMenu.gameObject.SetActive(true);
         }
 
+        public void LoadLevelLoadingUI()
+        {
+            DeactivateAllMenu();
+            levelLoadingUI.ActivateMenu();
+            levelLoadingUI.gameObject.SetActive(true);
+            levelLoadingUI.SetProgress(0);
+        }
+
+        public void UpdateLevelLoadingUI(float progress)
+        {
+            levelLoadingUI.SetProgress(progress);
+            /*if(progress >= 1)
+            {
+                levelLoadingUI.DeactivateMenu();
+            }*/
+        }
+
         public void LoadLevelPassedMenu()
         {
             DeactivateAllMenu();
@@ -108,6 +130,7 @@ namespace fym
             quitMenu.DeactivateMenu();
             levelPassedMenu.DeactivateMenu();
             levelFailedMenu.DeactivateMenu();
+            levelLoadingUI.DeactivateMenu();
         }
 
     }

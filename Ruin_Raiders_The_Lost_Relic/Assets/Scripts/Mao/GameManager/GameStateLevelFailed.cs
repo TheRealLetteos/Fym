@@ -22,7 +22,7 @@ namespace fym
         public override void OnEnter()
         {
             base.OnEnter();
-            AudioManager.Instance.PlayAudioClip("LevelFailed");
+            //AudioManager.Instance.PlayAudioClip("LevelFailed");
             MenuSystem.Instance.LoadLevelFailedMenu();
         }
     }

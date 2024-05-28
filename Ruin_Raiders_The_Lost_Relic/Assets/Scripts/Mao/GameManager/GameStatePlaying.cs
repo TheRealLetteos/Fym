@@ -8,8 +8,8 @@ namespace fym
     public class GameStatePlaying : GameState
     {
         //Yoan-----------------------------
-        private AudioSource mainMenuAudio;
-        private GameObject audioManager;
+        //private AudioSource mainMenuAudio;
+        //private GameObject audioManager;
         //---------------------------------
         public GameStatePlaying(GameManager stateMachine) : base(stateMachine)
         {
@@ -29,7 +29,7 @@ namespace fym
                 GameManager.LOBBY_SCENE, GameManager.SAMPLE_SCENE, false);*/
             //BaseNPCSpawner.SpawnNPCs(LevelConfig.GetNextLevelConfig());
 
-            GameManager.Instance.LoadNextLevel();
+            //GameManager.Instance.LoadNextLevel();
 
         }
 

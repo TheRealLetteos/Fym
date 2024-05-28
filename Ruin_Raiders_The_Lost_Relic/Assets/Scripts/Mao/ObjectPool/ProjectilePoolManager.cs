@@ -23,6 +23,7 @@ namespace fym
             if (Instance == null)
             {
                 Instance = this;
+                DontDestroyOnLoad(this);
             }
             else
             {

@@ -570,7 +570,7 @@ PrefabInstance:
     - target: {fileID: 9081005195487021047, guid: 05e802880af23ac42805b52ee6615d04, type: 3}
       propertyPath: projectilePool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1686327554}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1125,7 +1125,7 @@ PrefabInstance:
     - target: {fileID: 9081005195487021047, guid: 05e802880af23ac42805b52ee6615d04, type: 3}
       propertyPath: projectilePool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1686327554}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1957,7 +1957,7 @@ GameObject:
   - component: {fileID: 1370914901}
   m_Layer: 0
   m_Name: Background
-  m_TagString: Boundary
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2446,7 +2446,7 @@ PrefabInstance:
     - target: {fileID: 9081005195487021047, guid: 05e802880af23ac42805b52ee6615d04, type: 3}
       propertyPath: projectilePool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1686327554}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2518,6 +2518,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5233825265197946107, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
   m_PrefabInstance: {fileID: 1686327552}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1686327554 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5249776893099645159, guid: c07c0a7e662edac49976ac69dedbf6b9, type: 3}
+  m_PrefabInstance: {fileID: 1686327552}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e752e183632e74793e71db95c25a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1743792600
 GameObject:
   m_ObjectHideFlags: 0

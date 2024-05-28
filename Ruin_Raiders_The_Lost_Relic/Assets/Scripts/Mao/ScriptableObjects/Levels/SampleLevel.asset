@@ -24,3 +24,4 @@ MonoBehaviour:
   playerStartPos: {x: 0, y: 0, z: 0}
   screenCenterPos: {x: 0, y: 0, z: 0}
   levelPath: Assets/Scenes/SampleScene.unity
+  levelName: SampleScene

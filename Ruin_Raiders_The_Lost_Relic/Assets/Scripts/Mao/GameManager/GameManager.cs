@@ -59,6 +59,7 @@ namespace fym
             {
                 base.Awake();
                 Instance = this;
+                DontDestroyOnLoad(this);
             }
             else
             {
@@ -74,9 +75,11 @@ namespace fym
                 new GameStateLoading(this),
                 new GameStateLobby(this),
                 new GameStatePlaying(this),
-                new GameStateSecondLevel(this),
+                //new GameStateSecondLevel(this),
                 new GameStateNextLevel(this),
                 new GameStateRestartCurrentLevel(this),
+                new GameStateLevelFailed(this),
+                new GameStateLevelPassed(this),
                 new GameStatePaused(this),
                 new GameStateSceneEditor(this),
                 new GameStateSceneLevelHardener(this),
@@ -86,13 +89,13 @@ namespace fym
 
         public void RestartCurrentLevel()
         {
-            LevelManager.Instance.LoadLevel(LevelManager.Instance.currentLevel);
+            LevelManager.Instance.LoadLevelAsync(LevelManager.Instance.currentLevel);
         }
 
         public void LoadNextLevel()
         {
             LevelManager.Instance.IncreaseLevel();
-            LevelManager.Instance.LoadLevel(LevelManager.Instance.currentLevel);
+            LevelManager.Instance.LoadLevelAsync(LevelManager.Instance.currentLevel);
         }
 
 

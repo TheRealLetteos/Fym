@@ -42,7 +42,6 @@ namespace fym
         public override void OnExit()
         {
             base.OnExit();
-            SceneManager.LoadScene(GameManager.LOBBY_SCENE);
         }
     }
 

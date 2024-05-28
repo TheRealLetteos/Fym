@@ -24,3 +24,4 @@ MonoBehaviour:
   playerStartPos: {x: 9.11, y: -6.66, z: 0}
   screenCenterPos: {x: 0, y: 0, z: 0}
   levelPath: Assets/Scenes/Level3.unity
+  levelName: Level3

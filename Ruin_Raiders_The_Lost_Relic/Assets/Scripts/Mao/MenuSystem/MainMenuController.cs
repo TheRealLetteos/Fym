@@ -64,7 +64,7 @@ namespace fym
             //SceneManager.UnloadSceneAsync("LobbyScene");
             //SceneManager.LoadScene("SampleScene");
             //leave this op to the game play module
-            Notify(GameEvent.Playing);
+            Notify(GameEvent.NextLevel);
         }
 
         /*private void OnSecondLevelClick()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -44,11 +45,20 @@ namespace fym
             if(Instance == null)
             {
                 Instance = this;
+                DontDestroyOnLoad(this);
             }
             else
             {
                 Destroy(this);
             }
+        }
+
+        private void Update()
+        {
+            /*if(isLevelLoading && !isLevelLoaded)
+            {
+                MenuSystem.Instance.UpdateLevelLoadingUI();
+            }*/
         }
 
         public void IncreaseLevel()
@@ -69,7 +79,7 @@ namespace fym
             return allLevels.GetLevelConfig(levelNumber);
         }
 
-        public void LoadLevel(int levelNumber, bool syncCurrentLevel = true)
+        public async void LoadLevelAsync(int levelNumber, bool syncCurrentLevel = true)
         {
             LevelConfig config = GetLevelConfig(levelNumber);
             if(config == null)
@@ -81,77 +91,64 @@ namespace fym
             {
                 currentLevel = levelNumber;
             }
-            LoadLevel(config);
 
-        }
+            var scene = SceneManager.LoadSceneAsync(config.levelName);
+            Debug.LogWarning("Loading level " + config.levelName + "...");
+            scene.allowSceneActivation = false;
 
-        public void LoadLevelAsync(int levelNumber, bool syncCurrentLevel = true)
-        {
-            LevelConfig config = GetLevelConfig(levelNumber);
-            if(config == null)
+            MenuSystem.Instance.LoadLevelLoadingUI();
+
+            do
             {
-                Debug.LogWarning("Level " + levelNumber + " not found in level list.");
-                return;
-            }
-            if(syncCurrentLevel)
-            {
-                currentLevel = levelNumber;
-            }   
-            Coroutine res = StartCoroutine("LoadLevelAsync", config);
+                await Task.Delay(100);
+                MenuSystem.Instance.UpdateLevelLoadingUI(scene.progress);
+            } while (scene.progress < 0.95f);
+
+            await Task.Delay(1000);
+
+            scene.allowSceneActivation = true;
+            MenuSystem.Instance.DeactivateAllMenu();
+
+            GameManager.Instance.OnNotify(GameEvent.Playing);
+
+            /*Coroutine res = StartCoroutine("_LoadLevelAsync", config);
             if(res != null)
             {
-                StartCoroutine("OnSceneLoadedAsync");
-            }
+                StartCoroutine("_OnSceneLoadedAsync");
+            }*/
 
         }
 
-        private void LoadLevel(LevelConfig levelConfig)
-        {
-
-            SceneManager.LoadScene(levelConfig.levelPath, LoadSceneMode.Single);
-            OnSceneLoaded();
-            Debug.Log("new level " + levelConfig.levelPath + " loaded...");
-            //BaseNPCSpawner.SpawnNPCs(LevelConfig.GetNextLevelConfig());
-        }
-
-        private IEnumerable LoadLevelAsync(LevelConfig levelConfig)
+        private IEnumerator _LoadLevelAsync(LevelConfig levelConfig)
         {
 
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(levelConfig.levelPath,
-                LoadSceneMode.Single);
+                LoadSceneMode.Additive);
 
             asyncLoad.allowSceneActivation = false;
 
             while (!asyncLoad.isDone)
             {
-                /*if (asyncLoad.progress >= 0.95f)
+                if (asyncLoad.progress >= 0.95f)
                 {
-                    Debug.Log("Scene " + sceneName + " is loaded");
+                    Debug.Log("Level " + levelConfig.levelName + " is loaded");
                     asyncLoad.allowSceneActivation = true;
-                }*/
+                }
 
                 yield return null;
             }
             asyncLoad.allowSceneActivation = true;
-
+            MenuSystem.Instance.DeactivateAllMenu();
             Debug.Log("new level " + levelConfig.levelPath + " loaded...");
             //BaseNPCSpawner.SpawnNPCs(LevelConfig.GetNextLevelConfig());
         }
 
-        private void OnSceneLoaded()
-        {
-            LevelConfig config = LevelManager.Instance.GetCurrentLevel;
-            GameObject ground = GameObject.Find("/Grid/Background");
-            config.screenWidth = ground.GetComponent<TilemapRenderer>().bounds.size.x;
-            config.screenHeight = ground.GetComponent<TilemapRenderer>().bounds.size.y;
-            BaseNPCSpawner.SpawnNPCs(config, ground.transform.position);
-        }
-
-        private IEnumerable OnSceneLoadedAsync()
+        private IEnumerator _OnSceneLoadedAsync()
         {
             yield return new WaitForSeconds(1);
-            LevelConfig config = LevelManager.Instance.GetCurrentLevel;
-            GameObject ground = GameObject.Find("/Grid/Background");
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(GetCurrentLevel.levelName));
+            LevelConfig config = GetCurrentLevel;
+            GameObject ground = GameObject.FindWithTag("Boundary");
             config.screenWidth = ground.GetComponent<TilemapRenderer>().bounds.size.x;
             config.screenHeight = ground.GetComponent<TilemapRenderer>().bounds.size.y;
             BaseNPCSpawner.SpawnNPCs(config, ground.transform.position);
