@@ -294,7 +294,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 175226617}
-  - component: {fileID: 175226618}
   m_Layer: 0
   m_Name: SampleLevel
   m_TagString: Untagged
@@ -317,24 +316,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &175226618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175226616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e423ff2b1d3423c4b98eeb780491346c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _puzzle1: {fileID: 0}
-  _puzzle2: {fileID: 0}
-  _doorRb: {fileID: 247894978}
-  _key: {fileID: 0}
-  _doorMaterial: {fileID: 0}
-  _newMaterial: {fileID: 0}
 --- !u!1001 &238569442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12867,7 +12848,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506329015}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

@@ -126,7 +126,7 @@ namespace fym
 
         IEnumerator WaitAttackTime()
         {
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.005f);
             _isAttacking = false;
         }
 
