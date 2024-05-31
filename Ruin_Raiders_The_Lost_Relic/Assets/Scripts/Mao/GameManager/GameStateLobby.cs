@@ -32,6 +32,7 @@ namespace fym
             AudioManager.Instance.StopMusic();
             AudioManager.Instance.PlayAudioClip("LobbyScene");
             MenuSystem.Instance.LoadMainMenu();
+            GameManager.Instance.difficulty = 0;
         }
 
         public override void OnExit()
