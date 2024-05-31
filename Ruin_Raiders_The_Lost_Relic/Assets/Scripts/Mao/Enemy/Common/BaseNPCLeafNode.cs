@@ -51,7 +51,8 @@ namespace MBT
             }
             else
             {
-                Debug.LogError("Animator or nodeAnimationKey is null");
+                //Debug.LogError("Animator or nodeAnimationKey is null");
+                Debug.Log("Animator or nodeAnimationKey is null"); //changed for presentation
             }
         }
 

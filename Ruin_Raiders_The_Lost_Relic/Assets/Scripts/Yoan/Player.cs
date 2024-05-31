@@ -58,6 +58,8 @@ namespace fym
         private GameObject _restartUI;
         private GameObject _inventoryUI;
         private Image[] hearts;
+        private int increaseDifficultyWhenHit = 2;
+        private int increaseDifficultyWhenDead = 5;
 
 
         // Start is called before the first frame update
@@ -126,7 +128,7 @@ namespace fym
 
         IEnumerator WaitAttackTime()
         {
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.005f);
             _isAttacking = false;
         }
 
@@ -324,7 +326,8 @@ namespace fym
             
                 _life -= damage;
                 UpdateHealth();
-                if (_life <= 0)
+            GameManager.Instance.difficulty += increaseDifficultyWhenHit;
+            if (_life <= 0)
                 {
                     Die();
                 }
@@ -366,6 +369,7 @@ namespace fym
         }
         void Die()
         {
+            GameManager.Instance.difficulty += increaseDifficultyWhenDead;
             _isDead = true;
             _audioWalkingSource.Stop();
             // Ici tu peux déclencher l'animation de mort ou d'autres actions
