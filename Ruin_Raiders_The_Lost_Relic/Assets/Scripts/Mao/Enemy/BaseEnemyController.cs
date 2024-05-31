@@ -24,6 +24,13 @@ namespace fym
 
         private bool isAttacking = false;
 
+        private Animator animator;
+
+        private void Awake()
+        {
+            animator = GetComponent<Animator>();
+        }
+
         public void Initialize()
         {
             gameObject.SetActive(true);
@@ -39,12 +46,16 @@ namespace fym
 
             // if player class detects collision with enemy, player takes damage itself, no need to call this function
             isAttacking = true;
+            //animator.SetBool("IsAttack", true);
+            animator.SetTrigger("AttackTrigger");
         }
 
         public void Shoot(Vector3 direction)
         {
             Debug.Log("NPC : " + gameObject.name + "is shooting at player.");
             isAttacking = true;
+            //animator.SetBool("IsAttack", true);
+            animator.SetTrigger("AttackTrigger");
             GameObject projectile = ProjectilePoolManager.Instance.GetProjectileByPoolName(projetilePoolName);
             if (projectile == null)
             {
@@ -59,7 +70,9 @@ namespace fym
         public void TakeDamage(float damage)
         {
             isBeingAttacked = true;
-            if(health > 0)
+            //animator.SetBool("IsHurt", true);
+            animator.SetTrigger("HurtTrigger");
+            if (health > 0)
             {
                 health -= damage;
                 // damage is taken, set to false so that player can attack again
@@ -74,6 +87,8 @@ namespace fym
 
         public void Die()
         {
+            //animator.SetBool("IsDead", true);
+            animator.SetTrigger("DeadTrigger");
             health = maxHealth;
             isBeingAttacked = false;
             gameObject.SetActive(false);

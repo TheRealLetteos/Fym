@@ -64,6 +64,7 @@ namespace fym
             //SceneManager.UnloadSceneAsync("LobbyScene");
             //SceneManager.LoadScene("SampleScene");
             //leave this op to the game play module
+            LevelManager.Instance.Reset();
             Notify(GameEvent.NextLevel);
         }
 

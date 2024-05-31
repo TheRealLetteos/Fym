@@ -89,16 +89,14 @@ namespace fym
 
         public void RestartCurrentLevel()
         {
-            LevelManager.Instance.LoadLevelAsync(LevelManager.Instance.currentLevel);
+            LevelManager.Instance.LoadLevel(LevelManager.Instance.currentLevel);
         }
 
         public void LoadNextLevel()
         {
             LevelManager.Instance.IncreaseLevel();
-            LevelManager.Instance.LoadLevelAsync(LevelManager.Instance.currentLevel);
+            LevelManager.Instance.LoadLevel(LevelManager.Instance.currentLevel);
         }
-
-
 
     }
 

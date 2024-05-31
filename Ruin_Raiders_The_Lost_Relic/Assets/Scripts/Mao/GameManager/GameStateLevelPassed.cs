@@ -22,6 +22,8 @@ namespace fym
         {
             base.OnEnter();
             //AudioManager.Instance.PlayAudioClip("LevelPassed");
+            ProjectilePoolManager.Instance.ReturnProjectileToPool();
+            NPCPoolManager.Instance.ReturnNPCToPool();
             MenuSystem.Instance.LoadLevelPassedMenu();
         }
     }

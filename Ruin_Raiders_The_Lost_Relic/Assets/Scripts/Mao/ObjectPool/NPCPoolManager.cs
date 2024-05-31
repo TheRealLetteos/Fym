@@ -80,17 +80,13 @@ namespace fym
             return null;
         }
 
-        /*public void ReturnNPCToPool(string poolName, GameObject npc)
+        public void ReturnNPCToPool()
         {
-            if(npcPools.ContainsKey(poolName))
+            foreach(NPCPool pool in allNPCPools)
             {
-                npcPools[poolName].ReturnObject(npc);
+                pool.Reinitialize();
             }
-            else
-            {
-                Destroy(npc);
-            }
-        }*/
+        }
 
     }
 }

@@ -27,6 +27,8 @@ namespace fym
         public override void OnEnter()
         {
             base.OnEnter();
+            //LevelManager.Instance.UnloadCurrentLevel();
+            //SceneManager.LoadScene(GameManager.LOBBY_SCENE, LoadSceneMode.Single);
             AudioManager.Instance.StopMusic();
             AudioManager.Instance.PlayAudioClip("LobbyScene");
             MenuSystem.Instance.LoadMainMenu();

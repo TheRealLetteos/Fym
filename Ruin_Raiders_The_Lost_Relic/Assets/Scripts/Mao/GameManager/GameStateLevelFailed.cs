@@ -23,6 +23,8 @@ namespace fym
         {
             base.OnEnter();
             //AudioManager.Instance.PlayAudioClip("LevelFailed");
+            ProjectilePoolManager.Instance.ReturnProjectileToPool();
+            NPCPoolManager.Instance.ReturnNPCToPool();
             MenuSystem.Instance.LoadLevelFailedMenu();
         }
     }

@@ -14,6 +14,8 @@ namespace MBT
     {
         
         // The animator of the enemy
+        public GameObjectReference animatorReference;
+
         private Animator animator;
 
         // The transform of the enemy
@@ -22,21 +24,30 @@ namespace MBT
         public TransformReference targetTransform;
 
         // The key of the animation
-        public string nodeAnimationKey = null;
+        public string animationBoolKey = null;
 
-        void Awake()
+        public string animationTriggerKey = null;
+
+        void Start()
         {
-            animator = agentTransform.Value.GetComponent<Animator>();
+            animator = animatorReference.Value.GetComponent<Animator>();
         }
 
         public override void OnEnter()
         {
             base.OnEnter();
-            if (animator != null && nodeAnimationKey != null)
+            if (animator != null)
             {
-                animator.SetBool(nodeAnimationKey, true);
-                animator.SetTrigger(nodeAnimationKey);
-                Debug.Log("Animator has set key " + nodeAnimationKey + " to true");
+                if(animationBoolKey != null)
+                {
+                    animator.SetBool(animationBoolKey, true);
+                    Debug.Log("Animator has set key " + animationBoolKey + " to true");
+                }
+                if(animationTriggerKey != null)
+                {
+                    animator.SetTrigger(animationTriggerKey);
+                    Debug.Log("Animator has set trigger " + animationTriggerKey);
+                }
             }
             else
             {
@@ -47,14 +58,10 @@ namespace MBT
         public override void OnExit()
         {
             base.OnExit();
-            if (animator != null && nodeAnimationKey != null)
+            if (animator != null && animationBoolKey != null)
             {
-                animator.SetBool(nodeAnimationKey, false);
-                Debug.Log("Animator has set key " + nodeAnimationKey + " to false");
-            }
-            else
-            {
-                Debug.LogError("Animator or nodeAnimationKey is null");
+                animator.SetBool(animationBoolKey, false);
+                Debug.Log("Animator has set key " + animationBoolKey + " to false");
             }
         }
 

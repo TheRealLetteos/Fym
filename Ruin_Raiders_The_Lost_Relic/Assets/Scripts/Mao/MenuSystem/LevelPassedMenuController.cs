@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace fym
@@ -25,7 +26,7 @@ namespace fym
 
         private void OnMainMenuClick()
         {
-            MenuSystem.Instance.LoadMainMenu();
+            Notify(GameEvent.Lobby);
         }
 
         private void OnNextLevelClick()

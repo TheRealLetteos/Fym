@@ -32,7 +32,7 @@ namespace fym
 
         public GameObject PlayerPrefab;
 
-        public int currentLevel { get; private set; } = 0;
+        public int currentLevel { get; private set; } = -1;
 
         public LevelConfig GetCurrentLevel { get { return GetLevelConfig(currentLevel); } }
 
@@ -61,22 +61,49 @@ namespace fym
             }*/
         }
 
+        public void Reset()
+        {
+            currentLevel = -1;
+        }
+
         public void IncreaseLevel()
         {
             currentLevel++;
             if(currentLevel > MAX_LEVEL)
             {
-                currentLevel = 1;
+                currentLevel = 0;
             }
         }
 
         public LevelConfig GetLevelConfig(int levelNumber)
         {
-            if(levelNumber < 1 || levelNumber > MAX_LEVEL)
-            {
-                return null;
-            }
             return allLevels.GetLevelConfig(levelNumber);
+        }
+
+        public void LoadLevel(int levelNumber, bool syncCurrentLevel = true)
+        {
+            LevelConfig config = GetLevelConfig(levelNumber);
+            if (config == null)
+            {
+                Debug.LogWarning("Level " + levelNumber + " not found in level list.");
+                return;
+            }
+
+            //UnloadCurrentLevel();
+
+            if (syncCurrentLevel)
+            {
+                currentLevel = levelNumber;
+            }
+            AudioManager.Instance.StopMusic();
+            SceneManager.LoadScene(config.levelName, LoadSceneMode.Single);
+            Debug.LogWarning("Loading level " + config.levelName + "...");
+            AudioManager.Instance.PlayAudioClip(config.bgmName);
+
+            MenuSystem.Instance.DeactivateAllMenu();
+            GameManager.Instance.OnNotify(GameEvent.Playing);
+
+
         }
 
         public async void LoadLevelAsync(int levelNumber, bool syncCurrentLevel = true)
@@ -87,12 +114,16 @@ namespace fym
                 Debug.LogWarning("Level " + levelNumber + " not found in level list.");
                 return;
             }
+
+            //UnloadCurrentLevel();
+
             if(syncCurrentLevel)
             {
                 currentLevel = levelNumber;
             }
 
-            var scene = SceneManager.LoadSceneAsync(config.levelName);
+            AudioManager.Instance.StopMusic();
+            var scene = SceneManager.LoadSceneAsync(config.levelName, LoadSceneMode.Single);
             Debug.LogWarning("Loading level " + config.levelName + "...");
             scene.allowSceneActivation = false;
 
@@ -107,20 +138,46 @@ namespace fym
             await Task.Delay(1000);
 
             scene.allowSceneActivation = true;
-            MenuSystem.Instance.DeactivateAllMenu();
+            AudioManager.Instance.PlayAudioClip(config.bgmName);
 
+            MenuSystem.Instance.DeactivateAllMenu();
             GameManager.Instance.OnNotify(GameEvent.Playing);
 
-            /*Coroutine res = StartCoroutine("_LoadLevelAsync", config);
-            if(res != null)
-            {
-                StartCoroutine("_OnSceneLoadedAsync");
-            }*/
 
         }
 
-        private IEnumerator _LoadLevelAsync(LevelConfig levelConfig)
+        //bug exists here
+        private void UnloadCurrentLevel()
         {
+            /*LevelConfig conf = GetCurrentLevel;
+            if (conf != null)
+            {
+                var res = SceneManager.UnloadSceneAsync(conf.levelName);
+                if(res.isDone)
+                {
+                    Debug.LogWarning("Unloaded level " + conf.levelName);
+                    AudioManager.Instance.StopMusic();
+                }
+            }*/
+            var name = SceneManager.GetActiveScene().name;
+
+            Debug.LogWarning("Unloading level " + name + "...");
+            if ("LobbyScene" == name)
+            {
+                Debug.Log("Cannot unload lobby scene from level manager");
+                return;
+            }
+            var res = SceneManager.UnloadSceneAsync(name);
+            if (res == null || res.isDone)
+            {
+                Debug.LogWarning("Unloaded level " + name);
+                AudioManager.Instance.StopMusic();
+            }
+        }
+
+        /*private IEnumerator _LoadLevelAsync(LevelConfig levelConfig)
+        {
+            MenuSystem.Instance.DeactivateAllMenu();
 
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(levelConfig.levelPath,
                 LoadSceneMode.Additive);
@@ -131,19 +188,18 @@ namespace fym
             {
                 if (asyncLoad.progress >= 0.95f)
                 {
-                    Debug.Log("Level " + levelConfig.levelName + " is loaded");
+                    Debug.Log("Level " + levelConfig.levelName + " is almost loaded");
                     asyncLoad.allowSceneActivation = true;
                 }
 
                 yield return null;
             }
             asyncLoad.allowSceneActivation = true;
-            MenuSystem.Instance.DeactivateAllMenu();
             Debug.Log("new level " + levelConfig.levelPath + " loaded...");
             //BaseNPCSpawner.SpawnNPCs(LevelConfig.GetNextLevelConfig());
-        }
+        }*/
 
-        private IEnumerator _OnSceneLoadedAsync()
+        /*private IEnumerator _OnSceneLoadedAsync()
         {
             yield return new WaitForSeconds(1);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(GetCurrentLevel.levelName));
@@ -152,7 +208,7 @@ namespace fym
             config.screenWidth = ground.GetComponent<TilemapRenderer>().bounds.size.x;
             config.screenHeight = ground.GetComponent<TilemapRenderer>().bounds.size.y;
             BaseNPCSpawner.SpawnNPCs(config, ground.transform.position);
-        }
+        }*/
 
     }
 }

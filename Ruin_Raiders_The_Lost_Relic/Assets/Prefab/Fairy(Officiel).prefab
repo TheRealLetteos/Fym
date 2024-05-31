@@ -305,7 +305,7 @@ Animator:
   m_GameObject: {fileID: 8297831790140703156}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 441486c6f3b3d314687b2fde0d4aacb5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9ec53fd4cdf5c1544946d83cebf38fe2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -362,9 +362,7 @@ GameObject:
   - component: {fileID: 2460716863739527899}
   - component: {fileID: 5731135219021608408}
   - component: {fileID: 6835700208019623871}
-  - component: {fileID: 4536107740693082887}
   - component: {fileID: 8174634446139580587}
-  - component: {fileID: 5902394891188494260}
   - component: {fileID: 7285283603808492814}
   - component: {fileID: 5030505740114504121}
   - component: {fileID: 7699304678992443844}
@@ -374,6 +372,7 @@ GameObject:
   - component: {fileID: 452951585678343042}
   - component: {fileID: 4582798963092705782}
   - component: {fileID: 2271229693139008902}
+  - component: {fileID: 2104965599295905315}
   m_Layer: 8
   m_Name: Brain
   m_TagString: Untagged
@@ -408,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 2467935162872230763}
+  selectedEditorNode: {fileID: 2271229693139008902}
   repeatOnFinish: 0
   maxExecutionsPerTick: 60
   parent: {fileID: 0}
@@ -458,6 +457,7 @@ MonoBehaviour:
   - {fileID: 3111021946609783912}
   - {fileID: 1168767119660312030}
   - {fileID: 2384974687242960242}
+  - {fileID: 2104965599295905315}
   masterBlackboard: {fileID: 0}
 --- !u!114 &762180555021856631
 MonoBehaviour:
@@ -830,44 +830,11 @@ MonoBehaviour:
     height: 44
   parent: {fileID: 7699304678992443844}
   children:
-  - {fileID: 4536107740693082887}
   - {fileID: 5030505740114504121}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
   random: 0
---- !u!114 &4536107740693082887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9133285587838559967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58fe7bc6a9b18e148b82820c7c1c0a90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Wait
-  rect:
-    serializedVersion: 2
-    x: -618
-    y: -65
-    width: 160
-    height: 44
-  parent: {fileID: 6835700208019623871}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  time:
-    useConstant: 1
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0.5
-  randomDeviation: 0
-  continueOnRestart: 0
 --- !u!114 &8174634446139580587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -890,43 +857,10 @@ MonoBehaviour:
   parent: {fileID: 1893666638030745493}
   children:
   - {fileID: 2467935162872230763}
-  - {fileID: 5902394891188494260}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
   random: 0
---- !u!114 &5902394891188494260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9133285587838559967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58fe7bc6a9b18e148b82820c7c1c0a90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Wait
-  rect:
-    serializedVersion: 2
-    x: 0
-    y: -240
-    width: 160
-    height: 44
-  parent: {fileID: 8174634446139580587}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  time:
-    useConstant: 1
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0.2
-  randomDeviation: 0
-  continueOnRestart: 0
 --- !u!114 &7285283603808492814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,8 +902,8 @@ MonoBehaviour:
   title: Dead
   rect:
     serializedVersion: 2
-    x: -326
-    y: -63.800003
+    x: -460
+    y: -130.8
     width: 160
     height: 44
   parent: {fileID: 6835700208019623871}
@@ -977,6 +911,12 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
+  animatorReference:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 6344375402218339195}
+    key: AnimatorReference
+    constantValue: {fileID: 0}
   agentTransform:
     useConstant: 0
     mode: 0
@@ -989,7 +929,8 @@ MonoBehaviour:
     blackboard: {fileID: 6344375402218339195}
     key: TargetTransform
     constantValue: {fileID: 0}
-  nodeAnimationKey: IsDead
+  animationBoolKey: IsDead
+  animationTriggerKey: 
 --- !u!114 &7699304678992443844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,8 +983,8 @@ MonoBehaviour:
   title: Being Hurt
   rect:
     serializedVersion: 2
-    x: -196
-    y: -240.80002
+    x: -78
+    y: -251.80003
     width: 160
     height: 44
   parent: {fileID: 8174634446139580587}
@@ -1051,6 +992,12 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
+  animatorReference:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 6344375402218339195}
+    key: AnimatorReference
+    constantValue: {fileID: 0}
   agentTransform:
     useConstant: 0
     mode: 0
@@ -1063,7 +1010,8 @@ MonoBehaviour:
     blackboard: {fileID: 6344375402218339195}
     key: TargetTransform
     constantValue: {fileID: 0}
-  nodeAnimationKey: IsHurt
+  animationBoolKey: IsHurt
+  animationTriggerKey: HurtTrigger
 --- !u!114 &6246403214856846185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1116,8 +1064,8 @@ MonoBehaviour:
   title: Is Target In Range
   rect:
     serializedVersion: 2
-    x: 258
-    y: -419.8
+    x: 260
+    y: -383.8
     width: 160
     height: 44
   parent: {fileID: 2460716863739527899}
@@ -1153,8 +1101,8 @@ MonoBehaviour:
   title: Attack
   rect:
     serializedVersion: 2
-    x: 132
-    y: -151.79999
+    x: 133
+    y: -154.8
     width: 160
     height: 44
   parent: {fileID: 5063551260101282807}
@@ -1162,6 +1110,12 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
+  animatorReference:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 6344375402218339195}
+    key: AnimatorReference
+    constantValue: {fileID: 0}
   agentTransform:
     useConstant: 0
     mode: 0
@@ -1174,7 +1128,8 @@ MonoBehaviour:
     blackboard: {fileID: 6344375402218339195}
     key: TargetTransform
     constantValue: {fileID: 0}
-  nodeAnimationKey: IsAttack
+  animationBoolKey: IsAttack
+  animationTriggerKey: AttackTrigger
   isRemoteAttack: 1
 --- !u!114 &4582798963092705782
 MonoBehaviour:
@@ -1200,6 +1155,12 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
+  animatorReference:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 6344375402218339195}
+    key: AnimatorReference
+    constantValue: {fileID: 0}
   agentTransform:
     useConstant: 0
     mode: 0
@@ -1212,7 +1173,8 @@ MonoBehaviour:
     blackboard: {fileID: 6344375402218339195}
     key: TargetTransform
     constantValue: {fileID: 0}
-  nodeAnimationKey: IsWalk
+  animationBoolKey: IsWalk
+  animationTriggerKey: 
   movementRange:
     useConstant: 0
     mode: 0
@@ -1240,8 +1202,8 @@ MonoBehaviour:
   title: Move NPC
   rect:
     serializedVersion: 2
-    x: 748
-    y: -178.8
+    x: 732
+    y: -176.8
     width: 160
     height: 44
   parent: {fileID: 815902998710411793}
@@ -1249,6 +1211,12 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
+  animatorReference:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 6344375402218339195}
+    key: AnimatorReference
+    constantValue: {fileID: 0}
   agentTransform:
     useConstant: 0
     mode: 0
@@ -1261,7 +1229,8 @@ MonoBehaviour:
     blackboard: {fileID: 6344375402218339195}
     key: TargetTransform
     constantValue: {fileID: 0}
-  nodeAnimationKey: IsWalk
+  animationBoolKey: IsWalk
+  animationTriggerKey: 
   targetPosition:
     useConstant: 0
     mode: 0
@@ -1282,3 +1251,17 @@ MonoBehaviour:
     constantValue: 0
   minDistance: 0
   maxTime: 5
+--- !u!114 &2104965599295905315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9133285587838559967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cdb61a66fcb1c549a844f093811f6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: AnimatorReference
+  val: {fileID: 8297831790140703156}

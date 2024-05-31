@@ -1,3 +1,4 @@
+﻿using fym;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class BackButton : MonoBehaviour
     
     public void restart()
     {
-        SceneManager.LoadScene("LobbyScene");
+        //SceneManager.LoadScene("LobbyScene");
+        GameManager.Instance.OnNotify(GameEvent.Lobby);
     }
 }

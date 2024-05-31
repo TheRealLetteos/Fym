@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace fym
 {
+
     public class GameStatePlaying : GameState
     {
         //Yoan-----------------------------

@@ -109,6 +109,7 @@ namespace fym
 
         public void LoadLevelPassedMenu()
         {
+            //LevelManager.Instance.UnloadCurrentLevel();
             DeactivateAllMenu();
             levelPassedMenu.ActivateMenu();
             levelPassedMenu.gameObject.SetActive(true);
