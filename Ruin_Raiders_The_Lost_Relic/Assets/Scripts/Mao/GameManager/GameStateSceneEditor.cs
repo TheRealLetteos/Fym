@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,17 +28,20 @@ namespace fym
         {
             base.OnEnter();
             //Yoan---------------------------------------------------
-            audioManager = GameObject.Find("/AudioManager/Music");
+            /*audioManager = GameObject.Find("/AudioManager/Music");
             mainMenuAudio = audioManager.GetComponent<AudioSource>();
-            mainMenuAudio.Stop();
+            mainMenuAudio.Stop();*/
+            AudioManager.Instance.StopMusic();
             //--------------------------------------------------------
+            MenuSystem.Instance.DeactivateAllMenu();
             SceneManager.LoadScene("NewLevelEditor");
         }
 
         public override void OnExit()
         {
             base.OnExit();
-            SceneManager.LoadScene(GameManager.LOBBY_SCENE);
+            //SceneManager.LoadScene(GameManager.LOBBY_SCENE);
+            //GameManager.Instance.OnNotify(GameEvent.Lobby);
         }
     }
 }

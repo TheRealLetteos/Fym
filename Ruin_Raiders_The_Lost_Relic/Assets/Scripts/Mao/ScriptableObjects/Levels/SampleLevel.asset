@@ -21,7 +21,7 @@ MonoBehaviour:
   screenHeight: 0
   levelDifficulty: 0
   bgmName: LobbyScene
-  playerStartPos: {x: 0, y: 0, z: 0}
+  playerStartPos: {x: 7.5967903, y: -6.3386183, z: 0}
   screenCenterPos: {x: 0, y: 0, z: 0}
   levelPath: Assets/Scenes/SampleScene.unity
   levelName: SampleScene

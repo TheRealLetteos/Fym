@@ -10,7 +10,9 @@ namespace fym
     {
         public List<LevelConfig> levelConfigs = new List<LevelConfig>();
 
-        public static LevelList instance { get; private set; }
+        public int LevelCount { get { return levelConfigs.Count; } }
+
+        /*public static LevelList instance { get; private set; }
 
         private void Awake()
         {
@@ -22,13 +24,13 @@ namespace fym
             {
                 Destroy(this);
             }
-        }
+        }*/
 
         public LevelConfig GetLevelConfig(int levelNumber)
         {
-            if (levelNumber < 0 || levelNumber > LevelManager.MAX_LEVEL)
+            if (levelNumber < 0 || levelNumber >= levelConfigs.Count)
             {
-                return levelConfigs[0];
+                return null;
             }
             return levelConfigs[levelNumber];
         }

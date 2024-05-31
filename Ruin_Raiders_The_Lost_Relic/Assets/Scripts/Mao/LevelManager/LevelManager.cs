@@ -69,9 +69,9 @@ namespace fym
         public void IncreaseLevel()
         {
             currentLevel++;
-            if(currentLevel > MAX_LEVEL)
+            if(currentLevel > allLevels.LevelCount)
             {
-                currentLevel = 0;
+                currentLevel = -1;
             }
         }
 
@@ -86,6 +86,7 @@ namespace fym
             if (config == null)
             {
                 Debug.LogWarning("Level " + levelNumber + " not found in level list.");
+                GameManager.Instance.OnNotify(GameEvent.Lobby);
                 return;
             }
 
@@ -103,7 +104,9 @@ namespace fym
             MenuSystem.Instance.DeactivateAllMenu();
             GameManager.Instance.OnNotify(GameEvent.Playing);
 
-
+            GameObject player = Instantiate(PlayerPrefab);
+            player.transform.position = config.playerStartPos;
+            player.transform.parent = SceneManager.GetActiveScene().GetRootGameObjects()[0].transform;
         }
 
         public async void LoadLevelAsync(int levelNumber, bool syncCurrentLevel = true)
@@ -112,6 +115,7 @@ namespace fym
             if(config == null)
             {
                 Debug.LogWarning("Level " + levelNumber + " not found in level list.");
+                GameManager.Instance.OnNotify(GameEvent.Lobby);
                 return;
             }
 
