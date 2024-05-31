@@ -341,6 +341,10 @@ namespace fym
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
+                if (_isDead)
+                {
+                    return;
+                }
                 // Réduit la santé du joueur lorsque collision avec un ennemi
                 Hurt(1);
 
@@ -353,6 +357,10 @@ namespace fym
             }
             if (collision.gameObject.CompareTag("Item"))
             {
+                if (_isDead)
+                {
+                    return;
+                }
                 // Détruire l'objet en collision
                 IPickable pickableItem = collision.gameObject.GetComponent<IPickable>();
                 if (pickableItem != null)
