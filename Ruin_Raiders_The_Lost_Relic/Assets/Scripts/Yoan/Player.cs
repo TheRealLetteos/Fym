@@ -72,7 +72,7 @@ namespace fym
             InputHandler.instance.attackEvent += Attack;
             InputHandler.instance.inventoryEvent += Inventory;
             enabled = true;
-
+            Physics2D.IgnoreLayerCollision(8, 10, false);
             //Get player rigidbody
             _rb = GetComponent<Rigidbody2D>();
             _rend = GetComponent<Renderer>();
