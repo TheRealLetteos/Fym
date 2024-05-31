@@ -1,30 +1,55 @@
+using fym;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelHardenerInGame : MonoBehaviour
 {
-    public Slider difficultySlider;
-    public LevelManager levelManager;
 
+    //public LevelManager levelManager;
+    private LevelManagerInGame levelManagerScript;
+    private GameManager gameManager;
     private int lastDifficultyLevel = 0;
+    public int difficulty;
 
     void Start()
     {
-        
+        gameManager = GameManager.Instance;
+
+        if (gameManager != null) 
+        {
+            difficulty = gameManager.difficulty;
+            Debug.Log("GameManager Found!");
+            Debug.Log("Difficulty is set at :" + difficulty);
+        }
+
+        // Find the GameObject named "LevelHardener" and get the LevelHardenerInGame script attached to it
+        GameObject levelHardenerObject = GameObject.Find("LevelHardener");
+        if (levelHardenerObject != null)
+        {
+            levelManagerScript = levelHardenerObject.GetComponent<LevelManagerInGame>();
+            if (levelManagerScript != null)
+            {
+
+                AdjustLevelDifficulty();
+                Debug.Log("APPLY DIFFICULTY");
+            }
+            else
+            {
+                Debug.LogError("LevelHardenerInGame script not found on 'LevelHardener' object!");
+            }
+        }
+        else
+        {
+            Debug.LogError("GameObject named 'LevelHardener' not found!");
+        }
     }
 
     void AdjustLevelDifficulty()
     {
-        int currentDifficultyLevel = Mathf.FloorToInt(difficultySlider.value);
-        currentDifficultyLevel = Mathf.Min(currentDifficultyLevel, 100); //cap difficulty at 100
-        if (currentDifficultyLevel > lastDifficultyLevel)
-        {
-            for (int i = lastDifficultyLevel; i < currentDifficultyLevel; i++)
+            for (int i = 0; i < gameManager.difficulty; i++)
             {
-                levelManager.ApplyRandomObstacle();
-            } // note: we can reach higher than 100 difficulty (max allowed by slider) by dragging over and over again. This is on purpose for testing/balancing!
-        }
-
-        lastDifficultyLevel = currentDifficultyLevel;  // Update the last difficulty level
+                levelManagerScript.ApplyRandomObstacle();
+            } 
     }
 }

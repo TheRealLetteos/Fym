@@ -1679,6 +1679,88 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790751775}
   m_CullTransparentMesh: 1
+--- !u!1 &977951004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 977951007}
+  - component: {fileID: 977951006}
+  - component: {fileID: 977951005}
+  m_Layer: 0
+  m_Name: LevelHardener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &977951005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977951004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ce8b36abc66f54a8beec6620635b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 500
+--- !u!114 &977951006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977951004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8b8cfe976d4bb4295538e80c3334a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 1995269537}
+  spikeTile: {fileID: 11400000, guid: aa5845aaf766521418df4ac521e7e394, type: 2}
+  lavaTile: {fileID: 11400000, guid: 8eeaf013124703d41b838c6f9c2b523c, type: 2}
+  enemyPrefabs:
+  - {fileID: 8297831790140703156, guid: 05e802880af23ac42805b52ee6615d04, type: 3}
+  - {fileID: 8297831790140703156, guid: e2897db958ac7d842baa8a2d425e03cc, type: 3}
+  enemiesParent: {fileID: 0}
+  obstacles:
+  - type: 0
+    probability: 20
+  - type: 1
+    probability: 20
+  - type: 2
+    probability: 10
+  - type: 3
+    probability: 5
+  - type: 4
+    probability: 10
+  - type: 5
+    probability: 10
+  - type: 6
+    probability: 5
+  - type: 7
+    probability: 5
+--- !u!4 &977951007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977951004}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.1265738, y: -7.5241556, z: 7.893942}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1106472839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2001,87 +2083,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 953555697615918517, guid: c028a6a7db89e07438acc8cc1a271eac, type: 3}
   m_PrefabInstance: {fileID: 49353050}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1330571330
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1330571331}
-  - component: {fileID: 1330571333}
-  - component: {fileID: 1330571332}
-  m_Layer: 0
-  m_Name: ==LEVEL HARDENER==
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1330571331
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1330571330}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1265738, y: -7.5241556, z: 7.893942}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1330571332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1330571330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5ce8b36abc66f54a8beec6620635b8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  difficultySlider: {fileID: 0}
-  levelManager: {fileID: 0}
---- !u!114 &1330571333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1330571330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b8b8cfe976d4bb4295538e80c3334a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilemap: {fileID: 0}
-  spikeTile: {fileID: 0}
-  lavaTile: {fileID: 0}
-  enemyPrefabs: []
-  enemiesParent: {fileID: 0}
-  obstacles:
-  - type: 0
-    probability: 20
-  - type: 1
-    probability: 20
-  - type: 2
-    probability: 10
-  - type: 3
-    probability: 5
-  - type: 4
-    probability: 10
-  - type: 5
-    probability: 10
-  - type: 6
-    probability: 5
-  - type: 7
-    probability: 5
 --- !u!1 &1356715246
 GameObject:
   m_ObjectHideFlags: 0
@@ -8158,6 +8159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb140de5639f75f4ba54656919de59c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
 --- !u!1 &1498903665
 GameObject:
   m_ObjectHideFlags: 0
@@ -12424,4 +12426,4 @@ SceneRoots:
   - {fileID: 1106472839}
   - {fileID: 181762281}
   - {fileID: 2144290074}
-  - {fileID: 1330571331}
+  - {fileID: 977951007}

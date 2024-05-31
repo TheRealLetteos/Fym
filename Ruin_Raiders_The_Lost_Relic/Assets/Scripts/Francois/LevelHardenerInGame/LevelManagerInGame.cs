@@ -31,45 +31,44 @@ public class LevelManagerInGame : MonoBehaviour
             totalProbability += obstacle.probability; // Probabilities don't even need to add to anything in particular!!!
         }
 
-        
-
         float randomPoint = Random.value * totalProbability;
 
-        for (int i = 0; i < obstacles.Count; i++)
-        {
-            if (randomPoint < obstacles[i].probability)
+       
+            for (int i = 0; i < obstacles.Count; i++)
             {
-                switch (obstacles[i].type)
+                if (randomPoint < obstacles[i].probability)
                 {
-                    case ObstacleType.ExtraEnemy:
-                        SpawnExtraEnemy();
-                        break;
-                    case ObstacleType.Spikes:
-                        AddSpikes();
-                        break;
-                    case ObstacleType.Lava:
-                        ConvertTileToLava();
-                        break;
-                    case ObstacleType.SpeedIncrease:
-                        IncreaseEnemySpeed();
-                        break;
-                    case ObstacleType.ExtraHealth:
-                        IncreaseEnemyHealth();
-                        break;
-                    case ObstacleType.DamageTimerDecrease:
-                        DecreaseDamageTimer();
-                        break;
-                    case ObstacleType.DamageReduction:
-                        ReducePlayerDamage();
-                        break;
-                    case ObstacleType.ExtraTile:
-                        AddExtraTile();
-                        break;
+                    switch (obstacles[i].type)
+                    {
+                        case ObstacleType.ExtraEnemy:
+                            SpawnExtraEnemy();
+                            break;
+                        case ObstacleType.Spikes:
+                            AddSpikes();
+                            break;
+                        case ObstacleType.Lava:
+                            ConvertTileToLava();
+                            break;
+                        case ObstacleType.SpeedIncrease:
+                            IncreaseEnemySpeed();
+                            break;
+                        case ObstacleType.ExtraHealth:
+                            IncreaseEnemyHealth();
+                            break;
+                        case ObstacleType.DamageTimerDecrease:
+                            DecreaseDamageTimer();
+                            break;
+                        case ObstacleType.DamageReduction:
+                            ReducePlayerDamage();
+                            break;
+                        case ObstacleType.ExtraTile:
+                            AddExtraTile();
+                            break;
+                    }
+                    break;
                 }
-                break;
+                randomPoint -= obstacles[i].probability;
             }
-            randomPoint -= obstacles[i].probability;
-        }
     }
 
     // Each obstacle does...
@@ -82,9 +81,9 @@ public class LevelManagerInGame : MonoBehaviour
         List<Vector3Int> suitableTilePositions = new List<Vector3Int>();
 
        
-        for (int x = 0; x < bounds.size.x; x++)
+        for (int x = 0; x < bounds.size.x-3; x++)
         {
-            for (int y = 0; y < bounds.size.y; y++)
+            for (int y = 0; y < bounds.size.y-3; y++)
             {
                 TileBase tile = allTiles[x + y * bounds.size.x];
                 if (tile != null) 
@@ -105,7 +104,7 @@ public class LevelManagerInGame : MonoBehaviour
         if (suitableTilePositions.Count > 0)
         {
             Vector3Int randomTilePosition = suitableTilePositions[Random.Range(0, suitableTilePositions.Count)];
-            Vector3 spawnPosition = tilemap.CellToWorld(randomTilePosition) + new Vector3(0f, 2.0f, 0);  // enemy are gameobjects in game, so float it is
+            Vector3 spawnPosition = tilemap.CellToWorld(randomTilePosition) + new Vector3(2f, 2.0f, 0);  // enemy are gameobjects in game, so float it is
 
             // Randomly pick one of the enemy prefabs
             if (enemyPrefabs.Length > 0)

@@ -11,7 +11,7 @@ namespace fym
 
     public class GameManager : AbstractStateMachine<GameState>
     {
-        int difficulty;
+        public int difficulty = 50;
         public static string CURRENT_SCENE { get; private set; } = "CurrentScene";
 
         public static string LOBBY_SCENE { get; private set; } = "LobbyScene";
