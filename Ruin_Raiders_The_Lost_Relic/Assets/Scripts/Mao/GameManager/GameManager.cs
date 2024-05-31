@@ -11,6 +11,7 @@ namespace fym
 
     public class GameManager : AbstractStateMachine<GameState>
     {
+        int increaseDifficulty;
         public static string CURRENT_SCENE { get; private set; } = "CurrentScene";
 
         public static string LOBBY_SCENE { get; private set; } = "LobbyScene";
@@ -89,6 +90,7 @@ namespace fym
 
         public void RestartCurrentLevel()
         {
+            increaseDifficulty++;
             LevelManager.Instance.LoadLevel(LevelManager.Instance.currentLevel);
         }
 
